@@ -19,7 +19,10 @@
         font-weight: bold;
         color: white;
     }
-    
+    .btn {
+      background-color: #f6cd4cff;
+      color: white;
+    }
     /* Add a gray background color and some padding to the footer */
     footer {
       background-color:#f2f2f2;
@@ -94,24 +97,76 @@
     </div>
 </div>
 
+<div class="container-fluid bg-3 text-center">
+  <h3></h3><br>
+
+  <div class="col-sm-2">
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Type
+      <span class="caret"></span></button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem>Breakfast</button>
+        <button ngbDropdownItem>Lunch</button>
+        <button ngbDropdownItem>Brunch</button>
+        <button ngbDropdownItem>Dinner</button>
+        <button ngbDropdownItem>Dessert</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2">
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Feature
+      <span class="caret"></span></button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem>Low carb</button>
+        <button ngbDropdownItem>Vegan</button>
+        <button ngbDropdownItem>Kid</button>
+        <button ngbDropdownItem>Easy Cook</button>
+        <button ngbDropdownItem>Gluten Free</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-2">
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Cuisine
+      <span class="caret"></span></button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem>American</button>
+        <button ngbDropdownItem>China</button>
+        <button ngbDropdownItem>India</button>
+        <button ngbDropdownItem>Korean</button>
+        <button ngbDropdownItem>Japanese</button>
+      </div>
+    </div>
+  </div>
+  
+
+</div>
+
+
+
+
+
+
 <div class="container-fluid bg-3 text-center">    
-  <h3>Some of my Work</h3><br>
+  <h3></h3><br>
   <div class="row picrow">
     <div class="col-sm-3">
-      <p>Some text..</p>
       <img src="assets/images/recipe_1.jpg" class="img-responsive recipepic" style="width:100%" alt="Image">
+      <p>Supreme Steak</p>
     </div>
     <div class="col-sm-3"> 
-      <p>Some text..</p>
       <img src="assets/images/recipe_2.jpg" class="img-responsive recipepic" style="width:100%" alt="Image">
+      <p>Potato Beef Tender</p>
     </div>
     <div class="col-sm-3"> 
-      <p>Some text..</p>
       <img src="assets/images/recipe_5.jpg" class="img-responsive recipepic" style="width:100%" alt="Image">
+      <p>Avacado Gimbap</p>
     </div>
     <div class="col-sm-3">
-      <p>Some text..</p>
       <img src="assets/images/recipe_8.jpg" class="img-responsive recipepic" style="width:100%" alt="Image">
+      <p>Orange Chicken</p>
     </div>
   </div>
 </div><br>
@@ -119,20 +174,20 @@
 <div class="container-fluid bg-3 text-center">    
   <div class="row picrow">
     <div class="col-sm-3">
-      <p>Some text..</p>
       <img src="assets/images/recipe_4.jpg" class="img-responsive recipepic" style="width:100%" alt="Image">
+      <p>Garden Salad</p>
     </div>
     <div class="col-sm-3"> 
-      <p>Some text..</p>
       <img src="assets/images/recipe_6.jpg" class="img-responsive recipepic" style="width:100%" alt="Image">
+      <p>Rosemary Salmon</p>
     </div>
     <div class="col-sm-3"> 
-      <p>Some text..</p>
       <img src="assets/images/recipe_3.png" class="img-responsive recipepic" style="width:100%" alt="Image">
+      <p>Avacado Salad</p>
     </div>
     <div class="col-sm-3">
-      <p>Some text..</p>
       <img src="assets/images/recipe_7.jpg" class="img-responsive recipepic" style="width:100%" alt="Image">
+      <p>Turkey Sandwich</p>
     </div>
   </div>
 </div><br><br>
