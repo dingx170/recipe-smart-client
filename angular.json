@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "recipe-smart-client"
+  "defaultProject": "recipe-smart-client",
+  "cli": {
+    "analytics": "e68a9c98-28c2-474c-ae69-4d0fd12fceed"
+  }
 }
