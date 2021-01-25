@@ -1,0 +1,1 @@
+Recipe Smart Client is a front-end project written in TypeScript with Angular web framework.
