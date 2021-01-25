@@ -11,19 +11,46 @@
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
       margin-bottom: 0;
-      border-radius: 0;
+      background-color: #f6cd4cff;     
+    }
+    .logobox {
+        background-color: #f58f8fff;
+        font-family: cursive;
+        font-weight: bold;
+        color: white;
     }
     
     /* Add a gray background color and some padding to the footer */
     footer {
-      background-color: #f2f2f2;
+      background-color:#f2f2f2;
       padding: 25px;
+    }
+    .nav-option {
+        font-family: Verdana;
+        font-weight: bold;
+        color: black;
+    }
+    .logo {
+        border: 8px solid #f6cd4cff;
+        border-radius: 30%;
+        width: 150px;
+    }
+    .logocontainer {
+        padding-bottom: 20px;
+        padding-top: 20px;
+    }
+    .webname {
+        padding-top: 20px;
+        font-size: 80px;
+        color:#f6cd4cff;
+        font-weight: bold;
+        padding-left: 550px;
     }
   </style>
 </head>
-<body>
 
-<nav class="navbar navbar-inverse">
+<body>
+<nav class="navbar">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -31,29 +58,33 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Portfolio</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Gallery</a></li>
-        <li><a href="#">Contact</a></li>
+        <li class="active, nav-option"><a href="#">Home</a></li>
+        <li class="nav-option"><a href="#">My Account</a></li>
+        <li class="nav-option"><a href="#">My Recipies</a></li>
+        <li class="nav-option"><a href="#">Meal Planner</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li class="nav-option"><a href="#"><span class="glyphicon glyphicon-user"></span> Login</a></li>
       </ul>
     </div>
   </div>
 </nav>
-
-<div class="jumbotron">
-  <div class="container text-center">
-    <h1>My Portfolio</h1>      
-    <p>Some text that represents "Me"...</p>
-  </div>
+<div class="container-fluid row logobox">
+    <div class="col-sm-8">
+        <div class="container textcontainer">
+          <h1 class="webname">Recipe Smart</h1>      
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="container logocontainer">
+            <img class="logo" src="assets/images/logo.PNG" size="16">
+        </div>
+    </div>
 </div>
-  
+
 <div class="container-fluid bg-3 text-center">    
   <h3>Some of my Work</h3><br>
   <div class="row">
