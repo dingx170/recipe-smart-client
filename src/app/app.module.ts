@@ -7,13 +7,15 @@ import { RecipesComponent } from './components/recipes/recipes.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BaseComponent } from './components/base/base.component';
 import { AdsComponent } from './components/ads/ads.component';
+import { MealplanComponent } from './components/mealplan/mealplan.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RecipesComponent,
     BaseComponent,
-    AdsComponent
+    AdsComponent,
+    MealplanComponent
   ],
   imports: [
     BrowserModule,
