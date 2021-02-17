@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+
+    <!-- Header -->
+    <app-base></app-base>
+
+
+    
+    <h1 class="bartext">Meal Planner</h1>      
+    
+
+    <!-- Left side Ads -->
+    <div class="col-sm-1">
+        <app-ads></app-ads>
+    </div>
+    
+    
+    <div class="col-sm-10">
+    <!-- Filters -->
+    <div class="container-fluid bg-3 text-center">
+        <br>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+            
+            
+            <select class="btn form-select filterbtn">
+                <option selected>Budget</option>
+                <option value="1">$10</option>
+                <option value="2">$20</option>
+                <option value="3">$30</option>
+                <option value="2">$50</option>
+                <option value="3">$100</option>
+            </select>
+            
+        
+        </div>
+
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2">
+            <select class="btn form-select filterbtn">
+                <option selected>Group</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="2">4</option>
+                <option value="3">5</option>
+            </select>
+        </div>
+
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2">
+            <select class="btn form-select filterbtn">
+                <option selected>Allegies</option>
+                <option value="1">Vegan</option>
+                <option value="2">Dairy Free</option>
+                <option value="3">Gluten Free</option>
+                <option value="2">Seafood Free</option>
+                <option value="3">Nut Free</option>
+            </select>
+            
+        </div>
+
+    </div>
+
+    <div class="row"></div>
+
+    <div class="container textcontainer">
+        <h1 class="pagetext">Plan My Meal!</h1>      
+    </div>
+
+
+    
+
+    
+    <div class="container-fluid">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+            <button type="submitbtn" class="btn btn-outline-primary btn-lg submitbtn">Customized</button>
+        </div>
+        
+        <div class="col-sm-6">
+            <h1 class="customizetext">I wanna know the details!</h1>
+        </div>
+    </div>
+    
+
+    <div class="container-fluid">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+            <button type="submitbtn" class="btn btn-outline-primary btn-lg submitbtn">One-Click</button>
+        </div>
+        
+        <div class="col-sm-6">
+            <h1 class="customizetext">I give up thinking!</h1>
+        </div>
+    </div>
+    </div>
+    
+
+    <!-- Right side Ads -->
+    <div class="col-sm-1">
+        <app-ads></app-ads>
+    </div>
+</body>
+</html>
