@@ -5,6 +5,7 @@ import { RecipesComponent } from './components/recipes/recipes.component'
 import { MealplanComponent } from './components/mealplan/mealplan.component'
 import { NewplanComponent } from './components/mealplan/newplan/newplan.component'
 import { OldplanComponent } from './components/mealplan/oldplan/oldplan.component'
+import { UserProfilesComponent } from './components/user-profiles/user-profiles.component'
 
 const routes: Routes = [
   {path: 'home', component: RecipesComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
       {path: '**', redirectTo: 'newplan'}
     ]  
   },
+  { path: 'user-profile', component: UserProfilesComponent},
   {
     path: '',
     redirectTo: '/home',

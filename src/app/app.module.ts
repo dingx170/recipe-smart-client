@@ -11,6 +11,7 @@ import { HeaderBaseComponent } from './components/header-base/header-base.compon
 import { MealplanComponent } from './components/mealplan/mealplan.component';
 import { NewplanComponent } from './components/mealplan/newplan/newplan.component';
 import { OldplanComponent } from './components/mealplan/oldplan/oldplan.component';
+import { UserProfilesComponent } from './components/user-profiles/user-profiles.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { OldplanComponent } from './components/mealplan/oldplan/oldplan.componen
     HeaderBaseComponent,
     MealplanComponent,
     NewplanComponent,
-    OldplanComponent
+    OldplanComponent,
+    UserProfilesComponent
   ],
   imports: [
     BrowserModule,
