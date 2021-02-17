@@ -4,6 +4,8 @@
         <div ngbDropdown>
             <i class="btn btn-outline-primary" id="nav-icon" ngbDropdownToggle></i>
             <div ngbDropdownMenu aria-labelledby="navigation" class="option-container">
+                <button ngbDropdownItem class="option-font" [routerLink]="['./home']">Home Page</button>
+                <div class="dropdown-divider option-divider"></div>
                 <button ngbDropdownItem class="option-font" [routerLink]="['./myprofile']">My Profile</button>
                 <div class="dropdown-divider option-divider"></div>
                 <button ngbDropdownItem class="option-font" [routerLink]="['./myrecipe']">My Recipe</button>

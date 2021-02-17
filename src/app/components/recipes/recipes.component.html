@@ -1,161 +1,87 @@
+<div class="row">
+     <!-- Left side Ads -->
+     <div class="col-2 align-center">
+        <app-ads></app-ads>
+    </div>
 
-    <!-- Header -->
+    <div class="col-8">
 
-    <!-- Filters -->
-    <div class="container-fluid bg-3 text-center">
+        <br><br>
+
+         <!-- Filters -->
+        <div class="row">
+
+            <div class="col">
+                <div ngbDropdown class="d-inline-block">
+                <button class="btn filterbtn" id="dropdownBasic1" ngbDropdownToggle>Type
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem>Breakfast</button>
+                    <button ngbDropdownItem>Lunch</button>
+                    <button ngbDropdownItem>Dinner</button>
+                </div>
+                </div>
+            </div>
+            <div class="col">
+                <div ngbDropdown class="d-inline-block">
+                <button class="btn filterbtn" id="dropdownBasic1" ngbDropdownToggle>Feature
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem>Low carb</button>
+                    <button ngbDropdownItem>Vegan</button>
+                    <button ngbDropdownItem>Kid</button>
+                    <button ngbDropdownItem>Easy Cook</button>
+                    <button ngbDropdownItem>Gluten Free</button>
+                </div>
+                </div>
+            </div>
+            <div class="col">
+                <div ngbDropdown class="d-inline-block">
+                <button class="btn filterbtn" id="dropdownBasic1" ngbDropdownToggle>Cuisine
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem>Chinese</button>
+                    <button ngbDropdownItem>Indian</button>
+                    <button ngbDropdownItem>Korean</button>
+                    <button ngbDropdownItem>Japanese</button>
+                </div>
+                </div>
+            </div>
+
+
+            <div class="col">
+                <input class="filter-input" type="search" placeholder="Recipe name"  aria-label="Search">
+            </div>
+
+            <div class="col">
+                <input class="filter-input" type="search" placeholder="Budget under $" aria-label="Search">    
+            </div>
+    
+        </div>
+
         <br>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-1">
-            <div ngbDropdown class="d-inline-block">
-            <button class="btn btn-outline-primary filterbtn" id="dropdownBasic1" ngbDropdownToggle>Type
-            </button>
-            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button ngbDropdownItem>Breakfast</button>
-                <button ngbDropdownItem>Lunch</button>
-                <button ngbDropdownItem>Brunch</button>
-                <button ngbDropdownItem>Dinner</button>
-                <button ngbDropdownItem>Dessert</button>
+        <hr>
+        <br>
+
+        <!-- Contents -->
+        <div class="container-fluid bg-3 text-center">    
+            
+            <div class="row picrow">
+                
+                <div class="col-4" *ngFor="let item of recipes">
+                    <img src="assets/images/{{item.image}}" class="img-responsive recipe-pic" alt="Image">
+                    <p class="recipe-name">{{ item.name }}</p>
+                </div>
+  
             </div>
-            </div>
-        </div>
-        <div class="col-sm-1">
-            <div ngbDropdown class="d-inline-block">
-            <button class="btn btn-outline-primary filterbtn" id="dropdownBasic1" ngbDropdownToggle>Feature
-            </button>
-            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button ngbDropdownItem>Low carb</button>
-                <button ngbDropdownItem>Vegan</button>
-                <button ngbDropdownItem>Kid</button>
-                <button ngbDropdownItem>Easy Cook</button>
-                <button ngbDropdownItem>Gluten Free</button>
-            </div>
-            </div>
-        </div>
-        <div class="col-sm-1">
-            <div ngbDropdown class="d-inline-block">
-            <button class="btn btn-outline-primary filterbtn" id="dropdownBasic1" ngbDropdownToggle>Cuisine
-            </button>
-            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button ngbDropdownItem>American</button>
-                <button ngbDropdownItem>China</button>
-                <button ngbDropdownItem>India</button>
-                <button ngbDropdownItem>Korean</button>
-                <button ngbDropdownItem>Japanese</button>
-            </div>
-            </div>
+            
         </div>
 
-        <div class="col-sm-1">
-            <div ngbDropdown class="d-inline-block">
-            <button class="btn btn-outline-primary filterbtn" id="dropdownBasic1" ngbDropdownToggle>Diet
-            </button>
-            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button ngbDropdownItem>Breakfast</button>
-                <button ngbDropdownItem>Lunch</button>
-                <button ngbDropdownItem>Brunch</button>
-                <button ngbDropdownItem>Dinner</button>
-                <button ngbDropdownItem>Dessert</button>
-            </div>
-            </div>
-        </div>
-        <div class="col-sm-1"></div>
-
-        <div class="col-sm-2">
-            <form class="form-inline" style="padding-top: 2%;">
-            <input class="form-control mr-sm-2" type="search" placeholder="Recipe name" style="font-size: 1.5rem; font-weight: bold; border: 3px solid #f58f8fff;" aria-label="Search">
-            <button class="icon" style="border: 3px solid #f58f8fff; border-radius: 20%;">
-                <i class="glyphicon glyphicon-search" style="font-size: 2rem; color:  #f58f8fff; font-weight: bold;"></i>
-            </button>
-            </form>
-        </div>
-
-        <div class="col-sm-2">
-            <form class="form-inline" style="padding-top: 2%;">
-            <input class="form-control mr-sm-2" type="search" placeholder="Budget under $" style="font-size: 1.5rem; font-weight: bold; border: 3px solid #f6cd4cff;" aria-label="Search">    
-            <button class="icon" style="border: 3px solid #f6cd4cff; border-radius: 20%;">
-                <i class="glyphicon glyphicon-search" style="font-size: 2rem; color: #f6cd4cff; font-weight: bold;"></i>
-            </button>
-            </form>
-        </div>
-        <div class="col-sm-2"></div>
-    
     </div>
 
-
-    <!-- Contents -->
-    <div class="container-fluid bg-3 text-center">    
-
-    <br><br>
-
-    <!-- Left side Ads -->
-    <div class="col-sm-1">
+     <!-- Right side Ads -->
+     <div class="col-2 align-center">
         <app-ads></app-ads>
     </div>
-    
-    <div class="col-sm-10">
-        <div class="row picrow">
-            <div class="col-sm-4">
-                <img src="assets/images/recipe_1.jpg" class="img-responsive recipepic" style="width:100%" alt="Image">
-                <p class="recipetitle">Supreme Steak 
-                    <span class="glyphicon glyphicon-heart" style="color: rgb(240, 89, 89);"></span> 
-                    <span class="glyphicon glyphicon-heart" style="color: rgb(240, 89, 89);"></span> 
-                    <span class="glyphicon glyphicon-heart" style="color: rgb(240, 89, 89);"></span> 
-                    <span class="glyphicon glyphicon-heart" style="color: rgb(240, 89, 89);"></span> 
-                </p>
-            </div>
-            <div class="col-sm-4"> 
-                <img src="assets/images/recipe_2.jpg" class="img-responsive recipepic" style="width:100%" alt="Image">
-                <p class="recipetitle">Potato Beef Tender 
-                <span class="glyphicon glyphicon-heart" style="color: rgb(240, 89, 89);"></span> 
-                <span class="glyphicon glyphicon-heart" style="color: rgb(240, 89, 89);"></span> 
-                <span class="glyphicon glyphicon-heart" style="color: rgb(240, 89, 89);"></span> 
-                </p>
-            </div>
-            <div class="col-sm-4"> 
-                <img src="assets/images/recipe_5.jpg" class="img-responsive recipepic" style="width:100%" alt="Image">
-                <p class="recipetitle">Avacado Gimbap 
-                <span class="glyphicon glyphicon-heart" style="color: rgb(240, 89, 89);"></span> 
-                <span class="glyphicon glyphicon-heart" style="color: rgb(240, 89, 89);"></span> 
-                <span class="glyphicon glyphicon-heart" style="color: rgb(240, 89, 89);"></span> 
-                <span class="glyphicon glyphicon-heart" style="color: rgb(240, 89, 89);"></span> 
-                <span class="glyphicon glyphicon-heart" style="color: rgb(240, 89, 89);"></span> 
-                </p>
-            </div>
-        </div>
-
-        <div class="row picrow">
-            <div class="col-sm-4">
-                <img src="assets/images/recipe_4.jpg" class="img-responsive recipepic" style="width:100%" alt="Image">
-                <p class="recipetitle">Garden Salad 
-                <span class="glyphicon glyphicon-heart" style="color: rgb(240, 89, 89);"></span> 
-                <span class="glyphicon glyphicon-heart" style="color: rgb(240, 89, 89);"></span> 
-                <span class="glyphicon glyphicon-heart" style="color: rgb(240, 89, 89);"></span> </p>
-            </div>
-            <div class="col-sm-4"> 
-                <img src="assets/images/recipe_6.jpg" class="img-responsive recipepic" style="width:100%" alt="Image">
-                <p class="recipetitle">Roast Salmon 
-                <span class="glyphicon glyphicon-heart" style="color: rgb(240, 89, 89);"></span> 
-                <span class="glyphicon glyphicon-heart" style="color: rgb(240, 89, 89);"></span> 
-                <span class="glyphicon glyphicon-heart" style="color: rgb(240, 89, 89);"></span> 
-                <span class="glyphicon glyphicon-heart" style="color: rgb(240, 89, 89);"></span>
-                <span class="glyphicon glyphicon-heart" style="color: rgb(240, 89, 89);"></span>
-                </p>
-            </div>
-            <div class="col-sm-4"> 
-                <img src="assets/images/recipe_7.jpg" class="img-responsive recipepic" style="width:100%" alt="Image">
-                <p class="recipetitle">Berry Sandwich 
-                <span class="glyphicon glyphicon-heart" style="color: rgb(240, 89, 89);"></span> 
-                <span class="glyphicon glyphicon-heart" style="color: rgb(240, 89, 89);"></span>  
-                </p>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Right side Ads -->
-    <div class="col-sm-1">
-        <app-ads></app-ads>
-    </div>
-
-    </div>
+</div>
 
