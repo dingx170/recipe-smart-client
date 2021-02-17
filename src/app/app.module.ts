@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BaseComponent } from './components/base/base.component';
 import { AdsComponent } from './components/ads/ads.component';
 import { MealplanComponent } from './components/mealplan/mealplan.component';
+import { PlanedComponent } from './components/planed/planed.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { MealplanComponent } from './components/mealplan/mealplan.component';
     RecipesComponent,
     BaseComponent,
     AdsComponent,
-    MealplanComponent
+    MealplanComponent,
+    PlanedComponent
   ],
   imports: [
     BrowserModule,
