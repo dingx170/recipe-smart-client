@@ -11,6 +11,9 @@ import { HeaderBaseComponent } from './components/header-base/header-base.compon
 import { MealplanComponent } from './components/mealplan/mealplan.component';
 import { NewplanComponent } from './components/mealplan/newplan/newplan.component';
 import { OldplanComponent } from './components/mealplan/oldplan/oldplan.component';
+import { MyrecipeComponent } from './components/myrecipe/myrecipe.component';
+import { OldrecipeComponent } from './components/myrecipe/oldrecipe/oldrecipe.component';
+import { NewrecipeComponent } from './components/myrecipe/newrecipe/newrecipe.component';
 import { UserProfilesComponent } from './components/user-profiles/user-profiles.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
@@ -24,9 +27,13 @@ import { LoginComponent } from './components/login/login.component';
     MealplanComponent,
     NewplanComponent,
     OldplanComponent,
+    MyrecipeComponent,
+    OldrecipeComponent,
+    NewrecipeComponent,
     UserProfilesComponent,
     SignupComponent,
     LoginComponent
+
   ],
   imports: [
     BrowserModule,
