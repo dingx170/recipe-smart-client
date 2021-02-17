@@ -27,30 +27,136 @@
             </div>
 
             <div class="col-2">
-                <select class="btn form-select filter-btn">
-                    <option selected>Budget</option>
-                    <option value="1">under $10</option>
-                    <option value="2">under $20</option>
-                    <option value="3">under $30</option>
-                    <option value="2">under $50</option>
-                    <option value="3">under $100</option>
-                </select>
+                <label class="filter-label">Cuisine Type</label>
+                <div>
+                    <select name="cuisines[]" id="cuisines" class="form-control" >
+                        <option value="{{item}}" *ngFor="let item of cuisines">{{item}}</option>
+                    </select>
+                </div>
             </div>
 
             <div class="col-1"></div>
 
             <div class="col-2">
-                <select class="btn form-select filter-btn">
-                    <option selected>Group</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
+                <label class="filter-label">Feature Type</label>
+                <div>
+                    <select name="allergies[]" id="features" class="form-control">
+                        <option value="{{item}}" *ngFor="let item of features">{{item}}</option>
+                    </select>
+                </div>
             </div>
 
         </div>
 
-        <br>
+        <hr>
+       
+        <div class="row pic-row">
+            <div class="col-3">
+                <h1 class="subtitle-text">Add image</h1>
+                <hr><br><br>
+                <span *ngIf="message">{{message}}</span>
+                <input #file type="file" accept='image/*' (change)="preview(file.files)" />
+                <br><br><br><br>
+                <button (click)="onUpload()" class="btn submit-btn">Upload</button>
+            </div>
+            <div class="col-5 pic-bg">
+                <div class="pic-bg align-center">
+                    <img [src]="imgURL" class="pic-holder" *ngIf="imgURL">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-9">
+                <h1 class="subtitle-text">Add steps</h1>
+                <hr>
+                <table class="tab table table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Step</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+        
+                    <tbody *ngFor="let item of step_list; let key=index;">
+                        <tr>
+                            <th scope="row">step {{ key + 1 }}</th>
+                            <td>{{ item.step }}</td>
+                            <td>
+                                <button class="btn btn-lg submit-btn">Edit</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-lg submit-btn">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td style="text-align: left;">
+                                <input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" />
+                            </td>
+                        </tr>
+                        <tr>
+                        </tr>
+                    </tfoot>
+        
+                </table>
+
+            </div>
+            <hr>
+            <div class="col-9">
+                <h1 class="subtitle-text">Add ingredients</h1>
+                <hr>
+                <table class="tab table table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Ingredient</th>
+                            <th scope="col">Number</th>
+                            <th scope="col">Unit</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+        
+                    <tbody *ngFor="let item of ingredient_list; let key=index;">
+                        <tr>
+                            <th scope="row">{{ key + 1 }}</th>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.count }}</td>
+                            <td>{{ item.unit }}</td>
+                            <td>
+                                <button class="btn btn-lg submit-btn">Edit</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-lg submit-btn">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td style="text-align: left;">
+                                <input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" />
+                            </td>
+                        </tr>
+                        <tr>
+                        </tr>
+                    </tfoot>
+        
+                </table>
+
+            </div>
+
+        </div>
+
+        <hr><br>
+
         <div class="row">
 
             <div class="col-3">
@@ -110,130 +216,40 @@
 
             </div>
 
+           
+
             <div class="col-2">
-                <label class="filter-label">Cuisines</label>
-                <div>
-                    <select name="cuisines[]" id="cuisines" multiple="multiple" class="form-control">
-                        <option value="Chinese">Chinese</option>
-                        <option value="Korean">Korean</option>
-                        <option value="Japanese">Japanese</option>
-                        <option value="Indian ">Indian</option>
-                    </select>
-                </div>
+                <select class="btn form-select filter-btn">
+                    <option selected>Budget</option>
+                    <option value="1">under $10</option>
+                    <option value="2">under $20</option>
+                    <option value="3">under $30</option>
+                    <option value="2">under $50</option>
+                    <option value="3">under $100</option>
+                </select>
             </div>
 
             <div class="col-1"></div>
 
             <div class="col-2">
-                <label class="filter-label">Features</label>
-                <div>
-                    <select name="allergies[]" id="allergies" multiple="multiple" class="form-control">
-                        <option value="Seafood">Seafood</option>
-                        <option value="Nut">Nut</option>
-                        <option value="Dairy">Dairy</option>
-                        <option value="Gluten">Gluten</option>
-                    </select>
-                </div>
+                <select class="btn form-select filter-btn">
+                    <option selected>Group</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
             </div>
 
         </div>
-
-        <br>
-       
-
-
+        <br><hr>
+        
         <div class="row">
-            <div class="col-6">
-                <h1 class="page-text">Add steps</h1>
-                <table class="tab table table-borderless">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Step</th>
-                            <th scope="col">Edit</th>
-                            <th scope="col">Delete</th>
-                        </tr>
-                    </thead>
-        
-                    <tbody *ngFor="let item of step_list; let key=index;">
-                        <tr>
-                            <th scope="row">step {{ key + 1 }}</th>
-                            <td>{{ item.step }}</td>
-                            <td>
-                                <button class="btn btn-lg submit-btn">Edit</button>
-                            </td>
-                            <td>
-                                <button class="btn btn-lg submit-btn">Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
-
-                    <tfoot>
-                        <tr>
-                            <td colspan="5" style="text-align: left;">
-                                <input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" />
-                            </td>
-                        </tr>
-                        <tr>
-                        </tr>
-                    </tfoot>
-        
-                </table>
-
-            </div>
-            <div class="col-6">
-                <h1 class="page-text">Add ingredients</h1>
-                <table class="tab table table-borderless">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Ingredient</th>
-                            <th scope="col">Number</th>
-                            <th scope="col">Unit</th>
-                            <th scope="col">Edit</th>
-                            <th scope="col">Delete</th>
-                        </tr>
-                    </thead>
-        
-                    <tbody *ngFor="let item of ingredient_list; let key=index;">
-                        <tr>
-                            <th scope="row">{{ key + 1 }}</th>
-                            <td>{{ item.name }}</td>
-                            <td>{{ item.count }}</td>
-                            <td>{{ item.unit }}</td>
-                            <td>
-                                <button class="btn btn-lg submit-btn">Edit</button>
-                            </td>
-                            <td>
-                                <button class="btn btn-lg submit-btn">Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
-
-                    <tfoot>
-                        <tr>
-                            <td colspan="5" style="text-align: left;">
-                                <input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" />
-                            </td>
-                        </tr>
-                        <tr>
-                        </tr>
-                    </tfoot>
-        
-                </table>
-
-            </div>
-
+            <div class="col-9">
+                <button type="submitbtn" class="btn btn-lg submit-btn submit-center" title="submit new recipe">Submit</button>
+            </div>          
         </div>
 
-        
-        <br>
-        <div class="row">
-            <div class="col-2">
-                <button type="submitbtn" class="btn btn-lg submit-btn" title="submit new recipe">Submit</button>
-            </div>
-            
-        </div>
+        <hr>
 
     </div>
           
