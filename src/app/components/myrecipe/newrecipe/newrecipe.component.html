@@ -1,1 +1,240 @@
-<br><br>
+<div class="row">
+
+    <div class="col-1"></div>
+
+    <div class="col-11">
+
+        <br>
+        <h1 class="page-text">Create new recipe</h1>
+
+        <br>
+        <div class="row">
+      
+            <div class="col-3">
+                <label class="filter-label">Meal Type</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="">
+                    <label class="form-check-label" for="flexCheckDisabled">Breakfast</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="">
+                    <label class="form-check-label" for="flexCheckCheckedDisabled">Lunch</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="">
+                    <label class="form-check-label" for="flexCheckCheckedDisabled">Dinner</label>
+                </div>
+            </div>
+
+            <div class="col-2">
+                <select class="btn form-select filter-btn">
+                    <option selected>Budget</option>
+                    <option value="1">under $10</option>
+                    <option value="2">under $20</option>
+                    <option value="3">under $30</option>
+                    <option value="2">under $50</option>
+                    <option value="3">under $100</option>
+                </select>
+            </div>
+
+            <div class="col-1"></div>
+
+            <div class="col-2">
+                <select class="btn form-select filter-btn">
+                    <option selected>Group</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+
+        </div>
+
+        <br>
+        <div class="row">
+
+            <div class="col-3">
+                <label class="filter-label">Food Allergy</label>
+                
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="">
+                            <label class="form-check-label" for="flexCheckDisabled">Corn</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="">
+                            <label class="form-check-label" for="flexCheckCheckedDisabled">Egg</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="">
+                            <label class="form-check-label" for="flexCheckCheckedDisabled">Fish</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="">
+                            <label class="form-check-label" for="flexCheckDisabled">Meat</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="">
+                            <label class="form-check-label" for="flexCheckCheckedDisabled">Milk</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="">
+                            <label class="form-check-label" for="flexCheckCheckedDisabled">Peanut</label> 
+                        </div>
+                    </div>
+
+                    <div class="col-5">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="">
+                            <label class="form-check-label" for="flexCheckCheckedDisabled">Shellfish</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="">
+                            <label class="form-check-label" for="flexCheckDisabled">Soy</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="">
+                            <label class="form-check-label" for="flexCheckCheckedDisabled">Tree Nut</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="">
+                            <label class="form-check-label" for="flexCheckDisabled">Wheat</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="">
+                            <label class="form-check-label" for="flexCheckCheckedDisabled">FPIES</label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-2">
+                <label class="filter-label">Cuisines</label>
+                <div>
+                    <select name="cuisines[]" id="cuisines" multiple="multiple" class="form-control">
+                        <option value="Chinese">Chinese</option>
+                        <option value="Korean">Korean</option>
+                        <option value="Japanese">Japanese</option>
+                        <option value="Indian ">Indian</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-1"></div>
+
+            <div class="col-2">
+                <label class="filter-label">Features</label>
+                <div>
+                    <select name="allergies[]" id="allergies" multiple="multiple" class="form-control">
+                        <option value="Seafood">Seafood</option>
+                        <option value="Nut">Nut</option>
+                        <option value="Dairy">Dairy</option>
+                        <option value="Gluten">Gluten</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <br>
+       
+
+
+        <div class="row">
+            <div class="col-6">
+                <h1 class="page-text">Add steps</h1>
+                <table class="tab table table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Step</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+        
+                    <tbody *ngFor="let item of step_list; let key=index;">
+                        <tr>
+                            <th scope="row">step {{ key + 1 }}</th>
+                            <td>{{ item.step }}</td>
+                            <td>
+                                <button class="btn btn-lg submit-btn">Edit</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-lg submit-btn">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td colspan="5" style="text-align: left;">
+                                <input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" />
+                            </td>
+                        </tr>
+                        <tr>
+                        </tr>
+                    </tfoot>
+        
+                </table>
+
+            </div>
+            <div class="col-6">
+                <h1 class="page-text">Add ingredients</h1>
+                <table class="tab table table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Ingredient</th>
+                            <th scope="col">Number</th>
+                            <th scope="col">Unit</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+        
+                    <tbody *ngFor="let item of ingredient_list; let key=index;">
+                        <tr>
+                            <th scope="row">{{ key + 1 }}</th>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.count }}</td>
+                            <td>{{ item.unit }}</td>
+                            <td>
+                                <button class="btn btn-lg submit-btn">Edit</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-lg submit-btn">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td colspan="5" style="text-align: left;">
+                                <input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" />
+                            </td>
+                        </tr>
+                        <tr>
+                        </tr>
+                    </tfoot>
+        
+                </table>
+
+            </div>
+
+        </div>
+
+        
+        <br>
+        <div class="row">
+            <div class="col-2">
+                <button type="submitbtn" class="btn btn-lg submit-btn" title="submit new recipe">Submit</button>
+            </div>
+            
+        </div>
+
+    </div>
+          
+</div>
