@@ -4,14 +4,11 @@
         <div ngbDropdown>
             <i class="btn btn-outline-primary" id="nav-icon" ngbDropdownToggle></i>
             <div ngbDropdownMenu aria-labelledby="navigation" class="option-container">
-                <button ngbDropdownItem class="option-font">
-                    <a class="nav-link active" [routerLink]="['./user-profile']">My Profile</a>
-                </button>
-                <!-- <a class="nav-link active" [routerLink]="['./newplan']">New plan</a> -->
+                <button ngbDropdownItem class="option-font" [routerLink]="['./myprofile']">My Profile</button>
                 <div class="dropdown-divider option-divider"></div>
-                <button ngbDropdownItem class="option-font">My Recipe</button>
+                <button ngbDropdownItem class="option-font" [routerLink]="['./myrecipe']">My Recipe</button>
                 <div class="dropdown-divider option-divider"></div>
-                <button ngbDropdownItem class="option-font">Meal Planner</button>
+                <button ngbDropdownItem class="option-font" [routerLink]="['./mealplan']">Meal Planner</button>
             </div>
         </div>
     </div>

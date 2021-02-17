@@ -1118,6 +1118,7 @@ button.bg-white:focus {
 
 .rounded-circle {
   border-radius: 50% !important;
+  border: 4px solid #f58f8fff;
 }
 
 .d-none {
@@ -1571,7 +1572,8 @@ a.text-white:focus {
 
 .card-profile-stats>div .description {
   font-size: .875rem;
-  color: #adb5bd;
+  color: #f58f8fff;
+  font-weight: bold;
 }
 
 .main-content {

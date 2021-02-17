@@ -15,6 +15,7 @@ import { OldrecipeComponent } from './components/myrecipe/oldrecipe/oldrecipe.co
 
 const routes: Routes = [
   {path: 'home', component: RecipesComponent},
+  {path: 'myprofile', component: UserProfilesComponent},
   {
     path: 'mealplan', component: MealplanComponent,
     children: [
@@ -23,7 +24,6 @@ const routes: Routes = [
       {path: '**', redirectTo: 'newplan'}
     ]  
   },
-  { path: 'user-profile', component: UserProfilesComponent},
   {
     path: 'myrecipe', component: MyrecipeComponent,
     children: [
