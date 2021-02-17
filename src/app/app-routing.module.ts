@@ -6,6 +6,7 @@ import { RecipesComponent } from './components/recipes/recipes.component'
 import { MealplanComponent } from './components/mealplan/mealplan.component'
 import { NewplanComponent } from './components/mealplan/newplan/newplan.component'
 import { OldplanComponent } from './components/mealplan/oldplan/oldplan.component'
+import { UserProfilesComponent } from './components/user-profiles/user-profiles.component'
 
 import { MyrecipeComponent } from './components/myrecipe/myrecipe.component'
 import { NewrecipeComponent } from './components/myrecipe/newrecipe/newrecipe.component'
@@ -22,6 +23,7 @@ const routes: Routes = [
       {path: '**', redirectTo: 'newplan'}
     ]  
   },
+  { path: 'user-profile', component: UserProfilesComponent},
   {
     path: 'myrecipe', component: MyrecipeComponent,
     children: [

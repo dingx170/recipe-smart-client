@@ -14,6 +14,7 @@ import { OldplanComponent } from './components/mealplan/oldplan/oldplan.componen
 import { MyrecipeComponent } from './components/myrecipe/myrecipe.component';
 import { OldrecipeComponent } from './components/myrecipe/oldrecipe/oldrecipe.component';
 import { NewrecipeComponent } from './components/myrecipe/newrecipe/newrecipe.component';
+import { UserProfilesComponent } from './components/user-profiles/user-profiles.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NewrecipeComponent } from './components/myrecipe/newrecipe/newrecipe.co
     OldplanComponent,
     MyrecipeComponent,
     OldrecipeComponent,
-    NewrecipeComponent
+    NewrecipeComponent,
+    UserProfilesComponent
   ],
   imports: [
     BrowserModule,
