@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,7 +9,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdsComponent } from './components/ads/ads.component';
 import { HeaderBaseComponent } from './components/header-base/header-base.component';
 import { MealplanComponent } from './components/mealplan/mealplan.component';
-import { PlanedComponent } from './components/planed/planed.component';
+import { NewplanComponent } from './components/mealplan/newplan/newplan.component';
+import { OldplanComponent } from './components/mealplan/oldplan/oldplan.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,14 @@ import { PlanedComponent } from './components/planed/planed.component';
     AdsComponent,
     HeaderBaseComponent,
     MealplanComponent,
-    PlanedComponent
+    NewplanComponent,
+    OldplanComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

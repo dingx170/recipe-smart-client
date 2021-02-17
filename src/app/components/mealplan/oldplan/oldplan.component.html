@@ -1,0 +1,31 @@
+        <br>
+        <table class="tab table table-borderless">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Creation Date/Time</th>
+                    <th scope="col">Recipe List</th>
+                    <th scope="col">Shopping List</th>
+                </tr>
+            </thead>
+
+            <tbody *ngFor="let item of recipe_list; let key=index;">
+                <tr>
+                    <th scope="row">{{ key + 1 }}</th>
+                    <td>{{ item.time }}</td>
+                    <td>
+                        <button class="btn btn-lg submit-btn">Recipes</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-lg submit-btn">Shopping List</button>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+        <!-- <div class="container textcontainer">
+            <div class="col-sm-6"></div>
+            <button type="submitbtn" class="btn btn-outline-primary">previous</button>   
+            <button type="submitbtn" class="btn btn-outline-primary">next</button>    
+        </div> -->
