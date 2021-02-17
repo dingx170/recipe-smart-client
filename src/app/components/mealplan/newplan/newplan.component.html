@@ -28,7 +28,7 @@
 
             <div class="col-2">
                 <select class="btn form-select filter-btn">
-                    <option selected>Budget</option>
+                    <option selected>Budget &lt;</option>
                     <option value="1">under $10</option>
                     <option value="2">under $20</option>
                     <option value="3">under $30</option>
@@ -41,10 +41,11 @@
 
             <div class="col-2">
                 <select class="btn form-select filter-btn">
-                    <option selected>Group</option>
+                    <option selected>Serves #</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
+                    <option value="4">4</option>
                 </select>
             </div>
 
@@ -111,13 +112,10 @@
             </div>
 
             <div class="col-2">
-                <label class="filter-label">Cuisines</label>
+                <label class="filter-label">Cuisine Type</label>
                 <div>
-                    <select name="cuisines[]" id="cuisines" multiple="multiple" class="form-control">
-                        <option value="Chinese">Chinese</option>
-                        <option value="Korean">Korean</option>
-                        <option value="Japanese">Japanese</option>
-                        <option value="Indian ">Indian</option>
+                    <select name="cuisines[]" id="cuisines" multiple="multiple" class="form-control" >
+                        <option value="{{item}}" *ngFor="let item of cuisines">{{item}}</option>
                     </select>
                 </div>
             </div>
@@ -125,13 +123,10 @@
             <div class="col-1"></div>
 
             <div class="col-2">
-                <label class="filter-label">Features</label>
+                <label class="filter-label">Feature Type</label>
                 <div>
-                    <select name="allergies[]" id="allergies" multiple="multiple" class="form-control">
-                        <option value="Seafood">Seafood</option>
-                        <option value="Nut">Nut</option>
-                        <option value="Dairy">Dairy</option>
-                        <option value="Gluten">Gluten</option>
+                    <select name="allergies[]" id="features" multiple="multiple" class="form-control">
+                        <option value="{{item}}" *ngFor="let item of features">{{item}}</option>
                     </select>
                 </div>
             </div>

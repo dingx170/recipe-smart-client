@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { RecipesComponent } from './components/recipes/recipes.component'
+import { RecipeContentComponent } from './components/recipe-content/recipe-content.component'
 
 import { MealplanComponent } from './components/mealplan/mealplan.component'
 import { NewplanComponent } from './components/mealplan/newplan/newplan.component'
@@ -16,7 +17,8 @@ import { OldrecipeComponent } from './components/myrecipe/oldrecipe/oldrecipe.co
 
 
 const routes: Routes = [
-  {path: 'home', component: RecipesComponent},
+  {path: 'recipes', component: RecipesComponent},
+  {path: 'recipes/:id', component: RecipeContentComponent},
   {path: 'myprofile', component: UserProfilesComponent},
   {path: 'sign-up', component:SignupComponent},
   {path: 'login', component:LoginComponent},
@@ -36,9 +38,10 @@ const routes: Routes = [
       {path: '**', redirectTo: 'history'}
     ]  
   },
+  {path: 'myrecipe/:id', component: RecipeContentComponent},
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/recipes',
     pathMatch: 'full'
   }
 ];

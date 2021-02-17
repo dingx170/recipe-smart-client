@@ -7,6 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipesComponent implements OnInit {
 
+  public allergies: string[] = [
+    "Corn", "Egg", "Fish", "Meat", "Milk", "Peanut", "Shellfish", "Soy", "TreeNut", "Wheat", "FPIES"
+  ]
+  public cuisines: string[] = [
+    "Chinese", "Mexican", "Italian", "Japanese", "Greek", "French", "Thai", "Spanish", "Indian", "Mediterranean"
+  ]
+  public features: string[] = [
+    "MeatLover", "Vegetarian", "LowCarb", "Vegan"
+  ]
+
   public recipes: any[] = [
     {name: "Supreme Steak", image: "recipe_1.jpg"},
     {name: "Potato Beef Tender", image: "recipe_2.jpg"},

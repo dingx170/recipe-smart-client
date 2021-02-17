@@ -6,6 +6,10 @@
     font-family: cursive;
 }
 
+.username-text {
+    color:rgb(145, 148, 148);
+}
+
 .subtitle-text {
     padding-top: 20px;
     font-size: 35px;
@@ -21,6 +25,20 @@
     color: white;
 }
 
+.alert-label {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(226, 83, 83);
+    border: 2px dashed rgb(226, 83, 83);
+    border-radius: 5%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 80%;
+    text-align: center;
+}
+
 .filter-label {
     font-size: 20px;
     font-weight: bold;
@@ -30,6 +48,22 @@
     padding-right: 20px;
     padding-top: 5px;
     padding-bottom: 5px;
+    width: 80%;
+    text-align: center;
+}
+
+.value-label {
+    font-size: 20px;
+    font-weight: bold;
+    color: #f6cd4cff; 
+    border: 2px solid  #f6cd4cff; 
+    border-radius: 5%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 80%;
+    text-align: center;
 }
 
 .form-check-label{
@@ -69,8 +103,8 @@
 }
 
 .pic-holder {
-    height: 400px;
-    /* width: 100%; */
+    /* height: 400px; */
+    width: 100%;
 }
 
 .submit-center {

@@ -24,6 +24,6 @@
 
 .filter-input {
     font-size: 1.5rem; 
-    font-weight: bold; 
+    /* font-weight: bold;  */
     border: 3px solid #f6cd4cff;
 }

@@ -22,31 +22,27 @@
                 </div>
                 </div>
             </div>
-            <div class="col">
-                <div ngbDropdown class="d-inline-block">
-                <button class="btn filterbtn" id="dropdownBasic1" ngbDropdownToggle>Feature
-                </button>
-                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                    <button ngbDropdownItem>Low carb</button>
-                    <button ngbDropdownItem>Vegan</button>
-                    <button ngbDropdownItem>Kid</button>
-                    <button ngbDropdownItem>Easy Cook</button>
-                    <button ngbDropdownItem>Gluten Free</button>
-                </div>
-                </div>
-            </div>
+            
             <div class="col">
                 <div ngbDropdown class="d-inline-block">
                 <button class="btn filterbtn" id="dropdownBasic1" ngbDropdownToggle>Cuisine
                 </button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                    <button ngbDropdownItem>Chinese</button>
-                    <button ngbDropdownItem>Indian</button>
-                    <button ngbDropdownItem>Korean</button>
-                    <button ngbDropdownItem>Japanese</button>
+                    <button ngbDropdownItem value="{{item}}" *ngFor="let item of cuisines">{{item}}</button>
                 </div>
                 </div>
             </div>
+
+            <div class="col">
+                <div ngbDropdown class="d-inline-block">
+                <button class="btn filterbtn" id="dropdownBasic1" ngbDropdownToggle>Feature
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem value="{{item}}" *ngFor="let item of features">{{item}}</button>
+                </div>
+                </div>
+            </div>
+
 
 
             <div class="col">

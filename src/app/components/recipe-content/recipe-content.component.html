@@ -1,0 +1,93 @@
+<div class="row">
+
+    <div class="col-1"></div>
+
+    <div class="col-9">
+
+        <br>
+        <h1 class="page-text">{{recipe.name}}</h1>
+        <h4 class="username-text">By {{recipe.username}}</h4>
+
+        <br>
+        <div class="row">
+            <!-- <div class="col-1"></div> -->
+            <div class="col">
+                <label class="filter-label">{{recipe.meal_type}}</label>
+            </div>
+
+            <div class="col">
+                <label class="filter-label">{{recipe.cuisine_type}}</label>
+            </div>
+
+            <div class="col">
+                <label class="filter-label">{{recipe.feature_type}}</label>
+            </div>
+
+            <div class="col">
+                <label class="value-label">Serves<br> {{recipe.group}}</label>
+            </div>
+
+            <div class="col">
+                <label class="value-label">Budget<br> &lt; {{recipe.cost}}</label>
+            </div>
+
+            <div class="col">
+                <label class="alert-label">Contains {{recipe.allergy}}</label>
+            </div>
+
+            <div class="col-1"></div>
+        </div>
+
+        <hr>
+       
+        <div class="row pic-row">
+            <div class="col-9 pic-holder submit-center">
+                <img src="assets/images/{{recipe.image}}" class="">
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-9">
+                <h1 class="subtitle-text">Cooking steps</h1>
+                <hr>
+                <table class="tab table table-borderless">
+                    <tbody *ngFor="let item of recipe.steps; let key=index;">
+                        <tr>
+                            <th scope="row">step {{ key + 1 }}</th>
+                            <td>{{ item }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <hr>
+            <div class="col-9">
+                <hr>
+                <h1 class="subtitle-text">Ingredients</h1>
+                <hr>
+                <table class="tab table table-borderless">
+                    <tbody *ngFor="let item of recipe.ingredients; let key=index;">
+                        <tr>
+                            <th scope="row">{{ key + 1 }}</th>
+                            <td>{{ item[0] }}</td>
+                            <td>{{ item[1] }}</td>
+                        </tr>
+                    </tbody>
+        
+                </table>
+
+            </div>
+
+        </div>
+
+        <hr><br>
+
+    </div>
+
+    <div class="col-2">
+        <app-ads></app-ads>
+    </div>
+          
+</div>
