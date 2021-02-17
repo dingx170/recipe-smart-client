@@ -2,9 +2,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { RecipesComponent } from './components/recipes/recipes.component'
+
 import { MealplanComponent } from './components/mealplan/mealplan.component'
 import { NewplanComponent } from './components/mealplan/newplan/newplan.component'
 import { OldplanComponent } from './components/mealplan/oldplan/oldplan.component'
+
+import { MyrecipeComponent } from './components/myrecipe/myrecipe.component'
+import { NewrecipeComponent } from './components/myrecipe/newrecipe/newrecipe.component'
+import { OldrecipeComponent } from './components/myrecipe/oldrecipe/oldrecipe.component'
+
 
 const routes: Routes = [
   {path: 'home', component: RecipesComponent},
@@ -14,6 +20,14 @@ const routes: Routes = [
       {path: 'newplan', component: NewplanComponent},
       {path: 'history', component: OldplanComponent},
       {path: '**', redirectTo: 'newplan'}
+    ]  
+  },
+  {
+    path: 'myrecipe', component: MyrecipeComponent,
+    children: [
+      {path: 'newrecipe', component: NewrecipeComponent},
+      {path: 'history', component: OldrecipeComponent},
+      {path: '**', redirectTo: 'history'}
     ]  
   },
   {

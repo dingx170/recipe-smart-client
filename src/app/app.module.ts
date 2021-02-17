@@ -11,6 +11,9 @@ import { HeaderBaseComponent } from './components/header-base/header-base.compon
 import { MealplanComponent } from './components/mealplan/mealplan.component';
 import { NewplanComponent } from './components/mealplan/newplan/newplan.component';
 import { OldplanComponent } from './components/mealplan/oldplan/oldplan.component';
+import { MyrecipeComponent } from './components/myrecipe/myrecipe.component';
+import { OldrecipeComponent } from './components/myrecipe/oldrecipe/oldrecipe.component';
+import { NewrecipeComponent } from './components/myrecipe/newrecipe/newrecipe.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { OldplanComponent } from './components/mealplan/oldplan/oldplan.componen
     HeaderBaseComponent,
     MealplanComponent,
     NewplanComponent,
-    OldplanComponent
+    OldplanComponent,
+    MyrecipeComponent,
+    OldrecipeComponent,
+    NewrecipeComponent
   ],
   imports: [
     BrowserModule,
