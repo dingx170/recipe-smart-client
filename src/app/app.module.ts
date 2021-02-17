@@ -18,6 +18,8 @@ import { UserProfilesComponent } from './components/user-profiles/user-profiles.
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { RecipeContentComponent } from './components/recipe-content/recipe-content.component';
+import { ShoppinglistComponent } from './components/mealplan/shoppinglist/shoppinglist.component';
+import { RecipelistComponent } from './components/mealplan/recipelist/recipelist.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { RecipeContentComponent } from './components/recipe-content/recipe-conte
     UserProfilesComponent,
     SignupComponent,
     LoginComponent,
-    RecipeContentComponent
+    RecipeContentComponent,
+    ShoppinglistComponent,
+    RecipelistComponent
 
   ],
   imports: [

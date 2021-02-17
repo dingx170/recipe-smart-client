@@ -1,0 +1,42 @@
+<br>
+<h1 class="subtitle-text">My Recipe List</h1>
+
+<hr>
+<table class="tab table table-borderless">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Recipe</th>
+            <th scope="col"></th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+
+    <tbody *ngFor="let item of myrecipes; let key=index;">
+        <tr>
+            <th scope="row">{{ key + 1 }}</th>
+            <td>{{ item.name }}</td>
+            <td><img src="assets/images/{{item.image}}" class="img-responsive recipe-pic" alt="Image"></td>
+            <td>1</td>
+            <td>
+                <button class="btn btn-lg submit-btn">Edit</button>
+            </td>
+            <td>
+                <button class="btn btn-lg submit-btn">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td style="text-align: left;">
+                <input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Recipe" />
+            </td>
+        </tr>
+        <tr>
+        </tr>
+    </tfoot>
+
+</table>

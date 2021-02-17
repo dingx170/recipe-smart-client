@@ -7,6 +7,9 @@ import { RecipeContentComponent } from './components/recipe-content/recipe-conte
 import { MealplanComponent } from './components/mealplan/mealplan.component'
 import { NewplanComponent } from './components/mealplan/newplan/newplan.component'
 import { OldplanComponent } from './components/mealplan/oldplan/oldplan.component'
+import { RecipelistComponent } from './components/mealplan/recipelist/recipelist.component'
+import { ShoppinglistComponent } from './components/mealplan/shoppinglist/shoppinglist.component'
+
 import { UserProfilesComponent } from './components/user-profiles/user-profiles.component'
 import { SignupComponent } from './components/signup/signup.component'
 import { LoginComponent } from './components/login/login.component'
@@ -27,6 +30,8 @@ const routes: Routes = [
     children: [
       {path: 'newplan', component: NewplanComponent},
       {path: 'history', component: OldplanComponent},
+      {path: ':id/shoppinglist', component: ShoppinglistComponent},
+      {path: ':id/recipelist', component: RecipelistComponent},
       {path: '**', redirectTo: 'newplan'}
     ]  
   },
