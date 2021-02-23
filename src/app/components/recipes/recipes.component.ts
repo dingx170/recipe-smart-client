@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { RecipeService } from '../../services/recipe.service'
+
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
@@ -17,21 +19,13 @@ export class RecipesComponent implements OnInit {
     "MeatLover", "Vegetarian", "LowCarb", "Vegan"
   ]
 
-  public recipes: any[] = [
-    {name: "Supreme Steak", image: "recipe_1.jpg"},
-    {name: "Potato Beef Tender", image: "recipe_2.jpg"},
-    {name: "Avacado Gimbap", image: "recipe_5.jpg"},
-    {name: "Garden Salad", image: "recipe_4.jpg"},
-    {name: "Roast Salmon", image: "recipe_6.jpg"},
-    {name: "Berry Sandwich", image: "recipe_7.jpg"},
-    {name: "Avacado Gimbap", image: "recipe_5.jpg"},
-    {name: "Supreme Steak", image: "recipe_1.jpg"},
-    {name: "Potato Beef Tender", image: "recipe_2.jpg"}
-  ]
+  public recipes: any[] = [];
 
-  constructor() { }
+  constructor(public recipe:RecipeService) { }
 
   ngOnInit(): void {
+
+    this.recipes = this.recipe.getAllRecipes();
   }
 
 }
