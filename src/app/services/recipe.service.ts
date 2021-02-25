@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
 
-  constructor() { }
+  constructor(public http:HttpClient) { }
 
   getAllRecipes() {
+
     return [
       {name: "Supreme Steak", image: "recipe_1.jpg"},
       {name: "Potato Beef Tender", image: "recipe_2.jpg"},
@@ -19,5 +22,16 @@ export class RecipeService {
       {name: "Supreme Steak", image: "recipe_1.jpg"},
       {name: "Potato Beef Tender", image: "recipe_2.jpg"}
     ];
+  }
+
+  getRecipesTest() {
+
+    let api = "http://localhost:8080/recipes";
+
+    return new Observable((observer) => {
+        this.http.get(api).subscribe((res:any) => {
+        observer.next(res);
+      });
+    })
   }
 }

@@ -59,6 +59,12 @@
         <hr>
         <br>
 
+        <!--- Test -->
+        <button (click)="getRecipesTest()">GET RECIPES</button>
+        <ul>
+            <li *ngFor="let item of list"> {{ item.name }}  {{ item.cost }}</li>
+        </ul>
+
         <!-- Contents -->
         <div class="container-fluid bg-3 text-center">    
             
