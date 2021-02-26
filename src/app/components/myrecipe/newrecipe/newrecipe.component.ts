@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FoodAllergy } from '../../../enums/food-allergy.enum'
+import { Cuisine } from '../../../enums/cuisine.enum'
+import { Feature } from '../../../enums/feature.enum'
+import { MealType } from '../../../enums/meal-type.enum'
 
 @Component({
   selector: 'app-newrecipe',
@@ -19,15 +23,11 @@ export class NewrecipeComponent implements OnInit {
     {name: "egg", unit: "gram", count:150},
   ];
 
-  public allergies: string[] = [
-    "Corn", "Egg", "Fish", "Meat", "Milk", "Peanut", "Shellfish", "Soy", "TreeNut", "Wheat", "FPIES"
-  ]
-  public cuisines: string[] = [
-    "-- Options --", "Chinese", "Mexican", "Italian", "Japanese", "Greek", "French", "Thai", "Spanish", "Indian", "Mediterranean"
-  ]
-  public features: string[] = [
-    "-- Options --", "MeatLover", "Vegetarian", "LowCarb", "Vegan"
-  ]
+  public allergies = Object.values(FoodAllergy).filter(e => typeof(e) == "string");
+  public cuisines = Object.values(Cuisine).filter(e => typeof(e) == "string");
+  public features = Object.values(Feature).filter(e => typeof(e) == "string");
+  public mealTypes = Object.values(MealType).filter(e => typeof(e) == "string");
+
 
   public imagePath: string ="";
   public imgURL: any = "";
