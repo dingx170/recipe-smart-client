@@ -1,6 +1,7 @@
 export enum Feature {
-    "MeatLover", 
-    "Vegetarian", 
-    "LowCarb", 
-    "Vegan"
+    None = "None",
+    MeatLover = "MeatLover", 
+    Vegetarian = "Vegetarian", 
+    LowCarb = "LowCarb", 
+    Vegan = "Vegan"
 }

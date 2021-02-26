@@ -1,5 +1,5 @@
 export enum MealType {
-    "Breakfast",
-    "Lunch",
-    "Dinner"
+    Breakfast = "Breakfast",
+    Lunch = "Lunch",
+    Dinner = "Dinner"
 }

@@ -1,13 +1,13 @@
 export enum FoodAllergy {
-    "Corn", 
-    "Egg", 
-    "Fish", 
-    "Meat", 
-    "Milk", 
-    "Peanut", 
-    "Shellfish", 
-    "Soy", 
-    "TreeNut", 
-    "Wheat", 
-    "FPIES"
+    Corn = "Corn", 
+    Egg = "Egg", 
+    Fish = "Fish", 
+    Meat = "Meat", 
+    Milk = "Milk", 
+    Peanut = "Peanut", 
+    Shellfish = "Shellfish", 
+    Soy = "Soy", 
+    TreeNut = "TreeNut", 
+    Wheat = "Wheat", 
+    FPIES = "FPIES"
 }

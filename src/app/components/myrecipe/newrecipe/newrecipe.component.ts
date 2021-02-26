@@ -23,10 +23,10 @@ export class NewrecipeComponent implements OnInit {
     {name: "egg", unit: "gram", count:150},
   ];
 
-  public allergies = Object.values(FoodAllergy).filter(e => typeof(e) == "string");
-  public cuisines = Object.values(Cuisine).filter(e => typeof(e) == "string");
-  public features = Object.values(Feature).filter(e => typeof(e) == "string");
-  public mealTypes = Object.values(MealType).filter(e => typeof(e) == "string");
+  public allergies = Object.keys(FoodAllergy);
+  public cuisines = Object.keys(Cuisine);
+  public features = Object.keys(Feature);
+  public mealTypes = Object.keys(MealType);
 
 
   public imagePath: string ="";
