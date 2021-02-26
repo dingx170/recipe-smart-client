@@ -1,60 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from 'rxjs';
+import { IRecipe } from '../interfaces/irecipe';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
 
-
-  public get_api: string = "http://localhost:8080/recipes";
-  public post_api: string ="http://localhost:8080/myrecipes/456";
-
-  public testdata: any =     {
-    "steps": [
-        "Get all stuffs",
-        "Mix them"
-    ],
-    "ingredients": [
-        [
-            10,
-            1.5
-        ],
-        [
-            2,
-            2
-        ],
-        [
-            3,
-            90
-        ]
-    ],
-    "restrictions": [
-        "Soy"
-    ],
-    "recipe_tags": [],
-    "name": "NEWNEWNEW",
-    "member_id": 123,
-    "date": "2021-02-06T08:00:00.000Z",
-    "group": 2,
-    "cost": 10.5,
-    "photo": {
-        "type": "Buffer",
-        "data": []
-    },
-    "likes": 5,
-    "meal_type": "Dinner",
-    "feature_type": "MeatLover",
-    "recipe_tag": [
-        "Popular"
-    ],
-    "cuisine_type": "Indian",
-    "recipe_id": 2,
-    "unit_cost": 5.5
-}
-
-
+  hostUrl: string = 'http://localhost:8080/';
+  
   constructor(public http:HttpClient) { }
 
   getAllRecipes() {
@@ -75,7 +30,7 @@ export class RecipeService {
   getRecipesTest() {
 
     return new Observable((observer) => {
-        this.http.get(this.get_api).subscribe((res:any) => {
+        this.http.get<IRecipe[]>(this.hostUrl + 'recipes').subscribe((res:any) => {
         observer.next(res);
       });
     })
@@ -84,10 +39,11 @@ export class RecipeService {
 
   postNewRecipe() {
 
+    let testdata: any = []
     const httpOptions = {headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
 
     return new Observable((observer) => {
-      this.http.post(this.post_api, this.testdata, httpOptions).subscribe((res) => {
+      this.http.post(this.hostUrl + 'myrecipes/456', testdata, httpOptions).subscribe((res) => {
         observer.next(res);
       });
     })
