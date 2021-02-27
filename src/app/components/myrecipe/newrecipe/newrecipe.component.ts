@@ -3,12 +3,15 @@ import { FoodAllergy } from '../../../enums/food-allergy.enum'
 import { Cuisine } from '../../../enums/cuisine.enum'
 import { Feature } from '../../../enums/feature.enum'
 import { MealType } from '../../../enums/meal-type.enum'
+import { RecipeTag } from '../../../enums/recipe-tag.enum'
+import { IRecipe } from '../../../interfaces/irecipe'
 
 @Component({
   selector: 'app-newrecipe',
   templateUrl: './newrecipe.component.html',
   styleUrls: ['./newrecipe.component.css']
 })
+
 export class NewrecipeComponent implements OnInit {
 
   public step_list:any[] = [
@@ -24,10 +27,34 @@ export class NewrecipeComponent implements OnInit {
   ];
 
   public allergies = Object.keys(FoodAllergy);
-  public cuisines = Object.keys(Cuisine);
-  public features = Object.keys(Feature);
+  public cuisineTypes = Object.keys(Cuisine);
+  public featureTypes = Object.keys(Feature);
   public mealTypes = Object.keys(MealType);
 
+
+
+  public dateTime = new Date();
+
+  public recipe: IRecipe = {
+    recipeId: 0,
+    name: '', 
+    memberId: 1, 
+    date: this.dateTime,
+    steps: [''],
+    ingredients: [[0, 0]],
+    group: 0,
+    cost: 0,
+    unitCost: 0,
+    photo: '',
+    likes: 0,
+    mealType: MealType.None,
+    cuisineType: Cuisine.None,
+    featureType: Feature.None,
+    foodAllergies: [FoodAllergy.None],
+    recipeTags: [RecipeTag.None]
+  };
+
+  
 
   public imagePath: string ="";
   public imgURL: any = "";
@@ -59,5 +86,14 @@ export class NewrecipeComponent implements OnInit {
   onUpload() {
     // upload code goes here
   }
+
+  createRecipe(info: any){
+    console.log(info);
+  }
+
+  // addHoby() {
+  //   var compiledeHTML = $compile("<div my-hobby></div>")($scope);
+  //   $("#showHobbyfield").append(compiledeHTML);
+  // }
 
 }

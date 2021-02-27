@@ -1,4 +1,5 @@
 export enum FoodAllergy {
+    None = "None",
     Corn = "Corn", 
     Egg = "Egg", 
     Fish = "Fish", 
