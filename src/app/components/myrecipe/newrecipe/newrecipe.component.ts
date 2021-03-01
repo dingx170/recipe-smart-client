@@ -40,8 +40,8 @@ export class NewrecipeComponent implements OnInit {
     name: '', 
     memberId: 1, 
     date: this.dateTime,
-    steps: [''],
-    ingredients: [[0, 0]],
+    steps: [{ step: '' }],
+    ingredients: [{ name: '', unit: '', count:0 }],
     group: 0,
     cost: 0,
     unitCost: 0,
@@ -53,8 +53,6 @@ export class NewrecipeComponent implements OnInit {
     foodAllergies: [FoodAllergy.None],
     recipeTags: [RecipeTag.None]
   };
-
-  
 
   public imagePath: string ="";
   public imgURL: any = "";
@@ -91,9 +89,19 @@ export class NewrecipeComponent implements OnInit {
     console.log(info);
   }
 
-  // addHoby() {
-  //   var compiledeHTML = $compile("<div my-hobby></div>")($scope);
-  //   $("#showHobbyfield").append(compiledeHTML);
-  // }
+  addStep() {
+    this.recipe.steps.push({ step: '' });
+  }
+  
+  removeStep(i: number) {
+    this.recipe.steps.splice(i, 1);
+  }
 
+  addItem() {
+    this.recipe.ingredients.push({ name: '', unit: '', count:0 });
+  }
+  
+  removeItem(i: number) {
+    this.recipe.ingredients.splice(i, 1);
+  }
 }

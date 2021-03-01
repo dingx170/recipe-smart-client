@@ -44,21 +44,64 @@
             </div>
         
             <br><hr>
-        
-            <div class="form-group">
-<!-- 
-                <div>
-                    <div id="showHobbyfield"></div>
-                    <input type="number" class="form-control" placeholder="ADD HOBBIES"
-                    ng-click="addHoby()">
-                </div>
 
-                <div class="input-group" ng-repeat="h in hobies">
-                    <input type="text" ng-model="h" class="form-control" placeceholder="type your hobbies here">
-                  <div class="close-icon">
-                    <span class="glyphicon glyphicon-remove" style="padding-left: 6px;"> </span>
-                  </div>
-                </div> -->
+            <label for="steps">Cooking Steps</label>
+            <section class="container" *ngFor="let step of recipe.steps; let i = index;">
+                <div class="row">
+                    <div class="col-2">
+                        <label>Step {{i + 1}}</label>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]="step.step" name="step_{{i + 1}}"/>
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <button type="button" class="btn btn-danger" (click)="removeStep(i)">Remove</button>
+                    </div>
+                </div>
+            </section>
+            <button type="button" class="btn btn-primary mb-2" (click)="addStep()">Add step</button>
+  
+            <br><hr>
+
+            <label for="steps">Cooking Ingredients</label>
+            <section class="container" *ngFor="let item of recipe.ingredients; let i = index;">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col"><label>Name</label></div>
+                    <div class="col-2"><label>Quantity</label></div>
+                    <div class="col-2"><label>Unit</label></div>
+                    <div class="col-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <label>Item {{i + 1}}</label>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]="item.name" name="name_{{i + 1}}" />
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]="item.count" name="count_{{i + 1}}" />
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]="item.unit" name="unit_{{i + 1}}" />
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <button type="button" class="btn btn-danger" (click)="removeItem(i)">Remove</button>
+                    </div>
+                </div>
+            </section>
+            <button type="button" class="btn btn-primary mb-2" (click)="addItem()">Add step</button>
+
+
+            <div class="form-group">
 
             </div>
 
