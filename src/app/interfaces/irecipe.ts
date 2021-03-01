@@ -9,8 +9,8 @@ export interface IRecipe {
     name: string;
     memberId: number;
     date: Date;
-    steps: any[];
-    ingredients: any[];
+    steps: [{step: string}],
+    ingredients: [{name: string, unit: string, count: number}],
     group: number;
     cost: number;
     unitCost: number;
