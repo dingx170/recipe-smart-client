@@ -19,38 +19,23 @@ export class RecipesComponent implements OnInit {
     "MeatLover", "Vegetarian", "LowCarb", "Vegan"
   ]
 
-  public recipes: any[] = [];
-
-  public list: any; // test
+  public recipes: any;
 
   constructor(public recipe:RecipeService) { }
 
   ngOnInit(): void {
 
-    this.recipes = this.recipe.getAllRecipes();
+    this.getRecipesTest();
+
   }
 
   getRecipesTest() {
-
-    var rxjsData = this.recipe.getRecipesTest();
+    
+    var rxjsData = this.recipe.getAllRecipes();
 
     rxjsData.subscribe((data) => {
-      
-      this.list = data;
-      console.log(this.list);
+      this.recipes = data;
     })    
-    
   }
-
-  // postNewRecipe() {
-
-  //   var rxjsData = this.recipe.postNewRecipe(this.recipe);
-
-  //   rxjsData.subscribe((data) => {
-  //     console.log("--------posted--------")
-  //     console.log(data);
-  //   }) 
-  // }
-
 
 }

@@ -43,8 +43,6 @@
                 </div>
             </div>
 
-
-
             <div class="col">
                 <input class="filter-input" type="search" placeholder="Recipe name"  aria-label="Search">
             </div>
@@ -55,30 +53,16 @@
     
         </div>
 
-        <br>
-        <hr>
-        <br>
-
-        <!--- Test -->
-        <button (click)="getRecipesTest()">GET RECIPES</button>
-        <ul>
-            <li *ngFor="let item of list"> {{ item.name }}  {{ item.cost }}</li>
-        </ul>
-        
-        
+        <br><hr><br>
 
         <!-- Contents -->
-        <div class="container-fluid bg-3 text-center">    
-            
+        <div class="container-fluid bg-3 text-center">              
             <div class="row picrow">
-                
                 <div class="col-4" *ngFor="let item of recipes">
-                    <img src="assets/images/{{item.image}}" class="img-responsive recipe-pic" alt="Image">
+                    <img src="{{item.photo}}" class="img-responsive recipe-pic" alt="Image">
                     <p class="recipe-name">{{ item.name }}</p>
                 </div>
-  
-            </div>
-            
+            </div>           
         </div>
 
     </div>
