@@ -57,29 +57,37 @@ export class NewrecipeComponent implements OnInit {
     this.imagePath = files;
     reader.readAsDataURL(files[0]); 
     reader.onload = (_event) => { 
-    this.imgURL = reader.result; 
+      this.imgURL = reader.result; 
     }
   }
 
-  oneFileChanged(event: any) {
-    this.recipe.photo = event.target.files[0];
-  }
+  oneFileChanged(fileInput: any) {
+    if (fileInput.target.files && fileInput.target.files[0] && fileInput.target.files[0].size < 20971520) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+          const image = new Image();
+          image.src = e.target.result;
+          image.onload = rs => {
 
-  onUpload() {
-    // upload code goes here
+          const imgBase64Path = e.target.result;
+          this.recipe.photo = imgBase64Path              
+          };
+      };
+
+      reader.readAsDataURL(fileInput.target.files[0]);
+    }
 
   }
 
   createRecipe(info: any){
     this.recipe.date = new Date();
-    this.recipe.unit_cost = this.recipe.cost / this.recipe.group;
+    this.recipe.unit_cost = Math.ceil(this.recipe.cost / this.recipe.group);
 
     console.log(info);
     
     var rxjsData = this.recipeService.postNewRecipe(this.recipe);
 
     rxjsData.subscribe((data) => {
-      console.log("--------posted--------")
       console.log(data);
     }) 
   }
