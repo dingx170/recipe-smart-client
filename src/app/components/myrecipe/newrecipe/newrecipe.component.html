@@ -6,13 +6,9 @@
 
         <br>
         <h1 class="page-text">Create new recipe</h1>
-        <hr>
+        <hr><br>
 
         <form>
-            <div class="form-group">
-              <label for="name">Recipe Name</label>
-              <input type="text" name="name" id="name" [(ngModel)]="recipe.name" class="form-control" required>
-            </div>
 
             <div class="row">
                 <div class="col-2">
@@ -23,7 +19,6 @@
                         </select>
                     </div>    
                 </div>   
-                <div class="col-1"></div>
                 <div class="col-2">
                     <div class="form-group">
                         <label for="cuisineType" class="filter-label">Cuisine Type</label>
@@ -32,7 +27,6 @@
                         </select>
                     </div>
                 </div>   
-                <div class="col-1"></div>
                 <div class="col-2">
                     <div class="form-group">
                         <label for="featureType" class="filter-label">Feature Type</label>
@@ -41,15 +35,42 @@
                         </select>
                     </div>
                 </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label for="budget" class="filter-label">Budget &lt; $</label>
+                        <select name="budget" id="budget" [(ngModel)]="recipe.cost" class="form-control" >
+                            <option value="{{budget}}" *ngFor="let budget of budgets">${{budget}}</option>
+                        </select>
+                    </div>
+                </div>   
+                <div class="col-2">
+                    <div class="form-group">
+                        <label for="groupSize" class="filter-label">Group size</label>
+                        <select name="groupSize" id="groupSize" [(ngModel)]="recipe.group" class="form-control" >
+                            <option value="{{groupSize}}" *ngFor="let groupSize of groupSizes">{{groupSize}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label for="allergies" class="filter-label">Allergies</label>
+                        <select name="allergies" id="allergies" [(ngModel)]="recipe.foodAllergies" class="form-control" multiple="multiple">
+                          <option value="{{allergy}}" *ngFor="let allergy of allergies">{{allergy}}</option>
+                        </select>
+                    </div>    
+                </div>  
             </div>
-        
-            <br><hr>
 
-            <label for="steps">Cooking Steps</label>
+            <div class="form-group">
+                <label for="name" class="subtitle-text">Recipe Name</label>
+                <input type="text" name="name" id="name" [(ngModel)]="recipe.name" class="form-control" required>
+            </div>
+  
+            <label for="steps" class="subtitle-text">Cooking Steps</label>
             <section class="container" *ngFor="let step of recipe.steps; let i = index;">
                 <div class="row">
                     <div class="col-2">
-                        <label>Step {{i + 1}}</label>
+                        <h4>Step {{i + 1}}</h4>
                     </div>
                     <div class="col">
                         <div class="form-group">
@@ -61,22 +82,22 @@
                     </div>
                 </div>
             </section>
-            <button type="button" class="btn btn-primary mb-2" (click)="addStep()">Add step</button>
+            <button type="button" class="btn btn-block" (click)="addStep()">Add step</button>
   
-            <br><hr>
+            <br>
 
-            <label for="steps">Cooking Ingredients</label>
+            <label for="ingredients" class="subtitle-text">Cooking Ingredients</label>
             <section class="container" *ngFor="let item of recipe.ingredients; let i = index;">
                 <div class="row">
                     <div class="col-2"></div>
-                    <div class="col"><label>Name</label></div>
-                    <div class="col-2"><label>Quantity</label></div>
-                    <div class="col-2"><label>Unit</label></div>
+                    <div class="col"><h5>Name</h5></div>
+                    <div class="col-2"><h5>Quantity</h5></div>
+                    <div class="col-2"><h5>Unit</h5></div>
                     <div class="col-1"></div>
                 </div>
                 <div class="row">
                     <div class="col-2">
-                        <label>Item {{i + 1}}</label>
+                        <h4>Item {{i + 1}}</h4>
                     </div>
                     <div class="col">
                         <div class="form-group">
@@ -98,7 +119,7 @@
                     </div>
                 </div>
             </section>
-            <button type="button" class="btn btn-primary mb-2" (click)="addItem()">Add step</button>
+            <button type="button" class="btn btn-block" (click)="addItem()">Add ingredient</button>
 
 
             <div class="form-group">
@@ -122,211 +143,19 @@
                 </div>
             </div>
             
-            <button type="submit" (click)="createRecipe(recipe)" class="btn btn-primary">Submit</button>
+            <hr><br>
+
+            <div class="row">
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-lg submit-btn submit-center" (click)="createRecipe(recipe)" title="submit new recipe">Submit</button>
+                </div>          
+            </div>
+
           </form>
 
-          <p>
+          <hr><p>
             表单的数据信息：{{recipe | json}}
           </p>
-
-
-
-
-        <hr>
-
-        <div class="row">
-            <div class="col-9">
-                <h1 class="subtitle-text">Add steps</h1>
-                <hr>
-                <table class="tab table table-borderless">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Step</th>
-                            <th scope="col">Edit</th>
-                            <th scope="col">Delete</th>
-                        </tr>
-                    </thead>
-        
-                    <tbody *ngFor="let item of step_list; let key=index;">
-                        <tr>
-                            <th scope="row">step {{ key + 1 }}</th>
-                            <td>{{ item.step }}</td>
-                            <td>
-                                <button class="btn btn-lg submit-btn">Edit</button>
-                            </td>
-                            <td>
-                                <button class="btn btn-lg submit-btn">Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
-
-                    <tfoot>
-                        <tr>
-                            <td style="text-align: left;">
-                                <input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" />
-                            </td>
-                        </tr>
-                        <tr>
-                        </tr>
-                    </tfoot>
-        
-                </table>
-
-            </div>
-            <hr>
-            <div class="col-9">
-                <h1 class="subtitle-text">Add ingredients</h1>
-                <hr>
-                <table class="tab table table-borderless">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Ingredient</th>
-                            <th scope="col">Number</th>
-                            <th scope="col">Unit</th>
-                            <th scope="col">Edit</th>
-                            <th scope="col">Delete</th>
-                        </tr>
-                    </thead>
-        
-                    <tbody *ngFor="let item of ingredient_list; let key=index;">
-                        <tr>
-                            <th scope="row">{{ key + 1 }}</th>
-                            <td>{{ item.name }}</td>
-                            <td>{{ item.count }}</td>
-                            <td>{{ item.unit }}</td>
-                            <td>
-                                <button class="btn btn-lg submit-btn">Edit</button>
-                            </td>
-                            <td>
-                                <button class="btn btn-lg submit-btn">Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
-
-                    <tfoot>
-                        <tr>
-                            <td style="text-align: left;">
-                                <input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" />
-                            </td>
-                        </tr>
-                        <tr>
-                        </tr>
-                    </tfoot>
-        
-                </table>
-
-            </div>
-
-        </div>
-
-        <hr><br>
-
-        <div class="row">
-
-            <div class="col-3">
-                <label class="filter-label">Food Allergy</label>
-                
-                <div class="row">
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label" for="flexCheckDisabled">Corn</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label" for="flexCheckCheckedDisabled">Egg</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label" for="flexCheckCheckedDisabled">Fish</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label" for="flexCheckDisabled">Meat</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label" for="flexCheckCheckedDisabled">Milk</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label" for="flexCheckCheckedDisabled">Peanut</label> 
-                        </div>
-                    </div>
-
-                    <div class="col-5">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label" for="flexCheckCheckedDisabled">Shellfish</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label" for="flexCheckDisabled">Soy</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label" for="flexCheckCheckedDisabled">Tree Nut</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label" for="flexCheckDisabled">Wheat</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label" for="flexCheckCheckedDisabled">FPIES</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-
-                    <ul>
-                        <li *ngFor="let item of allergies"> {{ item }} </li>
-                    </ul>
-                </div>
-
-            </div>
-
-           
-
-            <div class="col-2">
-                <select class="btn form-select filter-btn">
-                    <option selected>Budget</option>
-                    <option value="1">under $10</option>
-                    <option value="2">under $20</option>
-                    <option value="3">under $30</option>
-                    <option value="2">under $50</option>
-                    <option value="3">under $100</option>
-                </select>
-            </div>
-
-            <div class="col-1"></div>
-
-            <div class="col-2">
-                <select class="btn form-select filter-btn">
-                    <option selected>Group</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-            </div>
-
-        </div>
-        <br><hr>
-        
-        <div class="row">
-            <div class="col-9">
-                <!-- <button type="submit">注册</button> -->
-                <button type="submitbtn" class="btn btn-lg submit-btn submit-center" title="submit new recipe">Submit</button>
-                <!-- <button (click)="postNewRecipe()">Post Recipe</button> -->
-            </div>          
-        </div>
-
-    <!-- </form> -->
-
-        <hr>
 
     </div>
           

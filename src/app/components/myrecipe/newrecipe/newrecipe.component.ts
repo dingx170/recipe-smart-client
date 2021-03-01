@@ -30,7 +30,8 @@ export class NewrecipeComponent implements OnInit {
   public cuisineTypes = Object.keys(Cuisine);
   public featureTypes = Object.keys(Feature);
   public mealTypes = Object.keys(MealType);
-
+  public groupSizes = [1, 2, 3, 4, 5];
+  public budgets = [20, 40, 60, 80, 100]
 
 
   public dateTime = new Date();
