@@ -121,29 +121,16 @@
             </section>
             <button type="button" class="btn btn-block" (click)="addItem()">Add ingredient</button>
 
-
-            <div class="form-group">
-
-            </div>
-
-                 
+            <h1 class="subtitle-text">Add image</h1>
+            <input #file type="file" accept='image/*' (change)="preview(file.files); oneFileChanged($event)" />
+            <br><br>
             <div class="row pic-row">
-                <div class="col-3">
-                    <h1 class="subtitle-text">Add image</h1>
-                    <hr><br><br>
-                    <span *ngIf="message">{{message}}</span>
-                    <input #file type="file" accept='image/*' (change)="preview(file.files)" />
-                    <br><br><br><br>
-                    <button (click)="onUpload()" class="btn submit-btn">Upload</button>
-                </div>
-                <div class="col-5 pic-bg">
-                    <div class="pic-bg align-center">
-                        <img [src]="imgURL" class="pic-holder" *ngIf="imgURL">
-                    </div>
+                <div class="col">
+                    <img [src]="imgURL" class="pic-holder" *ngIf="imgURL">
                 </div>
             </div>
-            
-            <hr><br>
+          
+            <br><hr>
 
             <div class="row">
                 <div class="col text-center">
@@ -153,9 +140,10 @@
 
           </form>
 
-          <hr><p>
-            表单的数据信息：{{recipe | json}}
-          </p>
+          <hr>
+          <!-- <p>
+            Current info：{{recipe | json}}
+          </p> -->
 
     </div>
           

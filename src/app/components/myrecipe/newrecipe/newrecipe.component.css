@@ -62,15 +62,14 @@
 
 .pic-row {
     min-height: 400px;
-}
-
-.pic-bg {
+    text-align:center;
     background-color: rgb(226, 222, 222);
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .pic-holder {
     height: 400px;
-    /* width: 100%; */
 }
 
 .submit-center {

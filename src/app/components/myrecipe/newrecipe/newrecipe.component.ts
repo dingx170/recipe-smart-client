@@ -5,6 +5,7 @@ import { Feature } from '../../../enums/feature.enum'
 import { MealType } from '../../../enums/meal-type.enum'
 import { RecipeTag } from '../../../enums/recipe-tag.enum'
 import { IRecipe } from '../../../interfaces/irecipe'
+import { RecipeService } from '../../../services/recipe.service';
 
 @Component({
   selector: 'app-newrecipe',
@@ -14,35 +15,20 @@ import { IRecipe } from '../../../interfaces/irecipe'
 
 export class NewrecipeComponent implements OnInit {
 
-  public step_list:any[] = [
-    {step: "weight 300g flour"},
-    {step: "prepare one cup oil"},
-    {step: "crack 2 eggs"},
-  ];
-  
-  public ingredient_list:any[] = [
-    {name: "flour", unit: "gram", count:300},
-    {name: "oil", unit: "cup", count:1},
-    {name: "egg", unit: "gram", count:150},
-  ];
-
   public allergies = Object.keys(FoodAllergy);
   public cuisineTypes = Object.keys(Cuisine);
   public featureTypes = Object.keys(Feature);
   public mealTypes = Object.keys(MealType);
   public groupSizes = [1, 2, 3, 4, 5];
-  public budgets = [20, 40, 60, 80, 100]
-
-
-  public dateTime = new Date();
+  public budgets = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 
   public recipe: IRecipe = {
     recipeId: 0,
     name: '', 
     memberId: 1, 
-    date: this.dateTime,
+    date: new Date(),
     steps: [{ step: '' }],
-    ingredients: [{ name: '', unit: '', count:0 }],
+    ingredients: [{ name: '', unit: '', count: 0 }],
     group: 0,
     cost: 0,
     unitCost: 0,
@@ -57,9 +43,8 @@ export class NewrecipeComponent implements OnInit {
 
   public imagePath: string ="";
   public imgURL: any = "";
-  public message: string = "";
 
-  constructor() { }
+  constructor(public recipeService:RecipeService) { }
 
   ngOnInit(): void {
   }
@@ -67,12 +52,6 @@ export class NewrecipeComponent implements OnInit {
   preview(files: any) {
     if (files.length === 0)
       return;
- 
-    var mimeType = files[0].type;
-    if (mimeType.match(/image\/*/) == null) {
-      this.message = "Only images are supported.";
-      return;
-    }
  
     var reader = new FileReader();
     this.imagePath = files;
@@ -82,12 +61,27 @@ export class NewrecipeComponent implements OnInit {
     }
   }
 
+  oneFileChanged(event: any) {
+    this.recipe.photo = event.target.files[0];
+  }
+
   onUpload() {
     // upload code goes here
+
   }
 
   createRecipe(info: any){
+    this.recipe.date = new Date();
+    this.recipe.unitCost = this.recipe.cost / this.recipe.group;
+
     console.log(info);
+    
+    var rxjsData = this.recipeService.postNewRecipe();
+
+    rxjsData.subscribe((data) => {
+      console.log("--------posted--------")
+      console.log(data);
+    }) 
   }
 
   addStep() {
@@ -99,7 +93,7 @@ export class NewrecipeComponent implements OnInit {
   }
 
   addItem() {
-    this.recipe.ingredients.push({ name: '', unit: '', count:0 });
+    this.recipe.ingredients.push({ name: '', unit: '', count: 0 });
   }
   
   removeItem(i: number) {
