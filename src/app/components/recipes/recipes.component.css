@@ -5,7 +5,8 @@
 
 .recipe-pic {
     border-radius: 5%;
-    width:100%;
+    width: 100%;
+    height: 80%;
 }
 
 .filterbtn {
