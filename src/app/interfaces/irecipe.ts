@@ -5,20 +5,20 @@ import { MealType } from '../enums/meal-type.enum'
 import { RecipeTag } from '../enums/recipe-tag.enum'
 
 export interface IRecipe {
-    recipeId: number;
+    recipe_id: number;
     name: string;
-    memberId: number;
+    member_id: number;
     date: Date;
     steps: [{step: string}],
     ingredients: [{name: string, unit: string, count: number}],
     group: number;
     cost: number;
-    unitCost: number;
+    unit_cost: number;
     photo: any;
     likes: number;
-    mealType: MealType;
-    cuisineType: Cuisine;
-    featureType: Feature;
-    foodAllergies: [FoodAllergy];
-    recipeTags: [RecipeTag]
+    meal_type: MealType;
+    cuisine_type: Cuisine;
+    feature_type: Feature;
+    restrictions: [FoodAllergy];
+    recipe_tags: [RecipeTag]
 }

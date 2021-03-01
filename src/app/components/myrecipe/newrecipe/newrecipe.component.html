@@ -14,7 +14,7 @@
                 <div class="col-2">
                     <div class="form-group">
                         <label for="mealType" class="filter-label">Meal Type</label>
-                        <select name="mealType" id="mealType" [(ngModel)]="recipe.mealType" class="form-control">
+                        <select name="mealType" id="mealType" [(ngModel)]="recipe.meal_type" class="form-control">
                           <option value="{{mealType}}" *ngFor="let mealType of mealTypes">{{mealType}}</option>
                         </select>
                     </div>    
@@ -22,7 +22,7 @@
                 <div class="col-2">
                     <div class="form-group">
                         <label for="cuisineType" class="filter-label">Cuisine Type</label>
-                        <select name="cuisineType" id="cuisineType" [(ngModel)]="recipe.cuisineType" class="form-control" >
+                        <select name="cuisineType" id="cuisineType" [(ngModel)]="recipe.cuisine_type" class="form-control" >
                             <option value="{{cuisineType}}" *ngFor="let cuisineType of cuisineTypes">{{cuisineType}}</option>
                         </select>
                     </div>
@@ -30,7 +30,7 @@
                 <div class="col-2">
                     <div class="form-group">
                         <label for="featureType" class="filter-label">Feature Type</label>
-                        <select name="featureType" id="featureType" [(ngModel)]="recipe.featureType" class="form-control" >
+                        <select name="featureType" id="featureType" [(ngModel)]="recipe.feature_type" class="form-control" >
                             <option value="{{featureType}}" *ngFor="let featureType of featureTypes">{{featureType}}</option>
                         </select>
                     </div>
@@ -54,7 +54,7 @@
                 <div class="col-2">
                     <div class="form-group">
                         <label for="allergies" class="filter-label">Allergies</label>
-                        <select name="allergies" id="allergies" [(ngModel)]="recipe.foodAllergies" class="form-control" multiple="multiple">
+                        <select name="allergies" id="allergies" [(ngModel)]="recipe.restrictions" class="form-control" multiple="multiple">
                           <option value="{{allergy}}" *ngFor="let allergy of allergies">{{allergy}}</option>
                         </select>
                     </div>    

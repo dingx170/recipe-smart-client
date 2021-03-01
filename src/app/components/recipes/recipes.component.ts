@@ -42,15 +42,15 @@ export class RecipesComponent implements OnInit {
     
   }
 
-  postNewRecipe() {
+  // postNewRecipe() {
 
-    var rxjsData = this.recipe.postNewRecipe();
+  //   var rxjsData = this.recipe.postNewRecipe(this.recipe);
 
-    rxjsData.subscribe((data) => {
-      console.log("--------posted--------")
-      console.log(data);
-    }) 
-  }
+  //   rxjsData.subscribe((data) => {
+  //     console.log("--------posted--------")
+  //     console.log(data);
+  //   }) 
+  // }
 
 
 }

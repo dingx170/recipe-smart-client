@@ -37,9 +37,9 @@ export class RecipeService {
 
   }
 
-  postNewRecipe() {
+  postNewRecipe(testdata: any ) {
 
-    let testdata: any = []
+    // let testdata: any = []
     const httpOptions = {headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
 
     return new Observable((observer) => {

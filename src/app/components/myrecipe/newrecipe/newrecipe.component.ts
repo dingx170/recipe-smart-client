@@ -23,22 +23,22 @@ export class NewrecipeComponent implements OnInit {
   public budgets = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 
   public recipe: IRecipe = {
-    recipeId: 0,
+    recipe_id: 0,
     name: '', 
-    memberId: 1, 
+    member_id: 1, 
     date: new Date(),
     steps: [{ step: '' }],
     ingredients: [{ name: '', unit: '', count: 0 }],
     group: 0,
     cost: 0,
-    unitCost: 0,
+    unit_cost: 0,
     photo: '',
     likes: 0,
-    mealType: MealType.None,
-    cuisineType: Cuisine.None,
-    featureType: Feature.None,
-    foodAllergies: [FoodAllergy.None],
-    recipeTags: [RecipeTag.None]
+    meal_type: MealType.None,
+    cuisine_type: Cuisine.None,
+    feature_type: Feature.None,
+    restrictions: [FoodAllergy.None],
+    recipe_tags: [RecipeTag.None]
   };
 
   public imagePath: string ="";
@@ -72,11 +72,11 @@ export class NewrecipeComponent implements OnInit {
 
   createRecipe(info: any){
     this.recipe.date = new Date();
-    this.recipe.unitCost = this.recipe.cost / this.recipe.group;
+    this.recipe.unit_cost = this.recipe.cost / this.recipe.group;
 
     console.log(info);
     
-    var rxjsData = this.recipeService.postNewRecipe();
+    var rxjsData = this.recipeService.postNewRecipe(this.recipe);
 
     rxjsData.subscribe((data) => {
       console.log("--------posted--------")
