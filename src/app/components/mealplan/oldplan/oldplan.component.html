@@ -9,10 +9,10 @@
                 </tr>
             </thead>
 
-            <tbody *ngFor="let item of recipe_list; let key=index;">
+            <tbody *ngFor="let item of mealplans; let key=index;">
                 <tr>
                     <th scope="row">{{ key + 1 }}</th>
-                    <td>{{ item.time }}</td>
+                    <td>{{ item.date }}</td>
                     <td>
                         <button class="btn btn-lg submit-btn">Recipes</button>
                     </td>
