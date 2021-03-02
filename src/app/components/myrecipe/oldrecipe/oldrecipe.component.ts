@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RecipeService } from '../../../services/recipe.service'
 
 @Component({
   selector: 'app-oldrecipe',
@@ -7,27 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OldrecipeComponent implements OnInit {
 
-  public myrecipes: any[] = [
-    { name: "Hot Pepper and Onion Pizza",
-      image: "recipe_9.jpg"
-    },
-    { name: "Pancakes",
-      image: "recipe_10.jpg"
-    },
-    { name: "Healthy Breakfast",
-    image: "recipe_7.jpg"
-    },
-    { name: "Beef Gyros",
-      image: "recipe_12.jpg"
-    },
-    { name: "Broccoli & Beef Stirfry",
-     image: "recipe_13.jpg"
-    }
-  ]
+  public myrecipes: any;
+  public memberId = 1;
 
-  constructor() { }
+  constructor(public recipeService: RecipeService) { }
 
   ngOnInit(): void {
+    this.getMyRecipes();
+  }
+
+  getMyRecipes() {
+  
+    var rxjsData = this.recipeService.getAllRecipes();
+
+    rxjsData.subscribe((data) => {
+      this.myrecipes = data;
+    })    
   }
 
 }
