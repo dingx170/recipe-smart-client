@@ -29,12 +29,9 @@ export class RecipeService {
     })
   }
 
-  // todo
-  getRecipesByFilters(memberId: string) {
-    let params = new HttpParams();
-    params.append('member_id', memberId);
+  getRecipesByFilter(filter: any) {
     return new Observable((observer) => {
-      this.http.get<IRecipe[]>(this.hostUrl + 'recipes', {params: params}).subscribe((res:any) => {
+      this.http.get<IRecipe[]>(this.hostUrl + 'recipes', {params: filter}).subscribe((res:any) => {
         observer.next(res);
       });
     })

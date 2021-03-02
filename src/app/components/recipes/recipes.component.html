@@ -13,44 +13,48 @@
 
             <div class="col">
                 <div ngbDropdown class="d-inline-block">
-                <button class="btn filterbtn" id="dropdownBasic1" ngbDropdownToggle>Type
-                </button>
-                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                    <button ngbDropdownItem>Breakfast</button>
-                    <button ngbDropdownItem>Lunch</button>
-                    <button ngbDropdownItem>Dinner</button>
-                </div>
+                    <button class="btn filterbtn" id="dropdownBasic1" ngbDropdownToggle>Meal Type</button>
+                    <select ngbDropdownMenu name="mealType" id="mealType" [(ngModel)]="filter.meal_types" class="form-control" multiple="multiple">
+                        <option value="{{mealType}}" *ngFor="let mealType of mealTypes">{{mealType}}</option>
+                    </select>
                 </div>
             </div>
             
             <div class="col">
                 <div ngbDropdown class="d-inline-block">
-                <button class="btn filterbtn" id="dropdownBasic1" ngbDropdownToggle>Cuisine
-                </button>
-                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                    <button ngbDropdownItem value="{{item}}" *ngFor="let item of cuisines">{{item}}</button>
-                </div>
+                    <button class="btn filterbtn" id="dropdownBasic1" ngbDropdownToggle>Cuisine</button>
+                    <select ngbDropdownMenu name="cuisineType" id="cuisineType" [(ngModel)]="filter.cuisine_types" class="form-control" multiple="multiple">
+                        <option value="{{cuisineType}}" *ngFor="let cuisineType of cuisineTypes">{{cuisineType}}</option>
+                    </select>
                 </div>
             </div>
 
             <div class="col">
                 <div ngbDropdown class="d-inline-block">
-                <button class="btn filterbtn" id="dropdownBasic1" ngbDropdownToggle>Feature
-                </button>
-                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                    <button ngbDropdownItem value="{{item}}" *ngFor="let item of features">{{item}}</button>
-                </div>
+                    <button class="btn filterbtn" id="dropdownBasic1" ngbDropdownToggle>Feature</button>
+                    <select ngbDropdownMenu name="featureType" id="featureType" [(ngModel)]="filter.feature_types" class="form-control" multiple="multiple">
+                        <option value="{{featureType}}" *ngFor="let featureType of featureTypes">{{featureType}}</option>
+                    </select>
                 </div>
             </div>
 
             <div class="col">
-                <input class="filter-input" type="search" placeholder="Recipe name"  aria-label="Search">
+                <div ngbDropdown class="d-inline-block">
+                    <button class="btn filterbtn" id="dropdownBasic1" ngbDropdownToggle>Budget &lt; $</button>
+                    <select ngbDropdownMenu name="budget" id="budget" [(ngModel)]="filter.cost" class="form-control">
+                        <option value="{{budget}}" *ngFor="let budget of budgets">{{budget}}</option>
+                    </select>
+                </div>
             </div>
 
             <div class="col">
-                <input class="filter-input" type="search" placeholder="Budget under $" aria-label="Search">    
+                <input type="text" name="name" id="name" [(ngModel)]="filter.name" class="filter-input form-control" placeholder="Search by name">
             </div>
-    
+
+            <div class="col">
+                <button type="submit" class="btn filterbtn" (click)="filterRecipes(filter)" title="filter recipes">Show</button>
+            </div>
+
         </div>
 
         <br><hr><br>

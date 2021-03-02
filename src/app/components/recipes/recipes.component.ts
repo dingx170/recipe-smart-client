@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
+import { FoodAllergy } from '../../enums/food-allergy.enum'
+import { Cuisine } from '../../enums/cuisine.enum'
+import { Feature } from '../../enums/feature.enum'
+import { MealType } from '../../enums/meal-type.enum'
 import { RecipeService } from '../../services/recipe.service';
 
 @Component({
@@ -9,15 +12,20 @@ import { RecipeService } from '../../services/recipe.service';
 })
 export class RecipesComponent implements OnInit {
 
-  public allergies: string[] = [
-    "Corn", "Egg", "Fish", "Meat", "Milk", "Peanut", "Shellfish", "Soy", "TreeNut", "Wheat", "FPIES"
-  ]
-  public cuisines: string[] = [
-    "Chinese", "Mexican", "Italian", "Japanese", "Greek", "French", "Thai", "Spanish", "Indian", "Mediterranean"
-  ]
-  public features: string[] = [
-    "MeatLover", "Vegetarian", "LowCarb", "Vegan"
-  ]
+  public allergies = Object.keys(FoodAllergy).filter(key => key != "None");
+  public cuisineTypes = Object.keys(Cuisine).filter(key => key != "None");
+  public featureTypes = Object.keys(Feature).filter(key => key != "None");
+  public mealTypes = Object.keys(MealType).filter(key => key != "None");
+  public groupSizes = [1, 2, 3, 4, 5];
+  public budgets = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+
+  public filter: any = {
+    meal_types: [],
+    feature_types: [],
+    cuisine_types: [],
+    name: '',
+    cost: 100
+  };
 
   public recipes: any;
 
@@ -25,17 +33,28 @@ export class RecipesComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.getRecipesTest();
+    this.showAllRecipes();
 
   }
 
-  getRecipesTest() {
+  showAllRecipes() {
     
     var rxjsData = this.recipe.getAllRecipes();
 
     rxjsData.subscribe((data) => {
       this.recipes = data;
     })    
+  }
+
+  filterRecipes(filter: any) {
+
+    this.filter.meal_types
+    
+    var rxjsData = this.recipe.getRecipesByFilter(filter);
+
+    rxjsData.subscribe((data) => {
+      this.recipes = data;
+    })   
   }
 
 }
