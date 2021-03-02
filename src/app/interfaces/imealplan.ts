@@ -6,7 +6,7 @@ import { MealType } from '../enums/meal-type.enum'
 export interface IMealplan {
     mealplan_id: number;
     member_id: number;
-    data: Date;
+    date: Date;
     budget: number;
     group: number;
     recipe_list: [{recipe_id: Number, quantity: Number}];
