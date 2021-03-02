@@ -40,11 +40,11 @@ export class RecipeService {
     })
   }
 
-  postNewRecipe(testdata: any ) {
+  postNewRecipe(recipe: any) {
     const httpOptions = {headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
 
     return new Observable((observer) => {
-      this.http.post(this.hostUrl + `myrecipes/${this.userId}`, testdata, httpOptions).subscribe((res) => {
+      this.http.post(this.hostUrl + `myrecipes/${this.userId}`, recipe, httpOptions).subscribe((res) => {
         observer.next(res);
       });
     })

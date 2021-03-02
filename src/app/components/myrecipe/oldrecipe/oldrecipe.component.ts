@@ -9,7 +9,7 @@ import { RecipeService } from '../../../services/recipe.service'
 export class OldrecipeComponent implements OnInit {
 
   public myrecipes: any;
-  public memberId = 1;
+  public memberId = "1";
 
   constructor(public recipeService: RecipeService) { }
 
@@ -19,7 +19,7 @@ export class OldrecipeComponent implements OnInit {
 
   getMyRecipes() {
   
-    var rxjsData = this.recipeService.getAllRecipes();
+    var rxjsData = this.recipeService.getRecipesByMemberID(this.memberId);
 
     rxjsData.subscribe((data) => {
       this.myrecipes = data;
