@@ -39,7 +39,7 @@ export class UserService {
   updateUser(user: IUser, id: number): Observable<any>{
     let url:string = `${this.base_api}/${id}`;
     return this.http.put(url, user, this.httpOptions).pipe(
-      catchError(this.handleError<any>('updateHero'))
+      catchError(this.handleError<IUser>('updated user'))
     );
   }
 
@@ -49,7 +49,7 @@ export class UserService {
    */
   addUser(user: IUser): Observable<IUser>{
     return this.http.post<IUser>(this.base_api, user, this.httpOptions).pipe(
-      catchError(this.handleError<any>('add Hero'))
+      catchError(this.handleError<any>('add user operation failed'))
     );
   }
 
