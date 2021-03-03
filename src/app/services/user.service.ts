@@ -5,6 +5,7 @@ import { IUser } from '../interfaces/IUser'
 import { catchError, map, tap } from 'rxjs/operators';
 import { ShareDataService} from '../services/share-data.service'
 import { SimpleResponse} from '../interfaces/ISimpleResponse'
+import { NormalResponse } from '../interfaces/INormalResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -25,10 +26,10 @@ export class UserService {
    * send it to the backend and wait for the response in a async way
    * @param id
    */
-  getUserById(id: number): Observable<IUser>{
+  getUserById(id: number): Observable<NormalResponse>{
     const url = `${this.base_api}/${id}`;
-    return this.http.get<IUser>(url).pipe(
-      catchError(this.handleError<IUser>(`getUserById id = ${id}`))
+    return this.http.get<NormalResponse>(url).pipe(
+      catchError(this.handleError<NormalResponse>(`getUserById id = ${id}`))
     );
   }
 
@@ -48,9 +49,9 @@ export class UserService {
    * Add user with the given User object from the delegating component
    * @param user
    */
-  addUser(user: IUser): Observable<IUser>{
-    return this.http.post<IUser>(this.base_api, user, this.httpOptions).pipe(
-      catchError(this.handleError<any>('add user operation failed'))
+  addUser(user: IUser): Observable<SimpleResponse>{
+    return this.http.post<SimpleResponse>(this.base_api, user, this.httpOptions).pipe(
+      catchError(this.handleError<SimpleResponse>('add user operation failed'))
     );
   }
 
