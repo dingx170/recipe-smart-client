@@ -71,37 +71,39 @@
               <form>
                 <div class="pl-lg-4">
                   <div class="row">
+
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Username</label>
                         <input type="text" id="input-username" class="form-control" [(ngModel)]="user.user_name" value={{user.user_name}}>
                       </div>
                     </div>
+
                     <div class="col-lg-6">
-                      <div class="form-group">
+                      <div class="form-group focused">
                         <label class="form-control-label" for="input-password">Password</label>
-                        <input type="text" id="input-password" class="form-control form-control-alternative" placeholder="Password" value = {{user.password}}>
+                        <input type="text" id="input-password" class="form-control" [(ngModel)]="user.password" value = {{user.password}}>
                       </div>
                     </div>
-                  </div>
-                  <div class="row">
+
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-email">Email</label>
-                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="Email" value={{user.email}}>
+                        <input type="email" class="form-control" [(ngModel)]="user.email" name = "email" value={{user.email}}>
                       </div>
                     </div>
 
                   </div>
-
-
-                  <label class="form-control-label" for="input-first-name">Allergy</label>
-                  <div class="col-lg-3" *ngFor="let allergy of allergy_list">
-                    <form>
-                        <input type = "checkbox" [checked] = "user.restrictions.includes(allergy)" ><span>{{allergy}}</span>
-                    </form>
-                  </div>
                 </div>
+
+                <div class="col-lg-3" *ngFor="let allergy of allergy_list">
+                  <form>
+                      <label class="form-control-label" for="allergies">Allergy</label>
+                      <input type = "checkbox" [checked] = "user.restrictions.includes(allergy)" ><span>{{allergy}}</span>
+                  </form>
+                </div>
+
+
                 <hr class="my-4">
                 <!-- Edit -->
                 <div class="pl-lg-4">

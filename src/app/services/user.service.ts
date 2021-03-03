@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of} from 'rxjs';
 import { IUser } from '../interfaces/IUser'
 import { catchError, map, tap } from 'rxjs/operators';
+import { ShareDataService} from '../services/share-data.service'
+import { SimpleResponse} from '../interfaces/ISimpleResponse'
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +15,9 @@ export class UserService {
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  private userId: number= 1001;
 
 
-  constructor(private http:HttpClient ) {}
+  constructor(private http:HttpClient, private shared_service: ShareDataService) {}
 
   /**
    * Take the id from the delegating component
@@ -36,10 +37,10 @@ export class UserService {
    * @param user
    * @param id
    */
-  updateUser(user: IUser, id: number): Observable<any>{
+  updateUser(user: IUser, id: number): Observable<SimpleResponse>{
     let url:string = `${this.base_api}/${id}`;
-    return this.http.put(url, user, this.httpOptions).pipe(
-      catchError(this.handleError<IUser>('updated user'))
+    return this.http.put<SimpleResponse>(url, user, this.httpOptions).pipe(
+      catchError(this.handleError<SimpleResponse>('updated user'))
     );
   }
 
@@ -51,13 +52,6 @@ export class UserService {
     return this.http.post<IUser>(this.base_api, user, this.httpOptions).pipe(
       catchError(this.handleError<any>('add user operation failed'))
     );
-  }
-
-  /**
-   * getter for the hard coded user id
-   */
-  getMyUserId():number{
-    return this.userId;
   }
 
 

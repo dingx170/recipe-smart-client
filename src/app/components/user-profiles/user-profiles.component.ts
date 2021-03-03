@@ -3,6 +3,7 @@ import { FoodAllergy } from 'src/app/enums/food-allergy.enum';
 import { IUser } from 'src/app/interfaces/IUser';
 import { UserService} from '../../services/user.service'
 import { UserTag} from '../../enums/user-tag.enum'
+import { ShareDataService} from '../../services/share-data.service'
 
 @Component({
   selector: 'app-user-profiles',
@@ -11,6 +12,7 @@ import { UserTag} from '../../enums/user-tag.enum'
 })
 export class UserProfilesComponent implements OnInit {
 
+  @Input()
   user: IUser = {
     user_name: "zhangsan",
     password: "123",
@@ -20,24 +22,37 @@ export class UserProfilesComponent implements OnInit {
 
   };
 
+  userid: number;
+
   allergy_list = Object.keys(FoodAllergy) as FoodAllergy[];
-  current_userid: number;
 
 
   constructor(
-    private user_service: UserService
+    private user_service: UserService,
+    private share_service: ShareDataService
   ){ }
 
   ngOnInit(): void {
-    this.current_userid = this.user_service.getMyUserId();
-    this.user_service.getUserById(this.current_userid)
-    .subscribe(user => this.user = user);
+    this.userid  = this.share_service.getData("userid");
+    // There might be issues when the data structure does not match the front end
+    if(this.userid){
+      this.user_service.getUserById(this.userid).subscribe(res => {
+        this.user = res;
+      });
+    }
 
   }
 
   update():void{
-    this.user_service.updateUser(this.user, this.current_userid)
-    .subscribe();
+    if(this.userid){
+      // response from the backend needs to be structured as loginRes
+      this.user_service.updateUser(this.user, this.userid)
+        .subscribe(res => {
+            console.log(res.ret_code)
+            console.log(res.ret_msg);
+        });
+    }
+
   }
 
   createUser(user: IUser){

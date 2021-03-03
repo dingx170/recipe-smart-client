@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IAuth } from 'src/app/interfaces/auth';
-import { LoginRes } from 'src/app/interfaces/loginRes';
+import { SimpleResponse } from 'src/app/interfaces/ISimpleResponse';
 import { LoginService } from '../../services/login.service'
 import { ShareDataService } from '../../services/share-data.service'
 
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     password: "test password"
   };
 
-  login_response: LoginRes;
+  login_response: SimpleResponse;
 
   constructor(private login_service: LoginService,
               private shared_service: ShareDataService) { }
