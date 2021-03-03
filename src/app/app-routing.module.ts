@@ -21,7 +21,7 @@ import { OldrecipeComponent } from './components/myrecipe/oldrecipe/oldrecipe.co
 
 const routes: Routes = [
   {path: 'recipes', component: RecipesComponent},
-  {path: 'recipes/:id', component: RecipeContentComponent},
+  {path: 'recipes/:recipeId', component: RecipeContentComponent},
   {path: 'myprofile', component: UserProfilesComponent},
   {path: 'sign-up', component:SignupComponent},
   {path: 'login', component:LoginComponent},
@@ -36,17 +36,17 @@ const routes: Routes = [
     ]  
   },
   {
-    path: 'myrecipe', component: MyrecipeComponent,
+    path: 'myrecipe/:userId', component: MyrecipeComponent,
     children: [
       {path: 'newrecipe', component: NewrecipeComponent},
-      {path: 'history', component: OldrecipeComponent},
-      {path: '**', redirectTo: 'history'}
+      {path: 'recipes', component: OldrecipeComponent},
+      {path: '**', redirectTo: 'recipes'}
     ]  
   },
-  {path: 'myrecipe/:id', component: RecipeContentComponent},
+  {path: 'myrecipe/:userId/recipes/:recipeId', component: RecipeContentComponent},
   {
     path: '',
-    redirectTo: '/recipes',
+    redirectTo: '/recipes/:recipeId',
     pathMatch: 'full'
   }
 ];
