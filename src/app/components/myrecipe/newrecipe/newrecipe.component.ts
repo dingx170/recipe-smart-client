@@ -50,9 +50,12 @@ export class NewrecipeComponent implements OnInit {
 
   ngOnInit(): void {
     this.isUpdate = this.route.snapshot.data.isUpdate;
-    this.route.params.subscribe((value) => {
-      this.getRecipeContent(value.recipeId);
-    })
+
+    if (this.isUpdate) {
+      this.route.params.subscribe((value) => {
+        this.getRecipeContent(value.recipeId);
+      })
+    }
   }
 
   preview(files: any) {
@@ -85,7 +88,7 @@ export class NewrecipeComponent implements OnInit {
 
   }
 
-  createRecipe(info: any){
+  createRecipe(){
     this.recipe.date = new Date();
     this.recipe.unit_cost = Math.ceil(this.recipe.cost / this.recipe.group);
 
@@ -96,7 +99,7 @@ export class NewrecipeComponent implements OnInit {
     }) 
   }
 
-  updateRecipe(info: any){
+  updateRecipe(){
     this.recipe.date = new Date();
     this.recipe.unit_cost = Math.ceil(this.recipe.cost / this.recipe.group);
 

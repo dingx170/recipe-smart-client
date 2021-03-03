@@ -23,7 +23,7 @@ export class RecipeService {
 
   getRecipeByID(recipeId: string) {
     return new Observable((observer) => {
-      this.http.get<IRecipe[]>(this.hostUrl + 'recipes/' + recipeId).subscribe((res:any) => {
+      this.http.get<IRecipe>(this.hostUrl + 'recipes/' + recipeId).subscribe((res:any) => {
         observer.next(res);
       });
     })
