@@ -92,6 +92,7 @@ export class NewrecipeComponent implements OnInit {
     var rxjsData = this.recipeService.postNewRecipe(this.recipe);
     rxjsData.subscribe((data) => {
       console.log(data);
+      alert("Success!");
     }) 
   }
 
@@ -102,6 +103,7 @@ export class NewrecipeComponent implements OnInit {
     var rxjsData = this.recipeService.updateOneRecipe(this.recipe);
     rxjsData.subscribe((data) => {
       console.log(data);
+      alert("Success!");
     }) 
   }
 
