@@ -94,17 +94,17 @@
     color: white;
 }
 
-.pic-row {
-    min-height: 400px;
+.marginauto {
+    margin: 10px auto 20px;
+    display: block;
 }
 
-.pic-bg {
-    background-color: rgb(226, 222, 222);
+img {
+    max-width: 100%;
 }
 
-.pic-holder {
-    /* height: 400px; */
-    width: 100%;
+.warning {
+    width: 94%;
 }
 
 .submit-center {
