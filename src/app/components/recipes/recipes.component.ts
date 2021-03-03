@@ -29,17 +29,17 @@ export class RecipesComponent implements OnInit {
 
   public recipes: any;
 
-  constructor(public recipe:RecipeService) { }
+  constructor(public recipeService:RecipeService) { }
 
   ngOnInit(): void {
-
+    
     this.showAllRecipes();
 
   }
 
   showAllRecipes() {
     
-    var rxjsData = this.recipe.getAllRecipes();
+    var rxjsData = this.recipeService.getAllRecipes();
 
     rxjsData.subscribe((data) => {
       this.recipes = data;
@@ -50,7 +50,7 @@ export class RecipesComponent implements OnInit {
 
     this.filter.meal_types
     
-    var rxjsData = this.recipe.getRecipesByFilter(filter);
+    var rxjsData = this.recipeService.getRecipesByFilter(filter);
 
     rxjsData.subscribe((data) => {
       this.recipes = data;

@@ -53,6 +53,15 @@ export class RecipeService {
         observer.next(res);
       });
     })
+  }
 
+  updateOneRecipe(recipe: any) {
+    const httpOptions = {headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
+
+    return new Observable((observer) => {
+      this.http.put(this.hostUrl + `myrecipes/${this.userId}/${recipe.recipe_id}`, recipe, httpOptions).subscribe((res) => {
+        observer.next(res);
+      });
+    })
   }
 }

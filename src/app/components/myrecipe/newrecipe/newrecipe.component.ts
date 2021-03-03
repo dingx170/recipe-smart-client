@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { FoodAllergy } from '../../../enums/food-allergy.enum'
 import { Cuisine } from '../../../enums/cuisine.enum'
 import { Feature } from '../../../enums/feature.enum'
@@ -22,7 +23,7 @@ export class NewrecipeComponent implements OnInit {
   public groupSizes = [1, 2, 3, 4, 5];
   public budgets = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 
-  public recipe: IRecipe = {
+  public recipe: any = {
     recipe_id: 0,
     name: '', 
     member_id: 1, 
@@ -43,10 +44,15 @@ export class NewrecipeComponent implements OnInit {
 
   public imagePath: string ="";
   public imgURL: any = "";
+  public isUpdate: boolean;
 
-  constructor(public recipeService:RecipeService) { }
+  constructor(public recipeService: RecipeService, public route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.isUpdate = this.route.snapshot.data.isUpdate;
+    this.route.params.subscribe((value) => {
+      this.getRecipeContent(value.recipeId);
+    })
   }
 
   preview(files: any) {
@@ -83,10 +89,17 @@ export class NewrecipeComponent implements OnInit {
     this.recipe.date = new Date();
     this.recipe.unit_cost = Math.ceil(this.recipe.cost / this.recipe.group);
 
-    console.log(info);
-    
     var rxjsData = this.recipeService.postNewRecipe(this.recipe);
+    rxjsData.subscribe((data) => {
+      console.log(data);
+    }) 
+  }
 
+  updateRecipe(info: any){
+    this.recipe.date = new Date();
+    this.recipe.unit_cost = Math.ceil(this.recipe.cost / this.recipe.group);
+
+    var rxjsData = this.recipeService.updateOneRecipe(this.recipe);
     rxjsData.subscribe((data) => {
       console.log(data);
     }) 
@@ -106,5 +119,12 @@ export class NewrecipeComponent implements OnInit {
   
   removeItem(i: number) {
     this.recipe.ingredients.splice(i, 1);
+  }
+
+  getRecipeContent(recipeId: string) {
+    var rxjsData = this.recipeService.getRecipeByID(recipeId);
+    rxjsData.subscribe((data) => {
+      this.recipe = data;
+    })    
   }
 }

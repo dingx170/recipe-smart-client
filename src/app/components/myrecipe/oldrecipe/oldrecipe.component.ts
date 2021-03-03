@@ -9,17 +9,20 @@ import { RecipeService } from '../../../services/recipe.service'
 export class OldrecipeComponent implements OnInit {
 
   public myrecipes: any;
-  public memberId = "1";
+  public userId: string;
+  public hostUrl: string;
 
   constructor(public recipeService: RecipeService) { }
 
   ngOnInit(): void {
+    this.userId = this.recipeService.userId;
+    this.hostUrl = this.recipeService.hostUrl;
     this.getMyRecipes();
   }
 
   getMyRecipes() {
   
-    var rxjsData = this.recipeService.getRecipesByMemberID(this.memberId);
+    var rxjsData = this.recipeService.getRecipesByMemberID(this.userId);
 
     rxjsData.subscribe((data) => {
       this.myrecipes = data;

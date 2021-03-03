@@ -16,19 +16,22 @@ export class RecipeContentComponent implements OnInit {
     group: 0
   }
 
+  public isMember: boolean;
+
   constructor(public route: ActivatedRoute, public recipeService: RecipeService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((value) => {
       this.getRecipeContent(value.recipeId);
     })
+
+    this.isMember = this.route.snapshot.data.isMember;
   }
 
   getRecipeContent(recipeId: string) {
     var rxjsData = this.recipeService.getRecipeByID(recipeId);
     rxjsData.subscribe((data) => {
       this.recipe = data;
-      console.log(data);
     })    
   }
 
