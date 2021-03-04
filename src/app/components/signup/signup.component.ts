@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, Input, OnInit } from '@angular/core';
+import { UserService} from '../../services/user.service'
+import { ShareDataService} from '../../services/share-data.service'
+import { IUser } from 'src/app/interfaces/IUser';
+import { FoodAllergy } from 'src/app/enums/food-allergy.enum';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -7,9 +10,56 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  new_user: IUser = {
+    user_name: "",
+    password: "",
+    email: "",
+    restrictions: [FoodAllergy.None],
+
+  };;
+
+  validEmail: boolean = false;
+  signup_failure: boolean = false;
+  validName: boolean = true;
+
+  constructor(
+    private user_service: UserService,
+    private share_service: ShareDataService
+  ) { }
 
   ngOnInit(): void {
+    this.validEmail = true;
+    this.signup_failure= false;
+    this.validName = true;
+  }
+
+  singUp(): void{
+    this.user_service.validateNameEmail(this.new_user.email, this.new_user.user_name)
+    .subscribe(firstRes =>{
+      if(firstRes.ret_code){
+
+        this.user_service.addUser(this.new_user).subscribe(secondRes => {
+          if(secondRes.ret_code){
+            // jump to sign up successful component
+            this.share_service.setData("userid", secondRes.userid);
+          }
+          else{
+            // display error banner on top and prompt user try again
+            this.signup_failure = true;
+          }
+        })
+      }
+      else if(firstRes.ret_code == -1){
+        // display message banner username or email occupied
+        this.validName = false;
+      }
+      else{
+        this.validEmail = false;
+      }
+
+    });
+
   }
 
 }
