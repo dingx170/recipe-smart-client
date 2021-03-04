@@ -60,10 +60,10 @@ export class UserService {
    * Validate if given email already occupied in database
    * @param email
    */
-  validateEmail(email: string): Observable<SimpleResponse>{
-    let url:string = `${this.base_api}/?email=${email}`;
+  validateNameEmail(email: string, username: string): Observable<SimpleResponse>{
+    let url:string = `${this.base_api}/?username=${username}&?email=${email}`;
     return this.http.get<SimpleResponse>(url).pipe(
-      catchError(this.handleError<SimpleResponse>(`getExistingEmail email = ${email}`))
+      catchError(this.handleError<SimpleResponse>(`check username and email username = ${username} email = ${email}`))
     );
   }
 
