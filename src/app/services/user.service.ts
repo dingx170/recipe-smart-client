@@ -50,8 +50,20 @@ export class UserService {
    * @param user
    */
   addUser(user: IUser): Observable<SimpleResponse>{
+
     return this.http.post<SimpleResponse>(this.base_api, user, this.httpOptions).pipe(
       catchError(this.handleError<SimpleResponse>('add user operation failed'))
+    );
+  }
+
+  /**
+   * Validate if given email already occupied in database
+   * @param email
+   */
+  validateUser(email: string): Observable<SimpleResponse>{
+    let url:string = `${this.base_api}/${email}`;
+    return this.http.get<SimpleResponse>(email).pipe(
+      catchError(this.handleError<NormalResponse>(`getExistingEmail email = ${email}`))
     );
   }
 
