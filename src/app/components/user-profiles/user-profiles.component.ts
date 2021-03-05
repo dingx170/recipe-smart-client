@@ -31,6 +31,7 @@ export class UserProfilesComponent implements OnInit {
 
   ngOnInit(): void {
     this.userid  = this.share_service.getData("userid");
+    console.log("userid " + this.userid)
 
     //every time initializing this component default logged in as false;
     this.logged_in = false;

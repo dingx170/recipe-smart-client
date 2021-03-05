@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   @Input()
   auth: IAuth = {
-    username: "test username",
+    name: "test username",
     password: "test password"
   };
 
