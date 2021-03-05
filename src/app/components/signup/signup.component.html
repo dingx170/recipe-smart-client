@@ -12,19 +12,13 @@
   </div>
 </div>
 
-<div *ngIf="!validEmail">
+<div *ngIf="!validEmailandName">
   <div class="alert alert-warning" role="alert">
-    <h4 class="alert-heading">Oops! Email has been occupied</h4>
+    <h4 class="alert-heading">Oops! Email or Username has been occupied</h4>
     <p>Please use another email</p>
   </div>
 </div>
 
-<div *ngIf="!validName">
-  <div class="alert alert-warning" role="alert">
-    <h4 class="alert-heading">Oops! Looks like your username has been occupied</h4>
-    <p>Please try another username.</p>
-  </div>
-</div>
 
 <div class="signup-form">
     <form>

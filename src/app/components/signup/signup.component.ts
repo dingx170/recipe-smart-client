@@ -19,9 +19,8 @@ export class SignupComponent implements OnInit {
 
   };;
 
-  validEmail: boolean = false;
+  validEmailandName: boolean = false;
   signup_failure: boolean = false;
-  validName: boolean = true;
 
   constructor(
     private user_service: UserService,
@@ -29,15 +28,15 @@ export class SignupComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.validEmail = true;
+    this.validEmailandName = true;
     this.signup_failure= false;
-    this.validName = true;
   }
 
   singUp(): void{
+    console.log("sign method called")
     this.user_service.validateNameEmail(this.new_user.email, this.new_user.user_name)
     .subscribe(firstRes =>{
-      if(firstRes.ret_code){
+      if(!firstRes){
 
         this.user_service.addUser(this.new_user).subscribe(secondRes => {
           if(secondRes.ret_code){
@@ -50,12 +49,9 @@ export class SignupComponent implements OnInit {
           }
         })
       }
-      else if(firstRes.ret_code == -1){
-        // display message banner username or email occupied
-        this.validName = false;
-      }
+
       else{
-        this.validEmail = false;
+        this.validEmailandName = false;
       }
 
     });

@@ -27,7 +27,7 @@ export class UserService {
    * @param id
    */
   getUserById(id: number): Observable<NormalResponse>{
-    const url = `${this.base_api}/${id}`;
+    const url = `${this.base_api}/user/${id}`;
     return this.http.get<NormalResponse>(url).pipe(
       catchError(this.handleError<NormalResponse>(`getUserById id = ${id}`))
     );
@@ -39,7 +39,7 @@ export class UserService {
    * @param id
    */
   updateUser(user: IUser, id: number): Observable<SimpleResponse>{
-    let url:string = `${this.base_api}/${id}`;
+    let url:string = `${this.base_api}/user/${id}`;
     return this.http.put<SimpleResponse>(url, user, this.httpOptions).pipe(
       catchError(this.handleError<SimpleResponse>('updated user'))
     );
@@ -51,7 +51,8 @@ export class UserService {
    */
   addUser(user: IUser): Observable<SimpleResponse>{
 
-    return this.http.post<SimpleResponse>(this.base_api, user, this.httpOptions).pipe(
+    let url: string = this.base_api + "/user";
+    return this.http.post<SimpleResponse>(url, user, this.httpOptions).pipe(
       catchError(this.handleError<SimpleResponse>('add user operation failed'))
     );
   }
@@ -60,10 +61,10 @@ export class UserService {
    * Validate if given email already occupied in database
    * @param email
    */
-  validateNameEmail(email: string, username: string): Observable<SimpleResponse>{
-    let url:string = `${this.base_api}/?username=${username}&?email=${email}`;
-    return this.http.get<SimpleResponse>(url).pipe(
-      catchError(this.handleError<SimpleResponse>(`check username and email username = ${username} email = ${email}`))
+  validateNameEmail(email: string, username: string): Observable<boolean>{
+    let url:string = `${this.base_api}/validation/?username=${username}&?email=${email}`;
+    return this.http.get<boolean>(url).pipe(
+      catchError(this.handleError<boolean>(`check username and email username = ${username} email = ${email}`))
     );
   }
 
