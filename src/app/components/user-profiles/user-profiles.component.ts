@@ -16,37 +16,34 @@ export class UserProfilesComponent implements OnInit {
 
   private userid: number;
 
-  logged_in: boolean = false;
-  updated_profile: boolean = false;
+  logged_in: boolean;
+  updated_success: boolean = false;
   update_fail: boolean = false;
 
   allergy_list = Object.keys(FoodAllergy) as FoodAllergy[];
 
-
-
   constructor(
     private user_service: UserService,
-    private share_service: ShareDataService
-  ){ }
+    private share_service: ShareDataService,
+
+  ){
+      this.user = this.share_service.getData("userObj");
+      this.user = this.share_service.getData("userObj");
+      console.log(this.user);
+
+   }
 
   ngOnInit(): void {
-    this.userid  = this.share_service.getData("userid");
-    console.log("userid " + this.userid)
 
     //every time initializing this component default logged in as false;
-    this.logged_in = false;
-    this.updated_profile = false;
+    this.updated_success = false;
     this.update_fail = false;
-    // Will only display profiles after logged in. Otherwise display default content html.
-    if(this.userid){
-      this.user_service.getUserById(this.userid).subscribe(res => {
-        if(res.ret_code == 0){
-          this.user = res.user_obj;
-          this.logged_in = true;
-        }
-      });
-    }
 
+    if(this.userid == null){
+      this.logged_in = false;
+    }else{
+      this.logged_in = true;
+    }
   }
   /**
    * update user with the user object held within this component
@@ -57,7 +54,7 @@ export class UserProfilesComponent implements OnInit {
       this.user_service.updateUser(this.user, this.userid)
         .subscribe(res => {
             if(res.ret_code == 0){
-              this.updated_profile = true;
+              this.updated_success = true;
             }
             else if(res.ret_code == -1){
               this.update_fail = true;
@@ -66,20 +63,6 @@ export class UserProfilesComponent implements OnInit {
         });
     }
 
-  }
-
-  /**
-   * create user with the IUser object and update local cache in sharedata service
-   */
-  createUser(): void{
-    this.user_service.addUser(this.user).subscribe(res => {
-      if(res.ret_code == 1){
-        this.share_service.setData("userid", res.userid);
-      }
-      else if(res.ret_code == 0){
-        console.log(res.ret_msg);
-      }
-    });
   }
 
 }
