@@ -12,7 +12,7 @@ export class SignupComponent implements OnInit {
 
   @Input()
   new_user: IUser = {
-    user_name: "",
+    name: "",
     password: "",
     email: "",
     restrictions: [FoodAllergy.None],
@@ -32,9 +32,9 @@ export class SignupComponent implements OnInit {
     this.signup_failure= false;
   }
 
-  singUp(): void{
+  signUp(): void{
     console.log("sign method called")
-    this.user_service.validateNameEmail(this.new_user.email, this.new_user.user_name)
+    this.user_service.validateNameEmail(this.new_user.email, this.new_user.name)
     .subscribe(firstRes =>{
       if(!firstRes){
 
@@ -42,6 +42,7 @@ export class SignupComponent implements OnInit {
           if(secondRes.ret_code){
             // jump to sign up successful component
             this.share_service.setData("userid", secondRes.userid);
+            this.share_service.setData("userObj", secondRes.user_obj);
           }
           else{
             // display error banner on top and prompt user try again

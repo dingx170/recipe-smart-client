@@ -68,7 +68,7 @@
                   </div>
                 </div>
                 <div class="text-center">
-                  <h3>{{user.user_name}}</h3>
+                  <h3>{{user.name}}</h3>
                 </div>
                 <br>
                 <div class="text-center">
@@ -98,14 +98,14 @@
                       <div class="col-lg-6">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-username">Username</label>
-                          <input type="text" id="input-username" class="form-control" [(ngModel)]="user.user_name" value={{user.user_name}}>
+                          <input type="text" id="input-username" class="form-control" [(ngModel)]="user.name" name = "username" value={{user.name}}>
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-password">Password</label>
-                          <input type="text" id="input-password" class="form-control" [(ngModel)]="user.password" value = {{user.password}}>
+                          <input type="text" id="input-password" class="form-control" [(ngModel)]="user.password" name = "userpwd"value = {{user.password}}>
                         </div>
                       </div>
 
@@ -118,10 +118,10 @@
 
                     </div>
                   </div>
-
+                  <label class="form-control-label" for="allergies">Allergy</label>
                   <div class="col-lg-3" *ngFor="let allergy of allergy_list">
                     <form>
-                        <label class="form-control-label" for="allergies">Allergy</label>
+
                         <input type = "checkbox" [checked] = "user.restrictions.includes(allergy)" ><span>{{allergy}}</span>
                     </form>
                   </div>

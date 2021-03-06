@@ -15,6 +15,7 @@ export class UserProfilesComponent implements OnInit {
   user: IUser;
 
   private userid: number;
+  public currUser: any;
 
   logged_in: boolean;
   updated_success: boolean = false;
@@ -27,9 +28,24 @@ export class UserProfilesComponent implements OnInit {
     private share_service: ShareDataService,
 
   ){
-      this.user = this.share_service.getData("userObj");
-      this.user = this.share_service.getData("userObj");
-      console.log(this.user);
+      this.userid = this.share_service.getData("userid");
+      console.log(this.userid);
+      // this.currUser = this.share_service.getData("userObj");
+      // console.log("user detail: " + this.currUser);
+      this.user_service.getUserById(this.userid).subscribe(res=>{
+
+        console.log("res:" + JSON.stringify(res.user_obj));
+        console.log("name: " + res.user_obj.name);
+        if(res.ret_code){
+          this.user = res.user_obj;
+        }else{
+          console.log("error");
+        }
+
+      });
+
+
+
 
    }
 

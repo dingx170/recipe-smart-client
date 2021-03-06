@@ -49,11 +49,11 @@ export class UserService {
    * Add user with the given User object from the delegating component
    * @param user
    */
-  addUser(user: IUser): Observable<SimpleResponse>{
+  addUser(user: IUser): Observable<NormalResponse>{
 
     let url: string = this.base_api + "/user";
-    return this.http.post<SimpleResponse>(url, user, this.httpOptions).pipe(
-      catchError(this.handleError<SimpleResponse>('add user operation failed'))
+    return this.http.post<NormalResponse>(url, user, this.httpOptions).pipe(
+      catchError(this.handleError<NormalResponse>('add user operation failed'))
     );
   }
 
@@ -61,10 +61,11 @@ export class UserService {
    * Validate if given email already occupied in database
    * @param email
    */
-  validateNameEmail(email: string, username: string): Observable<boolean>{
-    let url:string = `${this.base_api}/validation/?username=${username}&?email=${email}`;
+  validateNameEmail(email: string, name: string): Observable<boolean>{
+    // let url:string = `${this.base_api}/validation/?name=${name}&?email=${email}`;
+    let url: string = this.base_api + "/validation/?name=" + name + "&?email=" + email;
     return this.http.get<boolean>(url).pipe(
-      catchError(this.handleError<boolean>(`check username and email username = ${username} email = ${email}`))
+      catchError(this.handleError<boolean>(`check username and email username = ${name} email = ${email}`))
     );
   }
 
