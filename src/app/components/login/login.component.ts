@@ -32,11 +32,13 @@ export class LoginComponent implements OnInit {
 
   login():void{
 
+    //login needs to get a full user object back and store it in the local cache
     this.login_service.login(this.auth).subscribe(
       res => {
 
         if(res.ret_code == 0){
           this.shared_service.setData("userid", res.userid);
+          this.shared_service.setData("userObj", res.user_obj);
           console.log(res.ret_msg);
         }
         this.login_response = res;
