@@ -8,150 +8,82 @@
         <h1 class="page-text">Tell us what you like :)</h1>
 
         <br>
+
         <div class="row">
-      
-            <div class="col-3">
-                <label class="filter-label">Meal Type</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="">
-                    <label class="form-check-label" for="flexCheckDisabled">Breakfast</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="">
-                    <label class="form-check-label" for="flexCheckCheckedDisabled">Lunch</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="">
-                    <label class="form-check-label" for="flexCheckCheckedDisabled">Dinner</label>
-                </div>
-            </div>
-
             <div class="col-2">
-                <select class="btn form-select filter-btn">
-                    <option selected>Budget &lt;</option>
-                    <option value="1">under $10</option>
-                    <option value="2">under $20</option>
-                    <option value="3">under $30</option>
-                    <option value="2">under $50</option>
-                    <option value="3">under $100</option>
-                </select>
-            </div>
-
-            <div class="col-1"></div>
-
+                <div class="form-group">
+                    <label for="mealType" class="filter-label">Meal Type</label>
+                    <select name="mealType" id="mealType" [(ngModel)]="filter.meal_type" class="form-control">
+                      <option value="{{mealType}}" *ngFor="let mealType of mealTypes">{{mealType}}</option>
+                    </select>
+                </div>    
+            </div>   
             <div class="col-2">
-                <select class="btn form-select filter-btn">
-                    <option selected>Serves #</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
+                <div class="form-group">
+                    <label for="cuisineType" class="filter-label">Cuisine Type</label>
+                    <select name="cuisineType" id="cuisineType" [(ngModel)]="filter.cuisine_type" class="form-control" >
+                        <option value="{{cuisineType}}" *ngFor="let cuisineType of cuisineTypes">{{cuisineType}}</option>
+                    </select>
+                </div>
+            </div>   
+            <div class="col-2">
+                <div class="form-group">
+                    <label for="featureType" class="filter-label">Feature Type</label>
+                    <select name="featureType" id="featureType" [(ngModel)]="filter.feature_type" class="form-control" >
+                        <option value="{{featureType}}" *ngFor="let featureType of featureTypes">{{featureType}}</option>
+                    </select>
+                </div>
             </div>
-
+            <div class="col-2">
+                <div class="form-group">
+                    <label for="budget" class="filter-label">Budget &lt; $</label>
+                    <select name="budget" id="budget" [(ngModel)]="filter.budget" class="form-control" >
+                        <option value="{{budget}}" *ngFor="let budget of budgets">${{budget}}</option>
+                    </select>
+                </div>
+            </div>   
+            <div class="col-2">
+                <div class="form-group">
+                    <label for="groupSize" class="filter-label">Group size</label>
+                    <select name="groupSize" id="groupSize" [(ngModel)]="filter.group" class="form-control" >
+                        <option value="{{groupSize}}" *ngFor="let groupSize of groupSizes">{{groupSize}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <label for="allergies" class="filter-label">Allergies</label>
+                    <select name="allergies" id="allergies" [(ngModel)]="filter.restrictions" class="form-control" multiple="multiple">
+                      <option value="{{allergy}}" *ngFor="let allergy of allergies">{{allergy}}</option>
+                    </select>
+                </div>    
+            </div>  
         </div>
 
         <br>
-        <div class="row">
-
-            <div class="col-3">
-                <label class="filter-label">Food Allergy</label>
-                
-                <div class="row">
-                    <div class="col-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label" for="flexCheckDisabled">Corn</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label" for="flexCheckCheckedDisabled">Egg</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label" for="flexCheckCheckedDisabled">Fish</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label" for="flexCheckDisabled">Meat</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label" for="flexCheckCheckedDisabled">Milk</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label" for="flexCheckCheckedDisabled">Peanut</label> 
-                        </div>
-                    </div>
-
-                    <div class="col-5">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label" for="flexCheckCheckedDisabled">Shellfish</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label" for="flexCheckDisabled">Soy</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label" for="flexCheckCheckedDisabled">Tree Nut</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label" for="flexCheckDisabled">Wheat</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <label class="form-check-label" for="flexCheckCheckedDisabled">FPIES</label>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="col-2">
-                <label class="filter-label">Cuisine Type</label>
-                <div>
-                    <select name="cuisines[]" id="cuisines" multiple="multiple" class="form-control" >
-                        <option value="{{item}}" *ngFor="let item of cuisines">{{item}}</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-1"></div>
-
-            <div class="col-2">
-                <label class="filter-label">Feature Type</label>
-                <div>
-                    <select name="allergies[]" id="features" multiple="multiple" class="form-control">
-                        <option value="{{item}}" *ngFor="let item of features">{{item}}</option>
-                    </select>
-                </div>
-            </div>
-
-        </div>
-
-        
+       
         <h1 class="page-text">Plan my meal!</h1>
         <br>
         <div class="row">
-            <div class="col-2">
-                <button type="submitbtn" class="btn btn-lg submit-btn" title="get recommended recipes for planning">Customized</button>
+            <div class="col-3">
+                <button type="submitbtn" class="btn btn-lg submit-btn" (click)="getRecipesForCustomized()" title="get recommended recipes for planning">Customized</button>
             </div>
             
-            <div class="col-6">
+            <div class="col-5">
                 <h1 class="submit-text">I wanna know the details!</h1>
             </div>
         </div>
+        <div *ngIf="gotrecipes">
+        <div class = "row" *ngFor="let index of recipelist">{{index.name}}</div>
+        </div>
+
         <br>
         <div class="row">
-            <div class="col-2">
+            <div class="col-3">
                 <button type="submitbtn" class="btn btn-lg submit-btn" title="get planned meal directly">One-Click</button>
             </div>
             
-            <div class="col-6">
+            <div class="col-5">
                 <h1 class="submit-text">I give up thinking...</h1>
             </div>
         </div>

@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { IMealplan } from '../interfaces/imealplan';
+import { IRecipe } from '../interfaces/irecipe';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MealplanService {
   hostUrl: string = 'http://localhost:8080/';
+  userId: string = '123';
+
   constructor(public http:HttpClient) { }
 
   getAllMealPlansForUserTest(){
@@ -34,6 +37,15 @@ export class MealplanService {
 
     })
 
+  }
+  getRecipesByFilter(budget: number, group: number){
+    //const httpOptions = {headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
+
+    return new Observable((observer) => {
+      this.http.get<IRecipe[]>(this.hostUrl + 'mealplan/' + this.userId + `/customization/getrecipelist?budget=${budget}&group=${group}`).subscribe((res:any) => {
+        observer.next(res);
+      });
+    })
   }
 
 }
