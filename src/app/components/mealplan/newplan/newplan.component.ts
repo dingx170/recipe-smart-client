@@ -71,7 +71,7 @@ export class NewplanComponent implements OnInit {
       this.recipelist = <IRecipe[]>data;
       this.gotrecipes = true;
       this.recipelist.forEach(element => {
-        delete element.photo;
+        // delete element.photo;
         this.mealplan.recipe_list.push({recipe: element, quantity:0});
       });
 
@@ -86,6 +86,9 @@ export class NewplanComponent implements OnInit {
     // this.mealplan.cuisine_type = this.filter.cuisine_type;
     // this.mealplan.feature_type = this.filter.feature_type;
     this.mealplan.date = new Date();
+    this.mealplan.recipe_list.forEach((element:any) =>{
+      delete element.recipe.photo;
+    });
     var rxjsData = this.mealplanService.postNewMealplan(this.mealplan);
     rxjsData.subscribe((data) => {
       console.log(data);
