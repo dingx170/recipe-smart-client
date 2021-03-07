@@ -56,4 +56,12 @@ export class MealplanService {
     })
   }
 
+  getShoppingListByMealplanID(mealplanId: string) {
+    return new Observable((observer) => {
+      this.http.get<any[]>(this.hostUrl + 'mealplan/' + this.userId + '/plans/' + mealplanId + '/shoppinglist').subscribe((res:any) => {
+        observer.next(res);
+      });
+    })
+  }
+
 }

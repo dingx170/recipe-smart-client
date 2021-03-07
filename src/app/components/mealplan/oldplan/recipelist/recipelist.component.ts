@@ -10,18 +10,7 @@ import { IRecipe } from '../../../../interfaces/irecipe'
 })
 export class RecipelistComponent implements OnInit {
 
-  public myrecipes: any[];
-  //  = [
-  //   { name: "Hot Pepper and Onion Pizza",
-  //     image: "recipe_9.jpg"
-  //   },
-  //   { name: "Beef Gyros",
-  //     image: "recipe_12.jpg"
-  //   },
-  //   { name: "Pancakes",
-  //     image: "recipe_10.jpg"
-  //   },
-  // ]
+  public myrecipes: IRecipe[];
 
   public mealplanId: string;
 
@@ -36,8 +25,6 @@ export class RecipelistComponent implements OnInit {
   getRecipeList() {
     var rxjsData = this.recipeService.getRecipeListByMealplanID(this.mealplanId);
     rxjsData.subscribe((data) => {
-      console.log("------------");
-      console.log(data);
       this.myrecipes = <IRecipe[]>data;
     })
   }
