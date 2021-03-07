@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FoodAllergy } from 'src/app/enums/food-allergy.enum';
 import { IUser } from 'src/app/interfaces/IUser';
 import { UserService} from '../../services/user.service'
-import { UserTag} from '../../enums/user-tag.enum'
+import { ShareDataService} from '../../services/share-data.service'
 
 @Component({
   selector: 'app-user-profiles',
@@ -11,41 +11,74 @@ import { UserTag} from '../../enums/user-tag.enum'
 })
 export class UserProfilesComponent implements OnInit {
 
-  user: IUser = {
-    user_name: "zhangsan",
-    password: "123",
-    email: "1234@gmail.com",
-    restrictions: [FoodAllergy.Corn, FoodAllergy.Egg],
-    userTags: [UserTag.Expert, UserTag.Chef]
+  @Input()
+  user: IUser;
 
-  };
+  private userid: number;
+  public currUser: any;
+
+  logged_in: boolean;
+  updated_success: boolean = false;
+  update_fail: boolean = false;
 
   allergy_list = Object.keys(FoodAllergy) as FoodAllergy[];
-  current_userid: number;
-
 
   constructor(
-    private user_service: UserService
-  ){ }
+    private user_service: UserService,
+    private share_service: ShareDataService,
+
+  ){
+      this.userid = this.share_service.getData("userid");
+      console.log(this.userid);
+      // this.currUser = this.share_service.getData("userObj");
+      // console.log("user detail: " + this.currUser);
+      this.user_service.getUserById(this.userid).subscribe(res=>{
+
+        console.log("res:" + JSON.stringify(res.user_obj));
+        console.log("name: " + res.user_obj.name);
+        if(res.ret_code){
+          this.user = res.user_obj;
+        }else{
+          console.log("error");
+        }
+
+      });
+
+
+
+
+   }
 
   ngOnInit(): void {
-    this.current_userid = this.user_service.getMyUserId();
-    this.user_service.getUserById(this.current_userid)
-    .subscribe(user => this.user = user);
 
+    //every time initializing this component default logged in as false;
+    this.updated_success = false;
+    this.update_fail = false;
+
+    if(this.userid == null){
+      this.logged_in = false;
+    }else{
+      this.logged_in = true;
+    }
   }
-
+  /**
+   * update user with the user object held within this component
+   */
   update():void{
-    this.user_service.updateUser(this.user, this.current_userid)
-    .subscribe();
+    if(this.userid){
+      // response from the backend needs to be structured as loginRes
+      this.user_service.updateUser(this.user, this.userid)
+        .subscribe(res => {
+            if(res.ret_code == 0){
+              this.updated_success = true;
+            }
+            else if(res.ret_code == -1){
+              this.update_fail = true;
+            }
+
+        });
+    }
+
   }
-
-  createUser(user: IUser){
-    this.user_service.addUser(user).subscribe();
-  }
-
-
-
-
 
 }

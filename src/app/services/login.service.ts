@@ -3,7 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of} from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { IAuth } from '../interfaces/auth';
-import { LoginRes } from '../interfaces/loginRes';
+import { NormalResponse } from '../interfaces/INormalResponse';
+
 
 @Injectable({
   providedIn: 'root'
@@ -24,10 +25,10 @@ export class LoginService {
    * @param auth username password combination
    *
    */
-  login(auth: IAuth): Observable<LoginRes>{
+  login(auth: IAuth): Observable<NormalResponse>{
     let url = this.base_api + "/login";
-    return this.http.post<LoginRes>(url, auth, this.httpOptions).pipe(
-      catchError(this.handleError<LoginRes>('user login failed')
+    return this.http.post<NormalResponse>(url, auth, this.httpOptions).pipe(
+      catchError(this.handleError<NormalResponse>('user login failed')
     ));
   }
 
