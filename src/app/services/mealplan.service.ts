@@ -38,11 +38,12 @@ export class MealplanService {
     })
 
   }
-  getRecipesByFilter(budget: number, group: number){
+  getRecipesByFilter(filter:any){
     //const httpOptions = {headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
-
+    
     return new Observable((observer) => {
-      this.http.get<IRecipe[]>(this.hostUrl + 'mealplan/' + this.userId + `/customization/getrecipelist?budget=${budget}&group=${group}`).subscribe((res:any) => {
+  
+      this.http.get<IRecipe[]>(this.hostUrl + 'mealplan/' + this.userId + `/customization/getrecipelist?budget=${filter.budget}&group=${filter.group}`).subscribe((res:any) => {
         observer.next(res);
       });
     })
