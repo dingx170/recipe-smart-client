@@ -4,6 +4,7 @@ import { IAuth } from 'src/app/interfaces/auth';
 import { SimpleResponse } from 'src/app/interfaces/ISimpleResponse';
 import { LoginService } from '../../services/login.service'
 import { ShareDataService } from '../../services/share-data.service'
+import { HeaderBaseComponent } from '../header-base/header-base.component'
 
 @Component({
   selector: 'app-login',
@@ -44,7 +45,8 @@ export class LoginComponent implements OnInit {
           
           console.log(res.ret_msg);
           this.isLoggedIn = true;
-          alert("Loggin Successfully");
+          HeaderBaseComponent.setLoginStatus(true);
+          alert("Logged in Successfully");
 
         }
         else{
@@ -61,6 +63,8 @@ export class LoginComponent implements OnInit {
     this.login_service.logOut();
     console.log("User logged out, states cleared");
     this.isLoggedIn = false;
+    HeaderBaseComponent.setLoginStatus(false);
+    alert("Logged out successfully.")
   }
 
 }

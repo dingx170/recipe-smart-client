@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderBaseComponent implements OnInit {
 
-  public isLogined: boolean = false;
+  public static isLoggedIn: boolean = false;
 
   constructor() { }
 
@@ -15,8 +15,8 @@ export class HeaderBaseComponent implements OnInit {
 
   }
 
-  setLoginStatus(isLogined: boolean) {
-    this.isLogined = isLogined;
+  static setLoginStatus(loginStatus: boolean) {
+    this.isLoggedIn = loginStatus;
   }
 
 
