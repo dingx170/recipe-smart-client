@@ -43,3 +43,7 @@
     font-weight: bold;
     padding-left: 20px;
 }
+
+.lightning-deal-content .product-list-item .fancy-number-group .btn-up::after, .product-swiper-list .fancy-number-group.fancy-number-group-sm .btn-up:before {
+    content: '\f067';
+}

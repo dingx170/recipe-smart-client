@@ -47,6 +47,15 @@ export class MealplanService {
       });
     })
   }
+  postNewMealplan(mealplan:any){
+    const httpOptions = {headers: new HttpHeaders({'content-Type': 'application/json' })};
+    console.log(mealplan);
+    return new Observable((observer) => {
+      this.http.post(this.hostUrl + `mealplan/${this.userId}/customization/`, mealplan, httpOptions).subscribe((res) =>{
+        observer.next(res);
+      });
+    })
+  }
 
   getRecipeListByMealplanID(mealplanId: string) {
     return new Observable((observer) => {

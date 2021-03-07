@@ -7,6 +7,7 @@ import { MealType } from '../../../enums/meal-type.enum'
 import { IMealplan } from 'src/app/interfaces/imealplan';
 import { IRecipe } from '../../../interfaces/irecipe'
 import { MealplanService } from '../../../services/mealplan.service';
+import { element } from 'protractor';
 @Component({
   selector: 'app-newplan',
   templateUrl: './newplan.component.html',
@@ -31,6 +32,18 @@ export class NewplanComponent implements OnInit {
   public groupSizes = [1, 2, 3, 4, 5];
   public budgets = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 
+  public mealplan: any = {
+    group: 0,
+    budget: 0,
+    date:0,
+    meal_type: MealType.None,
+    cuisine_type: Cuisine.None,
+    feature_type: Feature.None,
+    restrictions: [FoodAllergy.None],
+    recipe_list: []
+  }
+
+
   public filter: any = {
     group: 0,
     budget: 0,
@@ -40,10 +53,11 @@ export class NewplanComponent implements OnInit {
     restrictions: [FoodAllergy.None]
   }
 
+  // public recipequality: ;
   public recipelist: any[] = []; 
   public gotrecipes: boolean;
 
-  constructor(public recipeService: MealplanService, public route: ActivatedRoute) { }
+  constructor(public mealplanService: MealplanService, public route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.gotrecipes = false;
@@ -52,11 +66,31 @@ export class NewplanComponent implements OnInit {
   }
 
   getRecipesForCustomized(){
-    var rxjsData = this.recipeService.getRecipesByFilter(this.filter.budget,this.filter.group);
+    var rxjsData = this.mealplanService.getRecipesByFilter(this.filter.budget,this.filter.group);
     rxjsData.subscribe((data) => {
-      console.log(data);
       this.recipelist = <IRecipe[]>data;
       this.gotrecipes = true;
+      this.recipelist.forEach(element => {
+        delete element.photo;
+        this.mealplan.recipe_list.push({recipe: element, quantity:0});
+      });
+
+      console.log('meal plan: ', this.mealplan);
     }) 
   }
+
+  createMealPlan(){
+    this.mealplan.budget = this.filter.budget;
+    this.mealplan.group = this.filter.group;
+    // this.mealplan.meal_type = this.filter.meal_type;
+    // this.mealplan.cuisine_type = this.filter.cuisine_type;
+    // this.mealplan.feature_type = this.filter.feature_type;
+    this.mealplan.date = new Date();
+    var rxjsData = this.mealplanService.postNewMealplan(this.mealplan);
+    rxjsData.subscribe((data) => {
+      console.log(data);
+      alert("Success!");
+    }) 
+  }
+
 }

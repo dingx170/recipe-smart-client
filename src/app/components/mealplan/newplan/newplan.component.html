@@ -74,19 +74,29 @@
             </div>
         </div>
         <div *ngIf="gotrecipes">
-        <div class = "row" *ngFor="let index of recipelist">{{index.name}}</div>
+            <div class = "row" *ngFor="let index of mealplan.recipe_list">
+                <div class="col-3">{{index.recipe.recipe_id}}</div>
+                <div class="col-3">{{index.recipe.name}}</div>
+                <div class="col-3">{{index.recipe.cost}}</div>
+                <div class="col-3"> 
+                    <!-- <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" >
+                        <label class="form-check-label" for="inlineCheckbox1">+</label>
+                    </div> -->
+                    <div class="fancy-number-group fancy-number-group-sm">
+                        <button type="button" class="btn-down sp-main" (click)="index.quantity=index.quantity-1">-</button>
+                        <input name="p_24253" max="17" min="1" value="{{index.quantity}}" [(ngModel)]="index.quantity" type="text" readonly="">
+                        <button type="button" class="btn-up sp-main" (click)="index.quantity=index.quantity+1">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class = "row">
+                <button type="submitbtn" class="btn btn-lg submit-btn" title="confirm recipes" (click)="createMealPlan()">Confirm</button>
+            </div>
         </div>
 
         <br>
-        <div class="row">
-            <div class="col-3">
-                <button type="submitbtn" class="btn btn-lg submit-btn" title="get planned meal directly">One-Click</button>
-            </div>
-            
-            <div class="col-5">
-                <h1 class="submit-text">I give up thinking...</h1>
-            </div>
-        </div>
+       
 
     </div>
           
