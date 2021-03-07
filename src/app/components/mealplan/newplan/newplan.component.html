@@ -69,8 +69,11 @@
                 <button type="submitbtn" class="btn btn-lg submit-btn" (click)="getRecipesForCustomized()" title="get recommended recipes for planning">Customized</button>
             </div>
             
-            <div class="col-5">
+            <div class="col-2">
                 <h1 class="submit-text">I wanna know the details!</h1>
+            </div>
+            <div class="col-2">
+                <input [(ngModel)]="mealplan.budget" type="text" readonly="">
             </div>
         </div>
         <div *ngIf="gotrecipes">
@@ -84,9 +87,9 @@
                         <label class="form-check-label" for="inlineCheckbox1">+</label>
                     </div> -->
                     <div class="fancy-number-group fancy-number-group-sm">
-                        <button type="button" class="btn-down sp-main" (click)="index.quantity=index.quantity-1">-</button>
+                        <button type="button" class="btn-down sp-main" (click)="index.quantity=index.quantity-1;mealplan.budget=mealplan.budget-index.recipe.cost">-</button>
                         <input name="p_24253" max="17" min="1" value="{{index.quantity}}" [(ngModel)]="index.quantity" type="text" readonly="">
-                        <button type="button" class="btn-up sp-main" (click)="index.quantity=index.quantity+1">+</button>
+                        <button type="button" class="btn-up sp-main" (click)="index.quantity=index.quantity+1;mealplan.budget=mealplan.budget+index.recipe.cost">+</button>
                     </div>
                 </div>
             </div>

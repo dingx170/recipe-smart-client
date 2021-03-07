@@ -56,6 +56,7 @@ export class NewplanComponent implements OnInit {
   // public recipequality: ;
   public recipelist: any[] = []; 
   public gotrecipes: boolean;
+  
 
   constructor(public mealplanService: MealplanService, public route: ActivatedRoute) { }
 
@@ -80,7 +81,7 @@ export class NewplanComponent implements OnInit {
   }
 
   createMealPlan(){
-    this.mealplan.budget = this.filter.budget;
+    // this.mealplan.budget = this.filter.budget;
     this.mealplan.group = this.filter.group;
     // this.mealplan.meal_type = this.filter.meal_type;
     // this.mealplan.cuisine_type = this.filter.cuisine_type;
