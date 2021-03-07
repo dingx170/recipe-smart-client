@@ -48,4 +48,12 @@ export class MealplanService {
     })
   }
 
+  getRecipeListByMealplanID(mealplanId: string) {
+    return new Observable((observer) => {
+      this.http.get<IRecipe[]>(this.hostUrl + 'mealplan/' + this.userId + '/plans/' + mealplanId + '/recipelist').subscribe((res:any) => {
+        observer.next(res);
+      });
+    })
+  }
+
 }

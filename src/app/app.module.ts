@@ -20,8 +20,8 @@ import { UserProfilesComponent } from './components/user-profiles/user-profiles.
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { RecipeContentComponent } from './components/recipe-content/recipe-content.component';
-import { ShoppinglistComponent } from './components/mealplan/shoppinglist/shoppinglist.component';
-import { RecipelistComponent } from './components/mealplan/recipelist/recipelist.component';
+import { ShoppinglistComponent } from './components/mealplan/oldplan/shoppinglist/shoppinglist.component';
+import { RecipelistComponent } from './components/mealplan/oldplan/recipelist/recipelist.component';
 import { SignoutComponent } from './components/signout/signout.component';
 
 @NgModule({
@@ -51,7 +51,6 @@ import { SignoutComponent } from './components/signout/signout.component';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserModule,
     HttpClientModule
   ],
   providers: [],

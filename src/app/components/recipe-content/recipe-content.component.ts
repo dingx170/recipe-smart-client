@@ -17,6 +17,7 @@ export class RecipeContentComponent implements OnInit {
   }
 
   public isMember: boolean;
+  public hasAds: boolean;
 
   constructor(public route: ActivatedRoute, public recipeService: RecipeService) { }
 
@@ -26,6 +27,7 @@ export class RecipeContentComponent implements OnInit {
     })
 
     this.isMember = this.route.snapshot.data.isMember;
+    this.hasAds = this.route.snapshot.data.hasAds;
   }
 
   getRecipeContent(recipeId: string) {
