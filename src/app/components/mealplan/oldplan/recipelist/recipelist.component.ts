@@ -10,7 +10,7 @@ import { IRecipe } from '../../../../interfaces/irecipe'
 })
 export class RecipelistComponent implements OnInit {
 
-  public myrecipes: IRecipe[];
+  public myrecipes: any[];
 
   public mealplanId: string;
 
@@ -25,7 +25,8 @@ export class RecipelistComponent implements OnInit {
   getRecipeList() {
     var rxjsData = this.recipeService.getRecipeListByMealplanID(this.mealplanId);
     rxjsData.subscribe((data) => {
-      this.myrecipes = <IRecipe[]>data;
+      console.log(data);
+      this.myrecipes = <any[]>data;
     })
   }
 

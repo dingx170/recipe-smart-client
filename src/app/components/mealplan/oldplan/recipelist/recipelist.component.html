@@ -15,13 +15,13 @@
     <tbody *ngFor="let item of myrecipes; let key=index;">
         <tr>
             <th scope="row">{{ key + 1 }}</th>
-            <td>{{ item.name }}</td>
+            <td>{{ item.recipe.name }}</td>
             <td>
-                <a [routerLink]="['.', item.recipe_id]">
-                    <img src="{{item.photo}}" class="img-responsive recipe-pic" alt="Image">
+                <a [routerLink]="['.', item.recipe.recipe_id]">
+                    <img src="{{item.recipe.photo}}" class="img-responsive recipe-pic" alt="Image">
                 </a>
             </td>
-            <td>1</td>
+            <td>{{item.quantity}}</td>
             <td>
                 <input type="checkbox">
             </td>
