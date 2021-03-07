@@ -12,7 +12,12 @@ import { ShareDataService} from '../../services/share-data.service'
 export class UserProfilesComponent implements OnInit {
 
   @Input()
-  user: IUser;
+  user: IUser = {
+    name: "pikachu",
+    password: "pikachu",
+    email: "pikachu@gmail.com",
+    restrictions: [FoodAllergy.None]
+  };
 
   private userid: number;
   public currUser: any;
@@ -32,21 +37,21 @@ export class UserProfilesComponent implements OnInit {
       console.log(this.userid);
       // this.currUser = this.share_service.getData("userObj");
       // console.log("user detail: " + this.currUser);
-      this.user_service.getUserById(this.userid).subscribe(res=>{
 
-        console.log("res:" + JSON.stringify(res.user_obj));
-        console.log("name: " + res.user_obj.name);
-        if(res.ret_code){
-          this.user = res.user_obj;
-        }else{
-          console.log("error");
-        }
+      if(this.userid){
+        this.user_service.getUserById(this.userid).subscribe(res=>{
 
-      });
-
-
-
-
+          console.log("res:" + JSON.stringify(res.user_obj));
+          console.log("name: " + res.user_obj.name);
+          if(res.ret_code){
+            this.user = res.user_obj;
+          }else{
+            console.log("error");
+          }
+  
+        });
+      }
+      
    }
 
   ngOnInit(): void {
