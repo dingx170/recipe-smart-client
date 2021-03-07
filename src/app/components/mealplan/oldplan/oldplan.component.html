@@ -14,7 +14,7 @@
         <tbody *ngFor="let item of mealplans; let key=index;">
             <tr>
                 <th scope="row">{{ key + 1 }}</th>
-                <td>{{ item.date }}</td>
+                <td>{{ item.date | date:'medium'}}</td>
                 <td>{{ item.budget }}</td>
                 <td>{{ item.group }}</td>
                 <td>
