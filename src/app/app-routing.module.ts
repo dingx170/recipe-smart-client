@@ -37,7 +37,7 @@ const routes: Routes = [
     ]  
   },
   {
-    path: 'myrecipe/:userId', component: MyrecipeComponent,
+    path: 'myrecipe', component: MyrecipeComponent,
     children: [
       {path: 'newrecipe', component: NewrecipeComponent, data: {isUpdate: false}},
       {path: 'recipes', component: OldrecipeComponent},
