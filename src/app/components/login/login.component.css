@@ -21,3 +21,8 @@
     background-color:  #f58f8fff;
     color: white;
 }
+
+.logout-form {
+    width: 340px;
+    margin: 50px auto;
+}

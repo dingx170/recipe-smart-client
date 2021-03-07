@@ -4,6 +4,7 @@ import { Observable, of} from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { IAuth } from '../interfaces/auth';
 import { NormalResponse } from '../interfaces/INormalResponse';
+import { ShareDataService } from './share-data.service';
 
 
 @Injectable({
@@ -18,7 +19,8 @@ export class LoginService {
   };
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private shareDataService: ShareDataService) { }
 
   /**
    * Login service returns the user id as a temporarty token
@@ -30,6 +32,10 @@ export class LoginService {
     return this.http.post<NormalResponse>(url, auth, this.httpOptions).pipe(
       catchError(this.handleError<NormalResponse>('user login failed')
     ));
+  }
+
+  logOut():void{
+    this.shareDataService.clearData();
   }
 
   /**

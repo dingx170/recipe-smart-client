@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { IAuth } from 'src/app/interfaces/auth';
 import { SimpleResponse } from 'src/app/interfaces/ISimpleResponse';
 import { LoginService } from '../../services/login.service'
@@ -21,11 +22,12 @@ export class LoginComponent implements OnInit {
     name: "test username",
     password: "test password"
   };
-
-  login_response: SimpleResponse;
+  isLoggedIn: boolean;
 
   constructor(private login_service: LoginService,
-              private shared_service: ShareDataService) { }
+              private shared_service: ShareDataService) {
+                this.isLoggedIn = this.shared_service.getData('isLoggedIn');
+              }
 
   ngOnInit(): void {
   }
@@ -38,13 +40,27 @@ export class LoginComponent implements OnInit {
 
         if(res.ret_code == 0){
           this.shared_service.setData("userid", res.userid);
-          this.shared_service.setData("userObj", res.user_obj);
+          this.shared_service.setData("isLoggedIn", true);
+          
           console.log(res.ret_msg);
+          this.isLoggedIn = true;
+          alert("Loggin Successfully");
+
         }
-        this.login_response = res;
+        else{
+          alert(res.ret_msg);
+
+        }
+        
       }
 
     );
+  }
+
+  logOut():void{
+    this.login_service.logOut();
+    console.log("User logged out, states cleared");
+    this.isLoggedIn = false;
   }
 
 }

@@ -29,6 +29,7 @@ import { MealplanService } from './services/mealplan.service';
 import { RecipeService } from './services/recipe.service';
 import { ShareDataService } from './services/share-data.service';
 import { UserService } from './services/user.service';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { UserService } from './services/user.service';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [
     LoginService,
