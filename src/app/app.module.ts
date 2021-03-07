@@ -22,7 +22,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RecipeContentComponent } from './components/recipe-content/recipe-content.component';
 import { ShoppinglistComponent } from './components/mealplan/oldplan/shoppinglist/shoppinglist.component';
 import { RecipelistComponent } from './components/mealplan/oldplan/recipelist/recipelist.component';
-import { SignoutComponent } from './components/signout/signout.component';
+
 
 import { LoginService } from './services/login.service';
 import { MealplanService } from './services/mealplan.service';
@@ -48,8 +48,7 @@ import { CommonModule } from '@angular/common';
     LoginComponent,
     RecipeContentComponent,
     ShoppinglistComponent,
-    RecipelistComponent,
-    SignoutComponent
+    RecipelistComponent
 
   ],
   imports: [
