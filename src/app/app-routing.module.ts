@@ -7,8 +7,8 @@ import { RecipeContentComponent } from './components/recipe-content/recipe-conte
 import { MealplanComponent } from './components/mealplan/mealplan.component'
 import { NewplanComponent } from './components/mealplan/newplan/newplan.component'
 import { OldplanComponent } from './components/mealplan/oldplan/oldplan.component'
-import { RecipelistComponent } from './components/mealplan/recipelist/recipelist.component'
-import { ShoppinglistComponent } from './components/mealplan/shoppinglist/shoppinglist.component'
+import { RecipelistComponent } from './components/mealplan/oldplan/recipelist/recipelist.component'
+import { ShoppinglistComponent } from './components/mealplan/oldplan/shoppinglist/shoppinglist.component'
 
 import { UserProfilesComponent } from './components/user-profiles/user-profiles.component'
 import { SignupComponent } from './components/signup/signup.component'
@@ -21,7 +21,7 @@ import { OldrecipeComponent } from './components/myrecipe/oldrecipe/oldrecipe.co
 
 const routes: Routes = [
   {path: 'recipes', component: RecipesComponent},
-  {path: 'recipes/:recipeId', component: RecipeContentComponent, data: {isMember: false}},
+  {path: 'recipes/:recipeId', component: RecipeContentComponent, data: {isMember: false, hasAds: true}},
   {path: 'myprofile', component: UserProfilesComponent},
   {path: 'sign-up', component:SignupComponent},
   {path: 'login', component:LoginComponent},
@@ -30,8 +30,9 @@ const routes: Routes = [
     children: [
       {path: 'newplan', component: NewplanComponent},
       {path: 'history', component: OldplanComponent},
-      {path: ':id/shoppinglist', component: ShoppinglistComponent},
-      {path: ':id/recipelist', component: RecipelistComponent},
+      {path: 'history/:mealplanId/shoppinglist', component: ShoppinglistComponent},
+      {path: 'history/:mealplanId/recipelist', component: RecipelistComponent},
+      {path: 'history/:mealplanId/recipelist/:recipeId', component: RecipeContentComponent, data: {isMember: false, hasAds: false}},
       {path: '**', redirectTo: 'newplan'}
     ]  
   },
@@ -40,7 +41,7 @@ const routes: Routes = [
     children: [
       {path: 'newrecipe', component: NewrecipeComponent, data: {isUpdate: false}},
       {path: 'recipes', component: OldrecipeComponent},
-      {path: 'recipes/:recipeId', component: RecipeContentComponent, data: {isMember: true}},
+      {path: 'recipes/:recipeId', component: RecipeContentComponent, data: {isMember: true, hasAds: false}},
       {path: 'recipes/:recipeId/edit', component: NewrecipeComponent, data: {isUpdate: true}},
       {path: '**', redirectTo: 'recipes'}
     ]  
