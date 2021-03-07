@@ -66,7 +66,7 @@ export class NewplanComponent implements OnInit {
   }
 
   getRecipesForCustomized(){
-    var rxjsData = this.mealplanService.getRecipesByFilter(this.filter.budget,this.filter.group);
+    var rxjsData = this.mealplanService.getRecipesByFilter(this.filter);
     rxjsData.subscribe((data) => {
       this.recipelist = <IRecipe[]>data;
       this.gotrecipes = true;
