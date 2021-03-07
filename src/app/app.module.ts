@@ -24,6 +24,12 @@ import { ShoppinglistComponent } from './components/mealplan/oldplan/shoppinglis
 import { RecipelistComponent } from './components/mealplan/oldplan/recipelist/recipelist.component';
 import { SignoutComponent } from './components/signout/signout.component';
 
+import { LoginService } from './services/login.service';
+import { MealplanService } from './services/mealplan.service';
+import { RecipeService } from './services/recipe.service';
+import { ShareDataService } from './services/share-data.service';
+import { UserService } from './services/user.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +59,13 @@ import { SignoutComponent } from './components/signout/signout.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    LoginService,
+    MealplanService,
+    RecipeService,
+    ShareDataService,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
