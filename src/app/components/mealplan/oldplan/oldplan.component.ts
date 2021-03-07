@@ -14,7 +14,7 @@ export class OldplanComponent implements OnInit {
   constructor(
     public mealplan:MealplanService
     ) {
-      this.mealplan.getAllMealPlansForUser(123)
+      this.mealplan.getAllMealPlansForUser()
       .subscribe((result)=>{
         console.log(result);
         this.mealplans = <IMealplan[]>result;
