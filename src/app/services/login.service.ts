@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of} from 'rxjs';
+import { Observable, of, Subject} from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { IAuth } from '../interfaces/auth';
 import { NormalResponse } from '../interfaces/INormalResponse';
@@ -14,13 +14,21 @@ export class LoginService {
 
   private base_api:string = "http://localhost:8080";
 
+  isLoggedIn: boolean;
+
+  loginStatusChange: Subject<boolean> = new Subject<boolean>();
+
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
 
   constructor(private http: HttpClient,
-              private shareDataService: ShareDataService) { }
+              private shareDataService: ShareDataService) { 
+                this.loginStatusChange.subscribe((value)=>{
+                  this.isLoggedIn = value;
+                });
+              }
 
   /**
    * Login service returns the user id as a temporarty token
@@ -36,6 +44,10 @@ export class LoginService {
 
   logOut():void{
     this.shareDataService.clearData();
+  }
+
+  changeLoginStatus(state: boolean){
+    this.loginStatusChange.next(state);
   }
 
   /**

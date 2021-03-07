@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
           
           console.log(res.ret_msg);
           this.isLoggedIn = true;
+          this.login_service.changeLoginStatus(true);
           HeaderBaseComponent.setLoginStatus(true);
           alert("Logged in Successfully");
 
