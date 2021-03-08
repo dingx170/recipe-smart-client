@@ -22,9 +22,6 @@ export class OldplanComponent implements OnInit {
       })
      }
 
-  // ngOnInit(): void {
-  //   this.mealplans = this.mealplan.getAllMealPlansForUserTest();
-  // }
 
   ngOnInit(): void {}
 
