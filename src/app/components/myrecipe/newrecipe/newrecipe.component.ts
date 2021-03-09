@@ -23,7 +23,7 @@ export class NewrecipeComponent implements OnInit {
   public groupSizes = [1, 2, 3, 4, 5];
   public budgets = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 
-  public recipe: any = {
+  public recipe: IRecipe = {
     recipe_id: 0,
     name: '', 
     member_id: 1, 
@@ -129,7 +129,7 @@ export class NewrecipeComponent implements OnInit {
   getRecipeContent(recipeId: string) {
     var rxjsData = this.recipeService.getRecipeByID(recipeId);
     rxjsData.subscribe((data) => {
-      this.recipe = data;
+      this.recipe = <IRecipe>data;
     })    
   }
 }
