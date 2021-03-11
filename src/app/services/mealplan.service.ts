@@ -16,20 +16,7 @@ export class MealplanService {
 
   constructor(public http:HttpClient, public shareDataService: ShareDataService) { }
 
-  getAllMealPlansForUserTest(){
-    return [
-      {date: "02/15/2021 05:00pm"},
-      {date: "01/21/2021 03:21pm"},
-      {date: "01/15/2021 10:05am"},
-      {date: "12/20/2021 07:10pm"},
-      {date: "12/11/2021 06:16pm"},
-      {date: "11/07/2021 03:00pm"},
-      {date: "10/05/2021 05:00pm"},
-      {date: "10/01/2021 06:16pm"},
-      {date: "09/15/2021 05:00pm"},
-      {date: "09/21/2021 03:21pm"}
-    ];
-  }
+
 
   getAllMealPlansForUser(){
     this.userId = this.shareDataService.getData('userid');

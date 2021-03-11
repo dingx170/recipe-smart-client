@@ -15,16 +15,6 @@ import { element } from 'protractor';
 })
 export class NewplanComponent implements OnInit {
 
-  
-  // public allergies: string[] = [
-  //   "Corn", "Egg", "Fish", "Meat", "Milk", "Peanut", "Shellfish", "Soy", "TreeNut", "Wheat", "FPIES"
-  // ]
-  // public cuisines: string[] = [
-  //   "-- Options --", "Chinese", "Mexican", "Italian", "Japanese", "Greek", "French", "Thai", "Spanish", "Indian", "Mediterranean"
-  // ]
-  // public features: string[] = [
-  //   "-- Options --", "MeatLover", "Vegetarian", "LowCarb", "Vegan"
-  // ]
   public allergies = Object.keys(FoodAllergy);
   public cuisineTypes = Object.keys(Cuisine);
   public featureTypes = Object.keys(Feature);
@@ -87,10 +77,11 @@ export class NewplanComponent implements OnInit {
     // this.mealplan.meal_type = this.filter.meal_type;
     // this.mealplan.cuisine_type = this.filter.cuisine_type;
     // this.mealplan.feature_type = this.filter.feature_type;
+    this.gotrecipes = false;
     this.mealplan.date = new Date();
-    // this.mealplan.recipe_list.forEach((element:any) =>{
-    //   delete element.recipe.photo;
-    // });
+    this.mealplan.recipe_list.forEach((element:any) =>{
+      delete element.recipe.photo;
+    });
     var rxjsData = this.mealplanService.postNewMealplan(this.mealplan);
     rxjsData.subscribe((data) => {
       console.log(data);
