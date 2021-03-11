@@ -12,7 +12,8 @@ import { NormalResponse } from '../interfaces/INormalResponse';
 })
 export class UserService {
 
-  private base_api:string = "http://localhost:8080"
+  //private base_api:string = "http://localhost:8080"
+  private base_api:string = "/"
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
