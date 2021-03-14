@@ -37,7 +37,7 @@ export class LoginService {
    *
    */
   login(auth: IAuth): Observable<NormalResponse>{
-    let url = this.base_api + "/login";
+    let url = this.base_api + "api/login";
     return this.http.post<NormalResponse>(url, auth, this.httpOptions).pipe(
       catchError(this.handleError<NormalResponse>('user login failed')
     ));
