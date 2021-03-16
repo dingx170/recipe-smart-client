@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { IRecipe } from '../interfaces/irecipe';
-import { ShareDataService } from './share-data.service';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +11,9 @@ export class RecipeService {
 
   // hostUrl: string = 'http://localhost:8080/api/';
   hostUrl: string = '/api/';
-  userId: number;
   
-  constructor(public http: HttpClient, public shareDataService: ShareDataService) { }
+  
+  constructor(public http: HttpClient) { }
 
   getAllRecipes() {
     return new Observable((observer) => {
@@ -31,11 +31,10 @@ export class RecipeService {
     })
   }
 
-  getRecipesByMemberID() {
-    this.userId = this.shareDataService.getData('userid');
+  getRecipesByMemberID(userId: number) {
 
     return new Observable((observer) => {
-      this.http.get<IRecipe[]>(this.hostUrl + 'myrecipes/' + this.userId).subscribe((res:any) => {
+      this.http.get<IRecipe[]>(this.hostUrl + 'myrecipes/' + userId).subscribe((res:any) => {
         observer.next(res);
       });
     })
@@ -49,24 +48,24 @@ export class RecipeService {
     })
   }
 
-  postNewRecipe(recipe: any) {
+  postNewRecipe(recipe: any, userId: number) {
     const httpOptions = {headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
 
     return new Observable((observer) => {
-      this.userId = this.shareDataService.getData('userid');
-      recipe.member_id = this.userId;
-      this.http.post(this.hostUrl + 'myrecipes/' + this.userId, recipe, httpOptions).subscribe((res) => {
+      
+      recipe.member_id = userId;
+      this.http.post(this.hostUrl + 'myrecipes/' + userId, recipe, httpOptions).subscribe((res) => {
         observer.next(res);
       });
     })
   }
 
-  updateOneRecipe(recipe: any) {
+  updateOneRecipe(recipe: any, userId: number) {
     const httpOptions = {headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
 
     return new Observable((observer) => {
-      this.userId = this.shareDataService.getData('userid');
-      this.http.put(this.hostUrl + 'myrecipes/' + this.userId + '/' + recipe.recipe_id, recipe, httpOptions).subscribe((res) => {
+      
+      this.http.put(this.hostUrl + 'myrecipes/' + userId + '/' + recipe.recipe_id, recipe, httpOptions).subscribe((res) => {
         observer.next(res);
       });
     })

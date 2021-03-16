@@ -7,6 +7,7 @@ import { MealType } from '../../../enums/meal-type.enum'
 import { RecipeTag } from '../../../enums/recipe-tag.enum'
 import { IRecipe } from '../../../interfaces/irecipe'
 import { RecipeService } from '../../../services/recipe.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-newrecipe',
@@ -45,11 +46,22 @@ export class NewrecipeComponent implements OnInit {
   public imagePath: string ="";
   public imgURL: any = "";
   public isUpdate: boolean;
+  public userId: number;
 
-  constructor(public recipeService: RecipeService, public route: ActivatedRoute) { }
+  constructor(public recipeService: RecipeService, 
+              public route: ActivatedRoute,
+              public authService: AuthService) { }
 
   ngOnInit(): void {
     this.isUpdate = this.route.snapshot.data.isUpdate;
+
+    //added getSession to get user_id
+    this.authService.getSession().subscribe(
+      data =>{
+        this.userId = data.user_id;
+        console.log(JSON.stringify(data));
+      }
+    );
 
     if (this.isUpdate) {
       this.route.params.subscribe((value) => {
@@ -92,7 +104,7 @@ export class NewrecipeComponent implements OnInit {
     this.recipe.date = new Date();
     this.recipe.unit_cost = Math.ceil(this.recipe.cost / this.recipe.group);
 
-    var rxjsData = this.recipeService.postNewRecipe(this.recipe);
+    var rxjsData = this.recipeService.postNewRecipe(this.recipe, this.userId);
     rxjsData.subscribe((data) => {
       console.log(data);
       alert("Success!");
@@ -103,7 +115,7 @@ export class NewrecipeComponent implements OnInit {
     this.recipe.date = new Date();
     this.recipe.unit_cost = Math.ceil(this.recipe.cost / this.recipe.group);
 
-    var rxjsData = this.recipeService.updateOneRecipe(this.recipe);
+    var rxjsData = this.recipeService.updateOneRecipe(this.recipe, this.userId);
     rxjsData.subscribe((data) => {
       console.log(data);
       alert("Success!");

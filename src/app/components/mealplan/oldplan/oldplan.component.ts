@@ -31,7 +31,7 @@ export class OldplanComponent implements OnInit {
             console.log(result);
             this.mealplans = <IMealplan[]>result;
             console.log(this.mealplans);
-      })
+        })
       }
 
     );
