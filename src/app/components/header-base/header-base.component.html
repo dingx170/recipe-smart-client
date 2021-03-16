@@ -1,7 +1,7 @@
 <div class="row header-container">
 
     <div class="col-2 align-center">
-        <div ngbDropdown *ngIf="isLoggedIn">
+        <div ngbDropdown >
             <i class="btn btn-outline-primary" id="nav-icon" ngbDropdownToggle></i>
             <div ngbDropdownMenu aria-labelledby="navigation" class="option-container">
                 <button ngbDropdownItem class="option-font" [routerLink]="['./recipes']">Home Page</button>
@@ -28,10 +28,10 @@
     <div class="col-1 align-center"></div>
 
     <div class="col-2 align-center">
-        <button class="btn login-btn" *ngIf="!isLoggedIn">
+        <button class="btn login-btn">
             <a class="nav-link active" [routerLink]="['./login']">Login</a>
         </button>
-        <button class="btn login-btn" *ngIf="isLoggedIn">
+        <button class="btn login-btn">
             <a class="nav-link active" [routerLink]="['./login']">Log out</a>
         </button>
     </div>
