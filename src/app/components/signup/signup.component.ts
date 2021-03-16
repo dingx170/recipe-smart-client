@@ -12,9 +12,11 @@ export class SignupComponent implements OnInit {
 
   @Input()
   new_user: IUser = {
+    user_id: -1,
     name: "",
     password: "",
     email: "",
+    ssoId: "",
     restrictions: [FoodAllergy.None],
 
   };;

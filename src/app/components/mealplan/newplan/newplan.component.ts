@@ -8,6 +8,7 @@ import { IMealplan } from 'src/app/interfaces/imealplan';
 import { IRecipe } from '../../../interfaces/irecipe'
 import { MealplanService } from '../../../services/mealplan.service';
 import { element } from 'protractor';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-newplan',
   templateUrl: './newplan.component.html',
@@ -46,18 +47,28 @@ export class NewplanComponent implements OnInit {
   // public recipequality: ;
   public recipelist: any[] = []; 
   public gotrecipes: boolean;
-  
+  public userId: number; // might be problematic
 
-  constructor(public mealplanService: MealplanService, public route: ActivatedRoute) { }
+  constructor(public mealplanService: MealplanService, 
+              public route: ActivatedRoute,
+              public authService: AuthService) { }
 
   ngOnInit(): void {
     this.gotrecipes = false;
     // this.recipelist = [{ name: "Hot Pepper and Onion Pizza"},
     //                     { name: "Beef Gyros"},]
+    this.authService.getSession().subscribe(
+      data =>{
+        this.userId = data.user_id;
+        console.log("Get response: " + JSON.stringify(data));
+      }
+
+    );
+
   }
 
   getRecipesForCustomized(){
-    var rxjsData = this.mealplanService.getRecipesByFilter(this.filter);
+    var rxjsData = this.mealplanService.getRecipesByFilter(this.filter, this.userId);
     this.mealplan.recipe_list = [];
     rxjsData.subscribe((data) => {
       this.recipelist = <IRecipe[]>data;
@@ -82,7 +93,7 @@ export class NewplanComponent implements OnInit {
     this.mealplan.recipe_list.forEach((element:any) =>{
       delete element.recipe.photo;
     });
-    var rxjsData = this.mealplanService.postNewMealplan(this.mealplan);
+    var rxjsData = this.mealplanService.postNewMealplan(this.mealplan, this.userId);
     rxjsData.subscribe((data) => {
       console.log(data);
       alert("Success!");

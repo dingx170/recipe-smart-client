@@ -5,30 +5,29 @@ import { IMealplan } from '../interfaces/imealplan';
 import { IRecipe } from '../interfaces/irecipe';
 import { FoodAllergy } from '../enums/food-allergy.enum'
 import { ShareDataService } from './share-data.service';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MealplanService {
-  //hostUrl: string = 'http://localhost:8080/';
-  hostUrl: string = '/';
-  userId: string;
+  // hostUrl: string = 'http://localhost:8080/api/';
+  hostUrl: string = '/api/';
+  // userId: number;
 
-  constructor(public http:HttpClient, public shareDataService: ShareDataService) { }
-
-
-
-  getAllMealPlansForUser(){
-    this.userId = this.shareDataService.getData('userid');
+  constructor(public http:HttpClient){}
+        
+  getAllMealPlansForUser(userId: number){
+    // this.userId = this.shareDataService.getData('userid');
     return new Observable((observer) => {
-      this.http.get<IMealplan[]>(this.hostUrl + 'mealplan/' + this.userId).subscribe((res:any) =>{
+      this.http.get<IMealplan[]>(this.hostUrl + 'mealplan/' + userId).subscribe((res:any) =>{
       observer.next(res);
       });
 
     })
 
   }
-  getRecipesByFilter(filter:any){
+  getRecipesByFilter(filter:any, userId: number){
     //const httpOptions = {headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
     console.log(filter);
     let params = new HttpParams();
@@ -40,38 +39,38 @@ export class MealplanService {
     filter.restrictions.forEach((element:any) => {
         params = params.append(`restrictions[]`, element);
     });
-    this.userId = this.shareDataService.getData('userid');
+    // this.userId = this.shareDataService.getData('userid');
     return new Observable((observer) => {
   
-      this.http.get<IRecipe[]>(this.hostUrl + 'mealplan/' + this.userId + '/customization/getrecipelist', {params:params}).subscribe((res:any) => {
+      this.http.get<IRecipe[]>(this.hostUrl + 'mealplan/' + userId + '/customization/getrecipelist', {params:params}).subscribe((res:any) => {
         observer.next(res);
       });
     })
   }
-  postNewMealplan(mealplan:any){
+  postNewMealplan(mealplan:any, userId: number){
     const httpOptions = {headers: new HttpHeaders({'content-Type': 'application/json' })};
     console.log(mealplan);
-    this.userId = this.shareDataService.getData('userid');
+    // this.userId = this.shareDataService.getData('userid');
     return new Observable((observer) => {
-      this.http.post(this.hostUrl + `mealplan/${this.userId}/customization/`, mealplan, httpOptions).subscribe((res) =>{
+      this.http.post(this.hostUrl + 'mealplan/' + userId + '/customization/', mealplan, httpOptions).subscribe((res) =>{
         observer.next(res);
       });
     })
   }
 
-  getRecipeListByMealplanID(mealplanId: string) {
-    this.userId = this.shareDataService.getData('userid');
+  getRecipeListByMealplanID(mealplanId: string, userId: number) {
+    // this.userId = this.shareDataService.getData('userid');
     return new Observable((observer) => {
-      this.http.get<IRecipe[]>(this.hostUrl + 'mealplan/' + this.userId + '/plans/' + mealplanId + '/recipelist').subscribe((res:any) => {
+      this.http.get<IRecipe[]>(this.hostUrl + 'mealplan/' + userId + '/plans/' + mealplanId + '/recipelist').subscribe((res:any) => {
         observer.next(res);
       });
     })
   }
 
-  getShoppingListByMealplanID(mealplanId: string) {
-    this.userId = this.shareDataService.getData('userid');
+  getShoppingListByMealplanID(mealplanId: string, userId: number) {
+    // this.userId = this.shareDataService.getData('userid');
     return new Observable((observer) => {
-      this.http.get<any[]>(this.hostUrl + 'mealplan/' + this.userId + '/plans/' + mealplanId + '/shoppinglist').subscribe((res:any) => {
+      this.http.get<any[]>(this.hostUrl + 'mealplan/' + userId + '/plans/' + mealplanId + '/shoppinglist').subscribe((res:any) => {
         observer.next(res);
       });
     })

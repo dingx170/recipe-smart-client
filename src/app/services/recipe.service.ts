@@ -9,9 +9,9 @@ import { ShareDataService } from './share-data.service';
 })
 export class RecipeService {
 
-  //hostUrl: string = 'http://localhost:8080/';
-  hostUrl: string = '/';
-  userId: string;
+  // hostUrl: string = 'http://localhost:8080/api/';
+  hostUrl: string = '/api/';
+  userId: number;
   
   constructor(public http: HttpClient, public shareDataService: ShareDataService) { }
 

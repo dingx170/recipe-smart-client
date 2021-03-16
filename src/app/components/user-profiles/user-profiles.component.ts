@@ -13,9 +13,11 @@ export class UserProfilesComponent implements OnInit {
 
   @Input()
   user: IUser = {
+    user_id: -1,
     name: "pikachu",
     password: "pikachu",
     email: "pikachu@gmail.com",
+    ssoId: "",
     restrictions: [FoodAllergy.None]
   };
 

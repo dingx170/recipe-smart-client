@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IMealplan } from 'src/app/interfaces/imealplan';
+import { AuthService } from 'src/app/services/auth.service';
 
 import { MealplanService } from '../../../services/mealplan.service';
 
@@ -11,18 +12,31 @@ import { MealplanService } from '../../../services/mealplan.service';
 export class OldplanComponent implements OnInit {
 
   public mealplans: IMealplan[] = [];
-  constructor(
-    public mealplan:MealplanService
-    ) {
-      this.mealplan.getAllMealPlansForUser()
+  public userId: number;
+
+  
+  constructor(public mealplan:MealplanService, public authService: AuthService){}
+
+
+  ngOnInit(): void {
+    
+    this.authService.getSession().subscribe(
+      data =>{
+        this.userId = data.user_id;
+        console.log("Get response: " + JSON.stringify(data));
+      }
+
+    );
+
+    console.log("this is my user id: " + this.userId);
+
+    this.mealplan.getAllMealPlansForUser(this.userId)
       .subscribe((result)=>{
         console.log(result);
         this.mealplans = <IMealplan[]>result;
         console.log(this.mealplans);
       })
-     }
 
-
-  ngOnInit(): void {}
+  }
 
 }
