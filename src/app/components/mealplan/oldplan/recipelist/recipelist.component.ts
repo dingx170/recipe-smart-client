@@ -26,11 +26,12 @@ export class RecipelistComponent implements OnInit {
       data =>{
         this.userId = data.user_id;
         console.log("Get response: " + JSON.stringify(data));
+        this.mealplanId = this.route.snapshot.params['mealplanId'];
+        this.getRecipeList();
       }
 
     );
-    this.mealplanId = this.route.snapshot.params['mealplanId'];
-    this.getRecipeList();
+    
 
   }
 

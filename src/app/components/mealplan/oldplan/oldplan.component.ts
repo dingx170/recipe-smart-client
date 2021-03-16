@@ -19,24 +19,22 @@ export class OldplanComponent implements OnInit {
 
 
   ngOnInit(): void {
-    
+    console.log(this.userId + " init history");
     this.authService.getSession().subscribe(
       data =>{
         this.userId = data.user_id;
         console.log("Get response: " + JSON.stringify(data));
+        console.log("this is my user id: " + this.userId);
+
+        this.mealplan.getAllMealPlansForUser(this.userId)
+          .subscribe((result)=>{
+            console.log(result);
+            this.mealplans = <IMealplan[]>result;
+            console.log(this.mealplans);
+      })
       }
 
     );
-
-    console.log("this is my user id: " + this.userId);
-
-    this.mealplan.getAllMealPlansForUser(this.userId)
-      .subscribe((result)=>{
-        console.log(result);
-        this.mealplans = <IMealplan[]>result;
-        console.log(this.mealplans);
-      })
-
   }
 
 }

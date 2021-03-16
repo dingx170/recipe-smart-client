@@ -68,6 +68,7 @@ export class NewplanComponent implements OnInit {
   }
 
   getRecipesForCustomized(){
+    console.log("userid" + this.userId);
     var rxjsData = this.mealplanService.getRecipesByFilter(this.filter, this.userId);
     this.mealplan.recipe_list = [];
     rxjsData.subscribe((data) => {
@@ -83,6 +84,7 @@ export class NewplanComponent implements OnInit {
   }
 
   createMealPlan(){
+  
     // this.mealplan.budget = this.filter.budget;
     this.mealplan.group = this.filter.group;
     // this.mealplan.meal_type = this.filter.meal_type;

@@ -26,12 +26,14 @@ export class ShoppinglistComponent implements OnInit {
       data =>{
         this.userId = data.user_id;
         console.log("Get response: " + JSON.stringify(data));
+        console.log("user " + this.userId + " getting shoppinglist");
+        this.mealplanId = this.route.snapshot.params['mealplanId'];
+        this.getShoppingList();
       }
 
     );
 
-    this.mealplanId = this.route.snapshot.params['mealplanId'];
-    this.getShoppingList();
+    
   }
 
   getShoppingList() {
