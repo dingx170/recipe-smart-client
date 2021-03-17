@@ -103,4 +103,9 @@
 
 .input-container {
     width: 200px;
+    border: 2px solid rgb(231, 229, 221);
+    border-radius: 5%;
+    font-size: 30px;
+    color: rgb(228, 176, 6); 
+    font-weight: bold;
 }

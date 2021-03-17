@@ -86,7 +86,7 @@
                             <img src="{{item.recipe.photo}}" class="img-responsive recipe-pic" alt="Image">
                           
                         </td>
-                        <td><h4>{{item.recipe.cost}}</h4></td>
+                        <td><h4>${{item.recipe.cost}}</h4></td>
                         <td>
                             
                             <button type="button" class="btn-down sp-main count-btn btn-sm" (click)="item.quantity=item.quantity-1;mealplan.budget=mealplan.budget-item.recipe.cost">-</button>
@@ -104,7 +104,7 @@
                 <label for="name" class="subtitle-text">Total Cost</label>
             </div>
             <div class = "row-fluid text-center">
-                <input type="text" name="name" id="name" class="input-container" [(ngModel)]="mealplan.budget" class="readonly-input"readonly="">
+                <input type="text" name="name" id="name" class="input-container text-center" [(ngModel)]="mealplan.budget" class="readonly-input"readonly="">
             </div>
             <hr>
             <div class = "row">
