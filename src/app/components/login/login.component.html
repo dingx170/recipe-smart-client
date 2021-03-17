@@ -20,18 +20,19 @@
     <div class="login-form">
         <form>
             <h2 class="text-center">Log in</h2>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <input type="text" class="form-control" placeholder="Username" required="required"
                 [(ngModel)]="auth.name" name="username">
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" placeholder="Password" required="required"
                 [(ngModel)]="auth.password" name = "password">
-            </div>
+            </div> -->
             <br>
             <div class="form-group">
-                <button type="submit" class="btn btn-block" (click)="login()">Log in</button>
-                <a role="button" class="btn btn-block" href="/auth/google">Log in Google</a>
+                <!-- <button type="submit" class="btn btn-block" (click)="login()">Log in</button> -->
+                <a role="button" class="btn btn-block" href="/auth/google">Login with Google Creditentials</a>
+                <a role="button" class="btn btn-block" href="/logout">Log Out</a>
             </div>
     
         </form>
