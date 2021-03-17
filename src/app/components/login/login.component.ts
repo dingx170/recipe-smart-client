@@ -29,6 +29,9 @@ export class LoginComponent implements OnInit {
 
   constructor(public authService: AuthService) {
     
+  } 
+
+  ngOnInit(): void {
     this.authService.getStatus().subscribe(res => {
       console.log("/status:" + res); 
       console.log("/status type:" + typeof(res));
@@ -40,9 +43,6 @@ export class LoginComponent implements OnInit {
         })
       }
     });
-  } 
-
-  ngOnInit(): void {
   }
 
   // login():void{
