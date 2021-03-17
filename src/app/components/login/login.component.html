@@ -20,8 +20,8 @@
             <br>
             <div class="form-group">
                 <!-- <button type="submit" class="btn btn-block" (click)="login()">Log in</button> -->
-                <a role="button" class="btn btn-block" href="/auth/google">Login with Google Creditentials</a>
-                <a role="button" class="btn btn-block" href="/logout">Log Out</a>
+                <a *ngIf="!isLoggedIn" role="button" class="btn btn-block" href="/auth/google">Google Login</a>
+                <a *ngIf="isLoggedIn" role="button" class="btn btn-block" href="/logout">Log Out</a>
             </div>
     
         </form>

@@ -25,7 +25,22 @@ export class LoginComponent implements OnInit {
   //   password: "test password"
   // };
 
-  constructor() {}
+  isLoggedIn: boolean = false;
+
+  constructor(public authService: AuthService) {
+    
+    this.authService.getStatus().subscribe(res => {
+      console.log("/status:" + res); 
+      console.log("/status type:" + typeof(res));
+      if(res){
+        this.authService.getSession().subscribe(data => {
+          if(data.user_id){
+            this.isLoggedIn = true; 
+          }
+        })
+      }
+    });
+  } 
 
   ngOnInit(): void {
   }
