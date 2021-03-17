@@ -70,4 +70,16 @@ export class RecipeService {
       });
     })
   }
+
+  deleteOneRecipe(recipe: any, userId: number) {
+    const httpOptions = {headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
+
+    return new Observable((observer) => {
+      
+      this.http.delete(this.hostUrl + 'myrecipes/' + userId + '/' + recipe.recipe_id, httpOptions).subscribe((res) => {
+        observer.next(res);
+      });
+    })
+  }
+
 }

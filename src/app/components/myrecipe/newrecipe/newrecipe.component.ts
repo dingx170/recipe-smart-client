@@ -122,6 +122,14 @@ export class NewrecipeComponent implements OnInit {
     }) 
   }
 
+  deleteRecipe() {
+    var rxjsData = this.recipeService.deleteOneRecipe(this.recipe, this.userId);
+    rxjsData.subscribe((data) => {
+      console.log(data);
+      alert("Success!");
+    })
+  }
+
   addStep() {
     this.recipe.steps.push({ step: '' });
   }
