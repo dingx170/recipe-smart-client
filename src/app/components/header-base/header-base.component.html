@@ -4,6 +4,9 @@
         <div ngbDropdown >
             <i class="btn btn-outline-primary" id="nav-icon" ngbDropdownToggle></i>
             <div ngbDropdownMenu aria-labelledby="navigation" class="option-container">
+                <button *ngIf= "isLoggedIn" ngbDropdownItem class="option-font" [routerLink]="['./logout']">Sign Out</button>
+                <button *ngIf= "!isLoggedIn"ngbDropdownItem class="option-font" [routerLink]="['./login']">Sign In</button>
+                <div class="dropdown-divider option-divider"></div>
                 <button ngbDropdownItem class="option-font" [routerLink]="['./recipes']">Home Page</button>
                 <div class="dropdown-divider option-divider"></div>
                 <button ngbDropdownItem class="option-font" [routerLink]="['./myprofile']">My Profile</button>
@@ -11,6 +14,8 @@
                 <button ngbDropdownItem class="option-font" [routerLink]="['./myrecipe']">My Recipe</button>
                 <div class="dropdown-divider option-divider"></div>
                 <button ngbDropdownItem class="option-font" [routerLink]="['./mealplan']">Meal Planner</button>
+                <!-- <div class="dropdown-divider option-divider"></div> -->
+                
             </div>
         </div>
     </div>
@@ -27,13 +32,13 @@
 
     <div class="col-1 align-center"></div>
 
-    <div class="col-2 align-center">
+    <!-- <div class="col-2 align-center">
         <button class="btn login-btn">
             <a class="nav-link active" [routerLink]="['./login']">Login</a>
         </button>
         <button class="btn login-btn">
             <a class="nav-link active" [routerLink]="['./login']">Log out</a>
         </button>
-    </div>
+    </div> -->
 
 </div>
