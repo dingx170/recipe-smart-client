@@ -18,4 +18,8 @@ export class AuthService {
   getSession(): Observable<IUser> {
     return this.http.get<IUser>(this.base_url);
   }
+
+  getStatus(): Observable<string> {
+    return this.http.get<string>("/loggedIn");
+  }
 }

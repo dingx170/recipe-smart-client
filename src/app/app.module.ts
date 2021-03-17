@@ -17,7 +17,6 @@ import { MyrecipeComponent } from './components/myrecipe/myrecipe.component';
 import { OldrecipeComponent } from './components/myrecipe/oldrecipe/oldrecipe.component';
 import { NewrecipeComponent } from './components/myrecipe/newrecipe/newrecipe.component';
 import { UserProfilesComponent } from './components/user-profiles/user-profiles.component';
-import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { RecipeContentComponent } from './components/recipe-content/recipe-content.component';
 import { ShoppinglistComponent } from './components/mealplan/oldplan/shoppinglist/shoppinglist.component';
@@ -44,7 +43,6 @@ import { CommonModule } from '@angular/common';
     OldrecipeComponent,
     NewrecipeComponent,
     UserProfilesComponent,
-    SignupComponent,
     LoginComponent,
     RecipeContentComponent,
     ShoppinglistComponent,

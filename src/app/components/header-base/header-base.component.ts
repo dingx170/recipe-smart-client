@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -9,20 +10,26 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class HeaderBaseComponent implements OnInit {
 
-  public isLoggedIn: boolean = false;
-  //test :boolean = false;
+  isLoggedIn: boolean = false;
+  private userId: number;
 
-
-
-
-  constructor(private loginService: LoginService) { 
-    this.loginService.loginStatusChange.subscribe(value=>{
-      this.isLoggedIn = value;
-    });
+  constructor(public authService: AuthService) {
+    console.log("app.component.ts: " + this.isLoggedIn); 
+    this.authService.getStatus().subscribe(res => {
+      console.log("/status:" + res); 
+      console.log("/status type:" + typeof(res));
+      if(res){
+        this.authService.getSession().subscribe(data => {
+          if(data.user_id){
+            this.isLoggedIn = true; 
+          }
+        })
+      }
+    }) 
+    
   }
 
   ngOnInit(): void {
-
   }
 
   static setLoginStatus(loginStatus: boolean) {

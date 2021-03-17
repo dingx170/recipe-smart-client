@@ -3,6 +3,7 @@ import { FoodAllergy } from 'src/app/enums/food-allergy.enum';
 import { IUser } from 'src/app/interfaces/IUser';
 import { UserService} from '../../services/user.service'
 import { ShareDataService} from '../../services/share-data.service'
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-user-profiles',
@@ -20,7 +21,7 @@ export class UserProfilesComponent implements OnInit {
     restrictions: [FoodAllergy.None]
   };
 
-  private userid: number;
+  public userid: number;
   public currUser: any;
 
   logged_in: boolean = true;
@@ -31,27 +32,37 @@ export class UserProfilesComponent implements OnInit {
 
   constructor(
     private user_service: UserService,
-    private share_service: ShareDataService,
+    private authService: AuthService,
 
   ){
-      this.userid = this.share_service.getData("userid");
-      console.log(this.userid);
-      // this.currUser = this.share_service.getData("userObj");
-      // console.log("user detail: " + this.currUser);
-
-      if(this.userid){
-        this.user_service.getUserById(this.userid).subscribe(res=>{
-
-          console.log("res:" + JSON.stringify(res.user_obj));
-          console.log("name: " + res.user_obj.name);
-          if(res.ret_code){
-            this.user = res.user_obj;
+      this.authService.getSession().subscribe(
+        data =>{
+          this.user = data;
+          if(this.user.user_id == -1){
+            this.logged_in = false;
           }else{
-            console.log("error");
+            this.logged_in = true;
           }
+        }
+      );
+      // this.userid = this.share_service.getData("userid");
+      // console.log(this.userid);
+      // // this.currUser = this.share_service.getData("userObj");
+      // // console.log("user detail: " + this.currUser);
+
+      // if(this.userid){
+      //   this.user_service.getUserById(this.userid).subscribe(res=>{
+
+      //     console.log("res:" + JSON.stringify(res.user_obj));
+      //     console.log("name: " + res.user_obj.name);
+      //     if(res.ret_code){
+      //       this.user = res.user_obj;
+      //     }else{
+      //       console.log("error");
+      //     }
   
-        });
-      }
+      //   });
+      // }
       
    }
 
@@ -61,11 +72,7 @@ export class UserProfilesComponent implements OnInit {
     this.updated_success = false;
     this.update_fail = false;
 
-    if(this.userid == null){
-      this.logged_in = false;
-    }else{
-      this.logged_in = true;
-    }
+    
   }
   /**
    * update user with the user object held within this component

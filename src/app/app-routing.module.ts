@@ -11,7 +11,7 @@ import { RecipelistComponent } from './components/mealplan/oldplan/recipelist/re
 import { ShoppinglistComponent } from './components/mealplan/oldplan/shoppinglist/shoppinglist.component'
 
 import { UserProfilesComponent } from './components/user-profiles/user-profiles.component'
-import { SignupComponent } from './components/signup/signup.component'
+
 import { LoginComponent } from './components/login/login.component'
 
 import { MyrecipeComponent } from './components/myrecipe/myrecipe.component'
@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: 'recipes', component: RecipesComponent},
   {path: 'recipes/:recipeId', component: RecipeContentComponent, data: {isMember: false, hasAds: true}},
   {path: 'myprofile', component: UserProfilesComponent},
-  {path: 'sign-up', component:SignupComponent},
+  
   {path: 'login', component:LoginComponent},
   {
     path: 'mealplan', component: MealplanComponent,
