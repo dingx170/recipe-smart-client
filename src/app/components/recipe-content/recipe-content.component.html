@@ -33,10 +33,10 @@
                 <br>
                 <div class="row">
                     <div class="col">
-                        <label class="value-label">Serves group {{recipe.group}}</label>
+                        <label class="value-label">Serves <br> {{recipe.group}}</label>
                     </div>
                     <div class="col">
-                        <label class="value-label">Budget &lt; ${{recipe.cost}}</label>
+                        <label class="value-label">Budget <br> &lt; ${{recipe.cost}}</label>
                     </div>
                     <div class="col">
                         <label class="value-label" *ngIf="recipe.recipe_tags && recipe.recipe_tags[0] !== 'None'">Recipe tag {{recipe.recipe_tags[0]}}</label>
@@ -45,7 +45,7 @@
                 <br>
                 <div class="row">
                     <div class="col">
-                        <label class="alert-label text-left warning" *ngIf="recipe.restrictions">Contains: {{recipe.restrictions}}</label>
+                        <label class="alert-label text-left warning" *ngIf="recipe.restrictions">Contains (food allergy): {{recipe.restrictions}}</label>
                     </div>
                 </div>
             </div>
@@ -91,7 +91,18 @@
         <hr><br>
 
         <button type="button" class="btn btn-block" *ngIf="isMember" [routerLink]="['./edit']">Edit Recipe</button>
-
+        
+        <div *ngIf="!isMember">
+            <h3>If there are wrong tags/labels, feel free to report!</h3>
+        </div>
+        <div class="form-group" *ngIf="!isMember">
+            <label for="groupSize" class="filter-label">Labels</label>
+            <select name="label" id="label" [(ngModel)]="recipe.errors" class="form-control" >
+                <option value="{{label}}" *ngFor="let label of labels">{{label}}</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-block" *ngIf="!isMember" (click)="reportMislabeling()">Report</button>
+        
     </div>
 
     <div class="col-2" *ngIf="hasAds">

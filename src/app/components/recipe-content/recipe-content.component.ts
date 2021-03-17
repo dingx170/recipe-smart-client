@@ -19,6 +19,15 @@ export class RecipeContentComponent implements OnInit {
   public isMember: boolean;
   public hasAds: boolean;
 
+  public labels: any = [
+    "Wrong feature type",
+    "Wrong cuisine type",
+    "Wrong meal type",
+    "Wrong food allergy",
+    "Wrong budget/cost",
+    "Wrong group size"
+  ]
+
   constructor(public route: ActivatedRoute, public recipeService: RecipeService) { }
 
   ngOnInit(): void {
@@ -35,6 +44,15 @@ export class RecipeContentComponent implements OnInit {
     rxjsData.subscribe((data) => {
       this.recipe = data;
     })    
+  }
+
+  reportMislabeling(){
+    console.log(this.recipe.errors);
+    var rxjsData = this.recipeService.updateOneRecipe(this.recipe, this.recipe.userId);
+    rxjsData.subscribe((data) => {
+      console.log(data);
+      alert("Success!");
+    }) 
   }
 
 }
