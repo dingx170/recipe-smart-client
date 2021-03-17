@@ -83,3 +83,8 @@
     color: #f58f8fff;
     font-size: 30px;
 }
+
+.no-border {
+    border-width:0px;
+    border:none;
+}

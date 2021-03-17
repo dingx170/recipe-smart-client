@@ -1,27 +1,38 @@
 <br>
 <h1 class="subtitle-text">My Shopping List</h1>
 
-<table class="tab table table-borderless">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Ingredient</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Unit</th>
-            <th scope="col">Done</th>
-        </tr>
-    </thead>
-
-    <tbody *ngFor="let item of ingredient_list; let key=index;">
-        <tr>
-            <th scope="row">{{ key + 1 }}</th>
-            <td>{{ item.name }}</td>
-            <td>{{ item.count }}</td>
-            <td>{{ item.unit }}</td>
-            <td>
-                <input type="checkbox">
-            </td>
-        </tr>
-    </tbody>
-
-</table>
+<section class="container tab">
+    <div class="row">
+        <div class="col-2">#</div>
+        <div class="col"><h5>Ingredient</h5></div>
+        <div class="col-2"><h5>Quantity</h5></div>
+        <div class="col-2"><h5>Unit</h5></div>
+        <div class="col-1"><h5>Done</h5></div>
+    </div>
+</section>
+<section class="container tab" *ngFor="let item of ingredient_list; let i = index;">
+    <div class="row">
+        <div class="col-2">
+            <h4>Item {{i + 1}}</h4>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <input type="text" class="form-control no-border" [(ngModel)]="item.name" name="name_{{i + 1}}" />
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <input type="text" class="form-control no-border" [(ngModel)]="item.count" name="count_{{i + 1}}" />
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <input type="text" class="form-control no-border" [(ngModel)]="item.unit" name="unit_{{i + 1}}" />
+            </div>
+        </div>
+        <div class="col-1">
+            <button type="button" class="btn btn-danger" (click)="removeItem(i)">Remove</button>
+        </div>
+    </div>
+</section>
+<button type="button" class="btn btn-block" (click)="addItem()">Add ingredient</button>

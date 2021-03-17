@@ -43,4 +43,12 @@ export class ShoppinglistComponent implements OnInit {
     })
   }
 
+  removeItem(i: number) {
+    this.ingredient_list.splice(i, 1);
+  }
+
+  addItem() {
+    this.ingredient_list.push({ name: '', unit: '', count: 0 });
+  }
+
 }
