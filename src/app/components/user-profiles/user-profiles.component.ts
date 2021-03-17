@@ -15,7 +15,6 @@ export class UserProfilesComponent implements OnInit {
   user: IUser = {
     user_id: -1,
     name: "pikachu",
-    password: "pikachu",
     email: "pikachu@gmail.com",
     ssoId: "",
     restrictions: [FoodAllergy.None]
@@ -24,7 +23,7 @@ export class UserProfilesComponent implements OnInit {
   private userid: number;
   public currUser: any;
 
-  logged_in: boolean;
+  logged_in: boolean = true;
   updated_success: boolean = false;
   update_fail: boolean = false;
 
