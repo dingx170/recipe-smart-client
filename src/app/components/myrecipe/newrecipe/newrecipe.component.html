@@ -130,14 +130,21 @@
                     <img [src]="imgURL" class="pic-holder" *ngIf="imgURL">
                 </div>
             </div>
-          
+
+            <div *ngIf="(isUpdate && recipe.labelerrors && recipe.labelerrors[0].length > 0)" >
+                <br><hr>
+                <label class="alert-label text-left warning">Warning: {{recipe.labelerrors}}</label>
+                <button type="submit" class="btn btn-lg submit-btn submit-center" (click)="clearReport()" title="update recipe">Clear Warning</button>
+            </div>
+
             <br><hr>
 
             <div class="row">
                 <div class="col text-center">
+                
                     <button type="submit" *ngIf="!isUpdate" class="btn btn-lg submit-btn submit-center" (click)="createRecipe()" title="submit new recipe">Submit Recipe</button>
                     <button type="submit" *ngIf="isUpdate" class="btn btn-lg submit-btn submit-center" (click)="updateRecipe()" title="update recipe">Update Recipe</button>
-                    
+                    <br>
                     <button type="submit" *ngIf="isUpdate" class="btn btn-lg submit-btn submit-center" (click)="deleteRecipe()" title="delete recipe">Delete Recipe</button>
                 </div>          
             </div>

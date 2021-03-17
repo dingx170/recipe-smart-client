@@ -40,7 +40,8 @@ export class NewrecipeComponent implements OnInit {
     cuisine_type: Cuisine.None,
     feature_type: Feature.None,
     restrictions: [FoodAllergy.None],
-    recipe_tags: [RecipeTag.None]
+    recipe_tags: [RecipeTag.None],
+    labelerrors: ['']
   };
 
   public imagePath: string ="";
@@ -120,6 +121,10 @@ export class NewrecipeComponent implements OnInit {
       console.log(data);
       alert("Success!");
     }) 
+  }
+
+  clearReport() {
+    this.recipe.labelerrors = [''];
   }
 
   deleteRecipe() {

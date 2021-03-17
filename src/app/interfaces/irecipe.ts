@@ -20,5 +20,6 @@ export interface IRecipe {
     cuisine_type: Cuisine;
     feature_type: Feature;
     restrictions: [FoodAllergy];
-    recipe_tags: [RecipeTag]
+    recipe_tags: [RecipeTag];
+    labelerrors: [String];
 }

@@ -9,7 +9,10 @@
                 <a [routerLink]="['.', item.recipe_id]">
                     <img src="{{item.photo}}" class="img-responsive recipe-pic" alt="Image">
                 </a>
-                <p class="recipe-name">{{ item.name }}</p>
+                <p class="recipe-name">
+                    {{ item.name }}
+                    <span *ngIf="(item.labelerrors && item.labelerrors[0].length > 0)" style="color:red"> <b>Mislabeled!</b></span>
+                </p>
             </div>
         </div>           
     </div>
