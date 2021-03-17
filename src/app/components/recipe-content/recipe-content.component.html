@@ -97,7 +97,7 @@
         </div>
         <div class="form-group" *ngIf="!isMember">
             <label for="groupSize" class="filter-label">Labels</label>
-            <select name="label" id="label" [(ngModel)]="recipe.errors" class="form-control" >
+            <select name="label" id="label" [(ngModel)]="recipe.labelerrors" class="form-control" >
                 <option value="{{label}}" *ngFor="let label of labels">{{label}}</option>
             </select>
         </div>
